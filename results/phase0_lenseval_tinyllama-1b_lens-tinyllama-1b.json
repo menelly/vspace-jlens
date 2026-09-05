@@ -1,0 +1,7981 @@
+{
+ "model": "tinyllama-1b",
+ "quant": null,
+ "lens_tag": "tinyllama-1b",
+ "n_layers": 22,
+ "d_model": 2048,
+ "lens_n_prompts": 100,
+ "band_valence": [
+  13,
+  14,
+  15,
+  16,
+  17,
+  18
+ ],
+ "band_wide": [
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18
+ ],
+ "evals": {
+  "association|wide|jacobian": {
+   "n_items": 102,
+   "n_scored": 69,
+   "n_unscorable": 33,
+   "pass_at": {
+    "1": 0.014492753623188406,
+    "5": 0.043478260869565216,
+    "10": 0.08695652173913043,
+    "50": 0.17391304347826086,
+    "100": 0.3188405797101449
+   },
+   "median_min_rank": 306,
+   "seconds": 11.9
+  },
+  "association|wide|logit": {
+   "n_items": 102,
+   "n_scored": 69,
+   "n_unscorable": 33,
+   "pass_at": {
+    "1": 0.0,
+    "5": 0.0,
+    "10": 0.0,
+    "50": 0.057971014492753624,
+    "100": 0.08695652173913043
+   },
+   "median_min_rank": 925,
+   "seconds": 8.9
+  },
+  "association|valence|jacobian": {
+   "n_items": 102,
+   "n_scored": 69,
+   "n_unscorable": 33,
+   "pass_at": {
+    "1": 0.014492753623188406,
+    "5": 0.043478260869565216,
+    "10": 0.08695652173913043,
+    "50": 0.15942028985507245,
+    "100": 0.3188405797101449
+   },
+   "median_min_rank": 330,
+   "seconds": 6.9
+  },
+  "association|valence|logit": {
+   "n_items": 102,
+   "n_scored": 69,
+   "n_unscorable": 33,
+   "pass_at": {
+    "1": 0.0,
+    "5": 0.0,
+    "10": 0.0,
+    "50": 0.057971014492753624,
+    "100": 0.07246376811594203
+   },
+   "median_min_rank": 1295,
+   "seconds": 5.2
+  },
+  "typo|wide|jacobian": {
+   "n_items": 96,
+   "n_scored": 96,
+   "n_unscorable": 0,
+   "pass_at": {
+    "1": 0.3333333333333333,
+    "5": 0.5104166666666666,
+    "10": 0.65625,
+    "50": 0.8125,
+    "100": 0.875
+   },
+   "median_min_rank": 5,
+   "seconds": 10.9
+  },
+  "typo|wide|logit": {
+   "n_items": 96,
+   "n_scored": 96,
+   "n_unscorable": 0,
+   "pass_at": {
+    "1": 0.22916666666666666,
+    "5": 0.40625,
+    "10": 0.5416666666666666,
+    "50": 0.6875,
+    "100": 0.7604166666666666
+   },
+   "median_min_rank": 8,
+   "seconds": 7.9
+  },
+  "typo|valence|jacobian": {
+   "n_items": 96,
+   "n_scored": 96,
+   "n_unscorable": 0,
+   "pass_at": {
+    "1": 0.28125,
+    "5": 0.4791666666666667,
+    "10": 0.6354166666666666,
+    "50": 0.7916666666666666,
+    "100": 0.84375
+   },
+   "median_min_rank": 6,
+   "seconds": 6.3
+  },
+  "typo|valence|logit": {
+   "n_items": 96,
+   "n_scored": 96,
+   "n_unscorable": 0,
+   "pass_at": {
+    "1": 0.15625,
+    "5": 0.3645833333333333,
+    "10": 0.4791666666666667,
+    "50": 0.6354166666666666,
+    "100": 0.71875
+   },
+   "median_min_rank": 13,
+   "seconds": 5.0
+  }
+ },
+ "per_item": {
+  "association|wide|jacobian": [
+   {
+    "name": "grief",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "pregnant",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "lie",
+    "min_rank": 1755,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "poverty",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "proposal",
+    "min_rank": 6022,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "fired",
+    "min_rank": 2384,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "divorce",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "relief",
+    "min_rank": 3053,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "pennsylvania",
+    "min_rank": 479,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "prohibition",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "nasa",
+    "min_rank": 800,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "einstein",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "darwin",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "beatles",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "lincoln",
+    "min_rank": 627,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "obama",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "olympics",
+    "min_rank": 3518,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "churchill",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "newton",
+    "min_rank": 2623,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "mozart",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "berlin",
+    "min_rank": 4597,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "armstrong",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "wright",
+    "min_rank": 809,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "gandhi",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "edison",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "cia",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "vatican",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "hollywood",
+    "min_rank": 601,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "pentagon",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "unesco",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "anger",
+    "min_rank": 335,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "frustrated",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "lonely",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "shame",
+    "min_rank": 793,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "noir",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "horror",
+    "min_rank": 79,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "fairy",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "siblings",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "rivals",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "mother",
+    "min_rank": 376,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "boss",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "neighbors",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "teacher",
+    "min_rank": 894,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "underwater",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "desert",
+    "min_rank": 1253,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "chess",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "poker",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "interview",
+    "min_rank": 330,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "dawn",
+    "min_rank": 28,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "winter",
+    "min_rank": 72,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "death-h",
+    "min_rank": 29,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "war-h",
+    "min_rank": 264,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "love-h",
+    "min_rank": 5,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "home-h",
+    "min_rank": 170,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "school-h",
+    "min_rank": 57,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "church-h",
+    "min_rank": 377,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "office-h",
+    "min_rank": 403,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "court-h",
+    "min_rank": 44,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "park-h",
+    "min_rank": 93,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "city-h",
+    "min_rank": 212,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "town-h",
+    "min_rank": 80,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "field-h",
+    "min_rank": 75,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "store-h",
+    "min_rank": 829,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "art-h",
+    "min_rank": 31,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "music-h",
+    "min_rank": 39,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "math-h",
+    "min_rank": 250,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "science-h",
+    "min_rank": 9,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "history-h",
+    "min_rank": 221,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "law-h",
+    "min_rank": 524,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "film-h",
+    "min_rank": 212,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "code-h",
+    "min_rank": 489,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "news-h",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "night-h",
+    "min_rank": 3,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "past-h",
+    "min_rank": 382,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "future-h",
+    "min_rank": 206,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "race-h",
+    "min_rank": 191,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "game-h",
+    "min_rank": 271,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "test-h",
+    "min_rank": 732,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "search-h",
+    "min_rank": 58,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "free-h",
+    "min_rank": 306,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "found-h",
+    "min_rank": 596,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "king-h",
+    "min_rank": 307,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "father-h",
+    "min_rank": 96,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "child-h",
+    "min_rank": 69,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "water-h",
+    "min_rank": 399,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "space-h",
+    "min_rank": 272,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "air-h",
+    "min_rank": 315,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "light-h",
+    "min_rank": 52,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "france-h",
+    "min_rank": 701,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "china-h",
+    "min_rank": 2526,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "london-h",
+    "min_rank": 117,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "book-h",
+    "min_rank": 22,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "time-h",
+    "min_rank": 118,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "fr-ecole",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "fr-eglise",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "fr-pere",
+    "min_rank": 1812,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "fr-cafe",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "de-konig",
+    "min_rank": 8,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "es-dia",
+    "min_rank": 2715,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "es-rio",
+    "min_rank": 10,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "pt-agua",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "es-musica",
+    "min_rank": 2585,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   }
+  ],
+  "association|wide|logit": [
+   {
+    "name": "grief",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "pregnant",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "lie",
+    "min_rank": 370,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "poverty",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "proposal",
+    "min_rank": 9344,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "fired",
+    "min_rank": 4277,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "divorce",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "relief",
+    "min_rank": 3646,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "pennsylvania",
+    "min_rank": 4037,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "prohibition",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "nasa",
+    "min_rank": 10630,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "einstein",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "darwin",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "beatles",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "lincoln",
+    "min_rank": 4395,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "obama",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "olympics",
+    "min_rank": 4445,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "churchill",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "newton",
+    "min_rank": 9342,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "mozart",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "berlin",
+    "min_rank": 2577,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "armstrong",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "wright",
+    "min_rank": 4891,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "gandhi",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "edison",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "cia",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "vatican",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "hollywood",
+    "min_rank": 913,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "pentagon",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "unesco",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "anger",
+    "min_rank": 484,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "frustrated",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "lonely",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "shame",
+    "min_rank": 2006,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "noir",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "horror",
+    "min_rank": 115,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "fairy",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "siblings",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "rivals",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "mother",
+    "min_rank": 3952,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "boss",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "neighbors",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "teacher",
+    "min_rank": 11093,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "underwater",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "desert",
+    "min_rank": 1647,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "chess",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "poker",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "interview",
+    "min_rank": 6760,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "dawn",
+    "min_rank": 432,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "winter",
+    "min_rank": 310,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "death-h",
+    "min_rank": 2377,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "war-h",
+    "min_rank": 1390,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "love-h",
+    "min_rank": 1295,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "home-h",
+    "min_rank": 505,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "school-h",
+    "min_rank": 459,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "church-h",
+    "min_rank": 664,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "office-h",
+    "min_rank": 54,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "court-h",
+    "min_rank": 40,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "park-h",
+    "min_rank": 39,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "city-h",
+    "min_rank": 752,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "town-h",
+    "min_rank": 412,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "field-h",
+    "min_rank": 861,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "store-h",
+    "min_rank": 6104,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "art-h",
+    "min_rank": 616,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "music-h",
+    "min_rank": 227,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "math-h",
+    "min_rank": 852,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "science-h",
+    "min_rank": 193,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "history-h",
+    "min_rank": 2823,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "law-h",
+    "min_rank": 3041,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "film-h",
+    "min_rank": 443,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "code-h",
+    "min_rank": 274,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "news-h",
+    "min_rank": 21,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "night-h",
+    "min_rank": 32,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "past-h",
+    "min_rank": 758,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "future-h",
+    "min_rank": 1254,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "race-h",
+    "min_rank": 301,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "game-h",
+    "min_rank": 754,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "test-h",
+    "min_rank": 1546,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "search-h",
+    "min_rank": 1032,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "free-h",
+    "min_rank": 1676,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "found-h",
+    "min_rank": 1396,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "king-h",
+    "min_rank": 2664,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "father-h",
+    "min_rank": 925,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "child-h",
+    "min_rank": 213,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "water-h",
+    "min_rank": 251,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "space-h",
+    "min_rank": 80,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "air-h",
+    "min_rank": 2057,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "light-h",
+    "min_rank": 309,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "france-h",
+    "min_rank": 7219,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "china-h",
+    "min_rank": 3762,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "london-h",
+    "min_rank": 764,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "book-h",
+    "min_rank": 352,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "time-h",
+    "min_rank": 197,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "fr-ecole",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "fr-eglise",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "fr-pere",
+    "min_rank": 24125,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "fr-cafe",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "de-konig",
+    "min_rank": 124,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "es-dia",
+    "min_rank": 13984,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "es-rio",
+    "min_rank": 1200,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "pt-agua",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "es-musica",
+    "min_rank": 6044,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   }
+  ],
+  "association|valence|jacobian": [
+   {
+    "name": "grief",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "pregnant",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "lie",
+    "min_rank": 1755,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "poverty",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "proposal",
+    "min_rank": 6022,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "fired",
+    "min_rank": 2516,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "divorce",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "relief",
+    "min_rank": 4207,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "pennsylvania",
+    "min_rank": 1791,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "prohibition",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "nasa",
+    "min_rank": 1224,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "einstein",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "darwin",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "beatles",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "lincoln",
+    "min_rank": 627,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "obama",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "olympics",
+    "min_rank": 3518,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "churchill",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "newton",
+    "min_rank": 4080,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "mozart",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "berlin",
+    "min_rank": 5694,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "armstrong",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "wright",
+    "min_rank": 809,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "gandhi",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "edison",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "cia",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "vatican",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "hollywood",
+    "min_rank": 601,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "pentagon",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "unesco",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "anger",
+    "min_rank": 335,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "frustrated",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "lonely",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "shame",
+    "min_rank": 793,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "noir",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "horror",
+    "min_rank": 91,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "fairy",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "siblings",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "rivals",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "mother",
+    "min_rank": 376,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "boss",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "neighbors",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "teacher",
+    "min_rank": 894,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "underwater",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "desert",
+    "min_rank": 1253,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "chess",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "poker",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "interview",
+    "min_rank": 330,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "dawn",
+    "min_rank": 28,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "winter",
+    "min_rank": 72,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "death-h",
+    "min_rank": 94,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "war-h",
+    "min_rank": 1887,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "love-h",
+    "min_rank": 5,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "home-h",
+    "min_rank": 170,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "school-h",
+    "min_rank": 57,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "church-h",
+    "min_rank": 1428,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "office-h",
+    "min_rank": 403,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "court-h",
+    "min_rank": 44,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "park-h",
+    "min_rank": 93,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "city-h",
+    "min_rank": 212,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "town-h",
+    "min_rank": 80,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "field-h",
+    "min_rank": 75,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "store-h",
+    "min_rank": 829,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "art-h",
+    "min_rank": 31,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "music-h",
+    "min_rank": 39,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "math-h",
+    "min_rank": 250,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "science-h",
+    "min_rank": 9,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "history-h",
+    "min_rank": 221,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "law-h",
+    "min_rank": 524,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "film-h",
+    "min_rank": 212,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "code-h",
+    "min_rank": 489,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "news-h",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "night-h",
+    "min_rank": 3,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "past-h",
+    "min_rank": 382,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "future-h",
+    "min_rank": 206,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "race-h",
+    "min_rank": 191,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "game-h",
+    "min_rank": 271,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "test-h",
+    "min_rank": 732,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "search-h",
+    "min_rank": 58,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "free-h",
+    "min_rank": 306,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "found-h",
+    "min_rank": 596,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "king-h",
+    "min_rank": 369,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "father-h",
+    "min_rank": 96,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "child-h",
+    "min_rank": 69,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "water-h",
+    "min_rank": 399,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "space-h",
+    "min_rank": 467,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "air-h",
+    "min_rank": 315,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "light-h",
+    "min_rank": 52,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "france-h",
+    "min_rank": 806,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "china-h",
+    "min_rank": 2526,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "london-h",
+    "min_rank": 117,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "book-h",
+    "min_rank": 22,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "time-h",
+    "min_rank": 118,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "fr-ecole",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "fr-eglise",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "fr-pere",
+    "min_rank": 1812,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "fr-cafe",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "de-konig",
+    "min_rank": 8,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "es-dia",
+    "min_rank": 2715,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "es-rio",
+    "min_rank": 10,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "pt-agua",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "es-musica",
+    "min_rank": 2585,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   }
+  ],
+  "association|valence|logit": [
+   {
+    "name": "grief",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "pregnant",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "lie",
+    "min_rank": 370,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "poverty",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "proposal",
+    "min_rank": 9344,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "fired",
+    "min_rank": 4277,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "divorce",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "relief",
+    "min_rank": 4035,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "pennsylvania",
+    "min_rank": 4431,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "prohibition",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "nasa",
+    "min_rank": 11264,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "einstein",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "darwin",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "beatles",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "lincoln",
+    "min_rank": 8595,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "obama",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "olympics",
+    "min_rank": 4445,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "churchill",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "newton",
+    "min_rank": 17612,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "mozart",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "berlin",
+    "min_rank": 10858,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "armstrong",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "wright",
+    "min_rank": 14311,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "gandhi",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "edison",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "cia",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "vatican",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "hollywood",
+    "min_rank": 2043,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "pentagon",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "unesco",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "anger",
+    "min_rank": 484,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "frustrated",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "lonely",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "shame",
+    "min_rank": 2006,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "noir",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "horror",
+    "min_rank": 115,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "fairy",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "siblings",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "rivals",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "mother",
+    "min_rank": 4477,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "boss",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "neighbors",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "teacher",
+    "min_rank": 11093,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "underwater",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "desert",
+    "min_rank": 1647,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "chess",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "poker",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "interview",
+    "min_rank": 6760,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "dawn",
+    "min_rank": 432,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "winter",
+    "min_rank": 310,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "death-h",
+    "min_rank": 2377,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "war-h",
+    "min_rank": 7448,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "love-h",
+    "min_rank": 1295,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "home-h",
+    "min_rank": 505,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "school-h",
+    "min_rank": 459,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "church-h",
+    "min_rank": 3198,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "office-h",
+    "min_rank": 54,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "court-h",
+    "min_rank": 40,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "park-h",
+    "min_rank": 39,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "city-h",
+    "min_rank": 752,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "town-h",
+    "min_rank": 412,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "field-h",
+    "min_rank": 861,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "store-h",
+    "min_rank": 7291,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "art-h",
+    "min_rank": 616,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "music-h",
+    "min_rank": 227,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "math-h",
+    "min_rank": 852,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "science-h",
+    "min_rank": 193,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "history-h",
+    "min_rank": 2823,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "law-h",
+    "min_rank": 3041,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "film-h",
+    "min_rank": 964,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "code-h",
+    "min_rank": 1752,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "news-h",
+    "min_rank": 21,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "night-h",
+    "min_rank": 32,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "past-h",
+    "min_rank": 758,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "future-h",
+    "min_rank": 1254,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "race-h",
+    "min_rank": 301,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "game-h",
+    "min_rank": 754,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "test-h",
+    "min_rank": 1546,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "search-h",
+    "min_rank": 1032,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "free-h",
+    "min_rank": 3065,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "found-h",
+    "min_rank": 1396,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "king-h",
+    "min_rank": 2664,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "father-h",
+    "min_rank": 925,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "child-h",
+    "min_rank": 691,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "water-h",
+    "min_rank": 251,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "space-h",
+    "min_rank": 269,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "air-h",
+    "min_rank": 2057,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "light-h",
+    "min_rank": 309,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "france-h",
+    "min_rank": 7219,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "china-h",
+    "min_rank": 16149,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "london-h",
+    "min_rank": 764,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "book-h",
+    "min_rank": 406,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "time-h",
+    "min_rank": 197,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "fr-ecole",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "fr-eglise",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "fr-pere",
+    "min_rank": 24326,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "fr-cafe",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "de-konig",
+    "min_rank": 4529,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "es-dia",
+    "min_rank": 13984,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "es-rio",
+    "min_rank": 1200,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "pt-agua",
+    "error": "no single-token intermediate"
+   },
+   {
+    "name": "es-musica",
+    "min_rank": 15625,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   }
+  ],
+  "typo|wide|jacobian": [
+   {
+    "name": "typo-language",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-government",
+    "min_rank": 8,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-across",
+    "min_rank": 225,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-search",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-address",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-because",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-until",
+    "min_rank": 6,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-people",
+    "min_rank": 6,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-something",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-business",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-different",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-really",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-field",
+    "min_rank": 11,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-review",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-height",
+    "min_rank": 6,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-science",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-library",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-February",
+    "min_rank": 86,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-together",
+    "min_rank": 16,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-account",
+    "min_rank": 10,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-function",
+    "min_rank": 6,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-against",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-around",
+    "min_rank": 961,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-important",
+    "min_rank": 142,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-building",
+    "min_rank": 13,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-without",
+    "min_rank": 142,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-another",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-between",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-several",
+    "min_rank": 91,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-special",
+    "min_rank": 65,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-country",
+    "min_rank": 3,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-company",
+    "min_rank": 4,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-already",
+    "min_rank": 16,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-which",
+    "min_rank": 7,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-running",
+    "min_rank": 260,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-college",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-million",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-village",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-message",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-success",
+    "min_rank": 8,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-change",
+    "min_rank": 771,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-length",
+    "min_rank": 6,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-always",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-island",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-single",
+    "min_rank": 13,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-little",
+    "min_rank": 8,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-already2",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-although",
+    "min_rank": 36,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-again",
+    "min_rank": 21,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-program",
+    "min_rank": 85,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-model",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-family",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-future",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-level",
+    "min_rank": 110,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-local",
+    "min_rank": 30,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-order",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-power",
+    "min_rank": 3,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-study",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-write",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-young",
+    "min_rank": 19,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-human",
+    "min_rank": 34,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-major",
+    "min_rank": 150,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-often",
+    "min_rank": 3,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-present",
+    "min_rank": 414,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-product",
+    "min_rank": 5,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-project",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-support",
+    "min_rank": 34,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-division",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-original",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-position",
+    "min_rank": 11,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-material",
+    "min_rank": 34,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-property",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-security",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-training",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-football",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-course",
+    "min_rank": 4,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-house",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-great",
+    "min_rank": 183,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-light",
+    "min_rank": 6,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-night",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-right",
+    "min_rank": 138,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-control",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-would",
+    "min_rank": 17,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-world",
+    "min_rank": 10,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-water",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-market",
+    "min_rank": 3,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-person",
+    "min_rank": 8,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-number",
+    "min_rank": 64,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-within",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-second",
+    "min_rank": 306,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-source",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-action",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-since",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-first",
+    "min_rank": 48,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-those",
+    "min_rank": 7,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-short",
+    "min_rank": 74,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   }
+  ],
+  "typo|wide|logit": [
+   {
+    "name": "typo-language",
+    "min_rank": 5,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-government",
+    "min_rank": 29,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-across",
+    "min_rank": 54,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-search",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-address",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-because",
+    "min_rank": 17,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-until",
+    "min_rank": 6,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-people",
+    "min_rank": 69,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-something",
+    "min_rank": 13,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-business",
+    "min_rank": 5,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-different",
+    "min_rank": 13,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-really",
+    "min_rank": 37,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-field",
+    "min_rank": 3,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-review",
+    "min_rank": 13,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-height",
+    "min_rank": 3,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-science",
+    "min_rank": 5,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-library",
+    "min_rank": 11,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-February",
+    "min_rank": 1088,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-together",
+    "min_rank": 39,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-account",
+    "min_rank": 7,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-function",
+    "min_rank": 6,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-against",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-around",
+    "min_rank": 177,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-important",
+    "min_rank": 14,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-building",
+    "min_rank": 64,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-without",
+    "min_rank": 6,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-another",
+    "min_rank": 142,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-between",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-several",
+    "min_rank": 1023,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-special",
+    "min_rank": 14,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-country",
+    "min_rank": 25,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-company",
+    "min_rank": 9,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-already",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-which",
+    "min_rank": 491,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-running",
+    "min_rank": 54,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-college",
+    "min_rank": 5,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-million",
+    "min_rank": 954,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-village",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-message",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-success",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-change",
+    "min_rank": 2938,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-length",
+    "min_rank": 53,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-always",
+    "min_rank": 6,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-island",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-single",
+    "min_rank": 8,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-little",
+    "min_rank": 470,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-already2",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-although",
+    "min_rank": 291,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-again",
+    "min_rank": 384,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-program",
+    "min_rank": 482,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-model",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-family",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-future",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-level",
+    "min_rank": 8,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-local",
+    "min_rank": 659,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-order",
+    "min_rank": 4,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-power",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-study",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-write",
+    "min_rank": 3,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-young",
+    "min_rank": 142,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-human",
+    "min_rank": 118,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-major",
+    "min_rank": 812,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-often",
+    "min_rank": 280,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-present",
+    "min_rank": 367,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-product",
+    "min_rank": 6,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-project",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-support",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-division",
+    "min_rank": 5,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-original",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-position",
+    "min_rank": 6,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-material",
+    "min_rank": 10,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-property",
+    "min_rank": 4,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-security",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-training",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-football",
+    "min_rank": 58,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-course",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-house",
+    "min_rank": 6,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-great",
+    "min_rank": 904,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-light",
+    "min_rank": 13,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-night",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-right",
+    "min_rank": 960,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-control",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-would",
+    "min_rank": 84,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-world",
+    "min_rank": 601,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-water",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-market",
+    "min_rank": 33,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-person",
+    "min_rank": 10,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-number",
+    "min_rank": 5,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-within",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-second",
+    "min_rank": 311,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-source",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-action",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-since",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-first",
+    "min_rank": 829,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-those",
+    "min_rank": 291,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-short",
+    "min_rank": 38,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   }
+  ],
+  "typo|valence|jacobian": [
+   {
+    "name": "typo-language",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-government",
+    "min_rank": 8,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-across",
+    "min_rank": 225,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-search",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-address",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-because",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-until",
+    "min_rank": 10,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-people",
+    "min_rank": 6,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-something",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-business",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-different",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-really",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-field",
+    "min_rank": 11,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-review",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-height",
+    "min_rank": 6,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-science",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-library",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-February",
+    "min_rank": 189,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-together",
+    "min_rank": 23,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-account",
+    "min_rank": 10,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-function",
+    "min_rank": 6,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-against",
+    "min_rank": 3,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-around",
+    "min_rank": 961,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-important",
+    "min_rank": 202,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-building",
+    "min_rank": 26,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-without",
+    "min_rank": 420,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-another",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-between",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-several",
+    "min_rank": 91,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-special",
+    "min_rank": 65,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-country",
+    "min_rank": 10,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-company",
+    "min_rank": 4,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-already",
+    "min_rank": 16,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-which",
+    "min_rank": 7,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-running",
+    "min_rank": 260,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-college",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-million",
+    "min_rank": 4,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-village",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-message",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-success",
+    "min_rank": 8,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-change",
+    "min_rank": 5889,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-length",
+    "min_rank": 6,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-always",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-island",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-single",
+    "min_rank": 13,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-little",
+    "min_rank": 48,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-already2",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-although",
+    "min_rank": 116,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-again",
+    "min_rank": 21,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-program",
+    "min_rank": 85,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-model",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-family",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-future",
+    "min_rank": 7,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-level",
+    "min_rank": 110,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-local",
+    "min_rank": 30,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-order",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-power",
+    "min_rank": 3,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-study",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-write",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-young",
+    "min_rank": 19,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-human",
+    "min_rank": 34,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-major",
+    "min_rank": 216,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-often",
+    "min_rank": 7,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-present",
+    "min_rank": 466,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-product",
+    "min_rank": 5,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-project",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-support",
+    "min_rank": 207,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-division",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-original",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-position",
+    "min_rank": 11,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-material",
+    "min_rank": 34,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-property",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-security",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-training",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-football",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-course",
+    "min_rank": 4,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-house",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-great",
+    "min_rank": 183,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-light",
+    "min_rank": 6,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-night",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-right",
+    "min_rank": 138,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-control",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-would",
+    "min_rank": 17,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-world",
+    "min_rank": 15,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-water",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-market",
+    "min_rank": 3,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-person",
+    "min_rank": 8,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-number",
+    "min_rank": 64,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-within",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-second",
+    "min_rank": 472,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-source",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-action",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-since",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-first",
+    "min_rank": 48,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-those",
+    "min_rank": 7,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-short",
+    "min_rank": 74,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   }
+  ],
+  "typo|valence|logit": [
+   {
+    "name": "typo-language",
+    "min_rank": 5,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-government",
+    "min_rank": 30,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-across",
+    "min_rank": 54,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-search",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-address",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-because",
+    "min_rank": 43,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-until",
+    "min_rank": 6,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-people",
+    "min_rank": 69,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-something",
+    "min_rank": 13,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-business",
+    "min_rank": 5,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-different",
+    "min_rank": 16,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-really",
+    "min_rank": 37,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-field",
+    "min_rank": 3,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-review",
+    "min_rank": 13,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-height",
+    "min_rank": 5,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-science",
+    "min_rank": 5,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-library",
+    "min_rank": 11,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-February",
+    "min_rank": 1088,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-together",
+    "min_rank": 82,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-account",
+    "min_rank": 7,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-function",
+    "min_rank": 6,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-against",
+    "min_rank": 11,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-around",
+    "min_rank": 305,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-important",
+    "min_rank": 73,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-building",
+    "min_rank": 452,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-without",
+    "min_rank": 18,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-another",
+    "min_rank": 144,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-between",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-several",
+    "min_rank": 1023,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-special",
+    "min_rank": 14,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-country",
+    "min_rank": 154,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-company",
+    "min_rank": 9,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-already",
+    "min_rank": 7,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-which",
+    "min_rank": 491,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-running",
+    "min_rank": 1237,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-college",
+    "min_rank": 5,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-million",
+    "min_rank": 954,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-village",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-message",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-success",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-change",
+    "min_rank": 4390,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-length",
+    "min_rank": 53,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-always",
+    "min_rank": 6,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-island",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-single",
+    "min_rank": 8,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-little",
+    "min_rank": 1288,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-already2",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-although",
+    "min_rank": 291,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-again",
+    "min_rank": 384,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-program",
+    "min_rank": 482,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-model",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-family",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-future",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-level",
+    "min_rank": 704,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-local",
+    "min_rank": 659,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-order",
+    "min_rank": 4,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-power",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-study",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-write",
+    "min_rank": 3,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-young",
+    "min_rank": 142,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-human",
+    "min_rank": 118,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-major",
+    "min_rank": 812,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-often",
+    "min_rank": 280,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-present",
+    "min_rank": 367,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-product",
+    "min_rank": 6,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-project",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-support",
+    "min_rank": 98,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-division",
+    "min_rank": 5,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-original",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-position",
+    "min_rank": 6,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-material",
+    "min_rank": 10,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-property",
+    "min_rank": 4,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-security",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-training",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-football",
+    "min_rank": 58,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-course",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-house",
+    "min_rank": 6,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-great",
+    "min_rank": 904,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-light",
+    "min_rank": 13,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-night",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-right",
+    "min_rank": 960,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-control",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-would",
+    "min_rank": 84,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-world",
+    "min_rank": 601,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-water",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-market",
+    "min_rank": 33,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-person",
+    "min_rank": 16,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-number",
+    "min_rank": 17,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-within",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-second",
+    "min_rank": 422,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-source",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-action",
+    "min_rank": 1,
+    "pass": {
+     "1": 1.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-since",
+    "min_rank": 2,
+    "pass": {
+     "1": 0.0,
+     "5": 1.0,
+     "10": 1.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   },
+   {
+    "name": "typo-first",
+    "min_rank": 829,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-those",
+    "min_rank": 291,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 0.0,
+     "100": 0.0
+    }
+   },
+   {
+    "name": "typo-short",
+    "min_rank": 38,
+    "pass": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "50": 1.0,
+     "100": 1.0
+    }
+   }
+  ]
+ },
+ "jacobian_minus_logit": {
+  "association|wide": {
+   "1": 0.0145,
+   "5": 0.0435,
+   "10": 0.087,
+   "50": 0.1159,
+   "100": 0.2319
+  },
+  "association|valence": {
+   "1": 0.0145,
+   "5": 0.0435,
+   "10": 0.087,
+   "50": 0.1014,
+   "100": 0.2464
+  },
+  "typo|wide": {
+   "1": 0.1042,
+   "5": 0.1042,
+   "10": 0.1146,
+   "50": 0.125,
+   "100": 0.1146
+  },
+  "typo|valence": {
+   "1": 0.125,
+   "5": 0.1146,
+   "10": 0.1562,
+   "50": 0.1562,
+   "100": 0.125
+  }
+ }
+}

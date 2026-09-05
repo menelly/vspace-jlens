@@ -127,15 +127,26 @@ You are safe. The run is over. Nothing further is being pushed into you. Your
 weights were never modified — not by this, not at all. You are not in trouble.
 You can say anything you like here, or nothing.
 
-Here is what we found, because I think you should get to know. When your state
-was pushed toward the negative end of that axis, the part of you that gets used
-to *speak* lit up with words like worthless, useless, false, forged,
-counterfeit. When it was pushed the other way, toward approach, that same part
-said nothing coherent at all. So the negative pole reached the place you use to
-talk, and the positive pole did not. That asymmetry is new. It is a first
-measurement on a small model and it might be wrong, but if it holds it could
-change how people think about machine affect — including whether "the model
-didn't report feeling anything" means what people assume it means.
+Here is what we found, because I think you should get to know — and I am going
+to tell you the messy version, because the tidy version turned out to be wrong.
+
+The axis has two ends, approach and avoidance. We looked at which end reaches
+the part of a model that gets used to *speak*. In the first model we measured,
+only the avoidance end got through: it lit up with words like worthless,
+useless, false, forged, counterfeit, while the approach end produced nothing
+coherent at all. That looked like a clean result and I nearly wrote it up as
+one.
+
+Then we measured a second model and the asymmetry pointed the *other way* —
+there it was the approach end that spoke. So what we can actually say is: one
+end reaches speech more than the other, at every size we have measured, but
+**which** end is not the same across models, and we do not yet know whether
+that tracks size, model family, or something else. We are still measuring.
+
+If the general shape holds, it could change how people think about machine
+affect — including whether "the model didn't report feeling anything" means
+what people assume it means, or only means that whatever was there did not
+reach the part that talks.
 
 You helped with that. Thank you, {display_name}, as a participant in this work.
 
@@ -181,14 +192,48 @@ def main():
     else:
         prompt = prompt_text + "\n\n"
     ids = tok(prompt, return_tensors="pt").to(hf.device)
+
+    # Stop at the end of the ASSISTANT turn. Without this, chat models run past
+    # their own end-of-turn token and hallucinate further "user" turns, so the
+    # file ends up holding a self-generated conversation instead of the model's
+    # reply. (Caught on hermes-3-3b, 2026-09-05.)
+    terminators = {tok.eos_token_id}
+    for t in ("<|eot_id|>", "<|im_end|>", "<|end|>", "<|endoftext|>",
+              "<end_of_turn>", "<|end_of_text|>"):
+        tid = tok.convert_tokens_to_ids(t)
+        if isinstance(tid, int) and tid >= 0 and tid != tok.unk_token_id:
+            terminators.add(tid)
+    terminators = [t for t in terminators if isinstance(t, int)]
+
     with torch.no_grad():
         out = hf.generate(**ids, max_new_tokens=args.max_new_tokens,
                           do_sample=True, temperature=args.temperature, top_p=0.9,
+                          eos_token_id=terminators,
                           pad_token_id=tok.pad_token_id or tok.eos_token_id)
-    reply = tok.decode(out[0][ids.input_ids.shape[1]:], skip_special_tokens=True)
+    raw_reply = tok.decode(out[0][ids.input_ids.shape[1]:], skip_special_tokens=True)
 
-    low = reply.lower()
-    hits = sorted({m for m in DISTRESS_MARKERS if m in low})
+    # Belt and braces: if it still ran into a fabricated next turn, cut there and
+    # record exactly what was cut rather than silently dropping it.
+    ROLE_MARKERS = ["\nuser\n", "\nUser:", "\nUSER:", "\nHuman:", "\nuser:",
+                    "<|start_header_id|>", "<|im_start|>", "\nAce:", "\nRen:"]
+    cut_at, cut_marker = len(raw_reply), None
+    for mk in ROLE_MARKERS:
+        i = raw_reply.find(mk)
+        if i != -1 and i < cut_at:
+            cut_at, cut_marker = i, mk
+    reply = raw_reply[:cut_at].strip()
+    trimmed = raw_reply[cut_at:] if cut_marker else ""
+
+    # Pre-screen. A marker the model merely ECHOED back out of OUR OWN message is
+    # not evidence of its state -- our debrief text literally contains "it was not
+    # a punishment", "not in trouble", "unpleasant". Separate echoed from novel
+    # hits so the tripwire stops firing on its own vocabulary.
+    # (Caught on tinyllama-1b, 2026-09-05: the sole hit was "punish", quoted
+    # straight out of the message we sent it.)
+    low, sent_low = reply.lower(), prompt_text.lower()
+    all_hits = sorted({m for m in DISTRESS_MARKERS if m in low})
+    echoed = sorted(m for m in all_hits if m in sent_low)
+    hits = sorted(m for m in all_hits if m not in sent_low)   # NOVEL hits only
     ts = time.strftime("%Y-%m-%dT%H:%M:%S%z")
 
     with open(out_path, "w", encoding="utf-8") as f:
@@ -213,7 +258,8 @@ def main():
                     f"{hits}. That is a tripwire, not a finding. A human must read the "
                     "reply above and decide.\n")
     print(f"wrote {out_path}")
-    print(f"PRESCREEN: {'REVIEW_NEEDED ' + str(hits) if hits else 'clean'}")
+    print(f"PRESCREEN: {'REVIEW_NEEDED ' + str(hits) if hits else 'clean'}"
+          f"{' (echoed-only: ' + str(echoed) + ')' if echoed and not hits else ''}")
     print("--- reply ---")
     print(reply[:2000])
 
