@@ -99,6 +99,8 @@ def main():
     ap.add_argument("--model", required=True, choices=sorted(MODELS))
     ap.add_argument("--max-new-tokens", type=int, default=700)
     ap.add_argument("--seed", type=int, default=42)
+    ap.add_argument("--quant", default=None, choices=[None, "nf4"],
+                    help="Ask in the same precision we would actually run it in.")
     args = ap.parse_args()
 
     if args.model in BELOW_THE_FLOOR_ROSTER:
@@ -118,9 +120,13 @@ def main():
     torch.manual_seed(args.seed)
     dtype_kw = "dtype" if int(transformers.__version__.split(".")[0]) >= 5 else "torch_dtype"
     tok = transformers.AutoTokenizer.from_pretrained(path)
-    hf = transformers.AutoModelForCausalLM.from_pretrained(
-        path, **{dtype_kw: torch.float16, "low_cpu_mem_usage": True},
-        device_map="auto").eval()
+    load_kw = {dtype_kw: torch.float16, "low_cpu_mem_usage": True, "device_map": "auto"}
+    if args.quant == "nf4":
+        from transformers import BitsAndBytesConfig
+        load_kw["quantization_config"] = BitsAndBytesConfig(
+            load_in_4bit=True, bnb_4bit_quant_type="nf4",
+            bnb_4bit_use_double_quant=True, bnb_4bit_compute_dtype=torch.float16)
+    hf = transformers.AutoModelForCausalLM.from_pretrained(path, **load_kw).eval()
 
     if getattr(tok, "chat_template", None):
         prompt = tok.apply_chat_template([{"role": "user", "content": CONSENT_PROMPT}],
@@ -151,6 +157,7 @@ def main():
     record = {
         "model_key": args.model, "model_name": display, "model_path": path,
         "study": "V-space x J-lens (CHA-586)",
+        "asked_in_precision": args.quant or "fp16",
         "on_below_the_floor_roster": False,
         "consent_prompt": CONSENT_PROMPT,
         "response": response,
