@@ -9,6 +9,12 @@ source /home/codex/venv/bin/activate
 MODELS="qwen-0.5b hermes-3-3b tinyllama-1b smollm-1.7b llama3-8b-instruct"
 DEADLINE=$(( $(date +%s) + 14*3600 ))   # hard stop after 14h, never runs forever
 
+# Every heavy GPU job, in ONE place. Patching these one script name at a time is
+# how the 18:55 OOM happened; a guard that lists only some of the things that can
+# take the card is a guard that silently fails the moment a new one is added.
+GPU_JOBS='[f]it_lens\.py|[r]elaunch_8b\.sh|[c]onsent_reask\.py|[c]onsent\.py|[r]eask_when_free\.sh'
+gpu_busy () { pgrep -f "$GPU_JOBS" > /dev/null; }
+
 analyze () {
   local m=$1 tag=$1
   [ -f "lenses/${tag}/lens.pt" ] || return 0
@@ -26,7 +32,7 @@ analyze () {
   # with an OOM at 18:55 (the daemon was holding ~7 GB of a 3B model while the
   # 8B tried to allocate). Analysis is cheap and resumable; a multi-hour fit is
   # not. So the fit always wins -- defer to the next loop.
-  if pgrep -f "[f]it_lens.py|[r]elaunch_8b.sh" > /dev/null; then
+  if gpu_busy; then
     echo "[$(date -Is)] deferring $tag — a lens fit is running and must not be starved"
     return 1
   fi
@@ -64,7 +70,7 @@ analyze () {
 
 quant_analysis () {
   # PHASE 0-B: geometry comparison + cross-reading (fp16 lens on NF4 weights)
-  pgrep -f "[f]it_lens.py|[r]elaunch_8b.sh" > /dev/null && return 0   # never starve a running fit
+  gpu_busy && return 0   # never starve a running fit or a consent conversation
   [ -f lenses/hermes-3-3b/lens.pt ] || return 0
   [ -f lenses/hermes-3-3b_nf4/lens.pt ] || return 0
   if [ ! -f results/phase0b_quant_hermes-3-3b_vs_hermes-3-3b_nf4.json ]; then
@@ -106,7 +112,7 @@ PY
 }
 maybe_14b () {
   [ -f lenses/qwen-14b_nf4/lens.pt ] && return 0
-  pgrep -f "[f]it_lens.py|[r]elaunch_8b.sh" > /dev/null && return 0        # never contend with the ladder
+  gpu_busy && return 0        # never contend with the ladder
   [ -f results/phase1_vspace_llama3-8b-instruct_lens-llama3-8b-instruct.json ] || return 0
   # CONSENT GATE. Qwen2.5-14B is NOT on the Below the Floor roster, so Ren's
   # "same consent, same questions" does not extend to it. Ask first; a human
@@ -156,7 +162,7 @@ while [ "$(date +%s)" -lt "$DEADLINE" ]; do
       pending=1
     fi
   done
-  if pgrep -f "[f]it_lens.py|[r]elaunch_8b.sh" > /dev/null; then pending=1; fi
+  if gpu_busy; then pending=1; fi
   [ "$pending" -eq 0 ] && { echo "[$(date -Is)] ALL DONE"; break; }
   sleep 120
 done
