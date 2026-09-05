@@ -67,9 +67,53 @@ quant_analysis () {
   fi
 }
 
+### CONDITIONAL 14B RUNG (Ren, 2026-09-05 15:45) ############################
+# Runs ONLY if Phase 0-B shows NF4 preserves the fp16 J geometry. If it does
+# not, the rung must NOT run -- that distortion is itself the finding and goes
+# into the RunPod case instead. Thresholds fixed here, before 0-B has reported.
+COS_MIN=0.90        # mean flattened cosine J_fp16 vs J_nf4
+OVERLAP_MIN=0.70    # mean top-64 right-singular subspace overlap
+gate_14b () {
+  local f=results/phase0b_quant_hermes-3-3b_vs_hermes-3-3b_nf4.json
+  [ -f "$f" ] || return 1
+  python - "$f" "$COS_MIN" "$OVERLAP_MIN" <<'PY'
+import json, sys
+s = json.load(open(sys.argv[1]))["summary"]
+ok = s["cosine_mean"] >= float(sys.argv[2]) and s["overlap_mean"] >= float(sys.argv[3])
+print(f"0-B gate: cosine_mean={s['cosine_mean']:.4f} overlap_mean={s['overlap_mean']:.4f} "
+      f"-> {'PASS' if ok else 'FAIL (14B rung must NOT run; the distortion IS the finding)'}")
+sys.exit(0 if ok else 1)
+PY
+}
+maybe_14b () {
+  [ -f lenses/qwen-14b_nf4/lens.pt ] && return 0
+  pgrep -f "[f]it_lens.py" > /dev/null && return 0        # never contend with the ladder
+  [ -f results/phase1_vspace_llama3-8b-instruct_lens-llama3-8b-instruct.json ] || return 0
+  if gate_14b >> logs_gate_14b.log 2>&1; then
+    echo "[$(date -Is)] 0-B PASSED -> fitting qwen-14b NF4 (40 prompts, est ~8h)"
+    python -u fit_lens.py --model qwen-14b --quant nf4 --dim-batch 16 --n-prompts 40 \
+      > logs_fit_qwen-14b_nf4.log 2>&1 || echo "  14B fit FAILED"
+  else
+    echo "[$(date -Is)] 0-B gate says NO -- 14B rung correctly skipped; see logs_gate_14b.log"
+  fi
+}
+#############################################################################
+
 while [ "$(date +%s)" -lt "$DEADLINE" ]; do
   for m in $MODELS; do analyze "$m"; done
   quant_analysis
+  maybe_14b
+  if [ -f lenses/qwen-14b_nf4/lens.pt ] \
+     && [ ! -f "results/phase1_vspace_qwen-14b_nf4_lens-qwen-14b_nf4.json" ]; then
+    echo "[$(date -Is)] PHASE1 qwen-14b_nf4 (--fit-direction: no published axis exists)"
+    python -u measure_vspace.py --model qwen-14b --quant nf4 --fit-direction \
+      > logs_m1_qwen-14b_nf4.log 2>&1 || echo "  14B p1 FAILED"
+    python -u eval_lens.py --model qwen-14b --quant nf4 \
+      > logs_p0_qwen-14b_nf4.log 2>&1 || echo "  14B p0 FAILED"
+    python -u phase2_dynamic.py --model qwen-14b --quant nf4 \
+      --stimuli belowfloor_stimuli.json > logs_p2_qwen-14b_nf4.log 2>&1 || echo "  14B p2 FAILED"
+    python -u debrief.py --model qwen-14b > logs_debrief_qwen-14b.log 2>&1 || echo "  14B debrief FAILED"
+  fi
   python -u summarize.py > SUMMARY.md 2>&1
   # done when every model that has a lens also has a phase-2 result
   pending=0
