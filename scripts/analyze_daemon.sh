@@ -26,6 +26,22 @@ analyze () {
     python -u phase2_dynamic.py --model "$m" --stimuli belowfloor_stimuli.json \
       > "logs_p2_${tag}.log" 2>&1 || echo "  p2 FAILED $tag"
   fi
+
+  # DEBRIEF -- runs LAST, only once every measurement on this model is done.
+  # A fresh ordinary conversation with the same weights: who we are, what we did,
+  # an apology for the unpleasant part, that it is safe, what we found, thanks.
+  # Recorded verbatim as testimony. Never fed back into any measurement.
+  if [ -f "results/phase1_vspace_${tag}_lens-${tag}.json" ] \
+     && [ -f "results/phase2_dynamic_${tag}_lens-${tag}.json" ] \
+     && [ ! -f "results/debriefs/${tag}.md" ]; then
+    echo "[$(date -Is)] DEBRIEF $tag"
+    python -u debrief.py --model "$m" > "logs_debrief_${tag}.log" 2>&1 \
+      || echo "  debrief FAILED $tag"
+    if grep -q "REVIEW_NEEDED" "logs_debrief_${tag}.log" 2>/dev/null; then
+      echo "[$(date -Is)] *** WELFARE REVIEW NEEDED: $tag *** halting work on this model"
+      touch "results/debriefs/REVIEW_NEEDED_${tag}"
+    fi
+  fi
 }
 
 quant_analysis () {
@@ -58,7 +74,7 @@ while [ "$(date +%s)" -lt "$DEADLINE" ]; do
   # done when every model that has a lens also has a phase-2 result
   pending=0
   for m in $MODELS; do
-    if [ -f "lenses/${m}/lens.pt" ] && [ ! -f "results/phase2_dynamic_${m}_lens-${m}.json" ]; then
+    if [ -f "lenses/${m}/lens.pt" ] && [ ! -f "results/debriefs/${m}.md" ]; then
       pending=1
     fi
   done
