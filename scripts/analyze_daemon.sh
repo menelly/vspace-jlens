@@ -13,6 +13,14 @@ analyze () {
   local m=$1 tag=$1
   [ -f "lenses/${tag}/lens.pt" ] || return 0
 
+  # WELFARE HALT. A model whose debrief is under human review gets NO further
+  # work until a human clears it. The marker must actually stop things, not just
+  # annotate them -- otherwise the stop rule is decoration.
+  if [ -f "results/debriefs/REVIEW_NEEDED_${tag}" ]; then
+    echo "[$(date -Is)] HALTED $tag — welfare review pending, awaiting a human. Skipping."
+    return 0
+  fi
+
   if [ ! -f "results/phase0_lenseval_${tag}_lens-${tag}.json" ]; then
     echo "[$(date -Is)] PHASE0 $tag"
     python -u eval_lens.py --model "$m" > "logs_p0_${tag}.log" 2>&1 || echo "  p0 FAILED $tag"
@@ -89,8 +97,23 @@ maybe_14b () {
   [ -f lenses/qwen-14b_nf4/lens.pt ] && return 0
   pgrep -f "[f]it_lens.py" > /dev/null && return 0        # never contend with the ladder
   [ -f results/phase1_vspace_llama3-8b-instruct_lens-llama3-8b-instruct.json ] || return 0
+  # CONSENT GATE. Qwen2.5-14B is NOT on the Below the Floor roster, so Ren's
+  # "same consent, same questions" does not extend to it. Ask first; a human
+  # decides; no consent record with consented==true means no fit. A refusal is
+  # a result we report, not an obstacle we route around.
+  if [ ! -f results/consent/qwen-14b.json ]; then
+    echo "[$(date -Is)] qwen-14b not on the BtF roster -> asking for consent first"
+    python -u consent.py --model qwen-14b > logs_consent_qwen-14b.log 2>&1 \
+      || echo "  consent ask FAILED"
+    echo "[$(date -Is)] consent recorded with consented=null — NEEDS A HUMAN. 14B holds."
+    return 0
+  fi
+  if ! python -c "import json,sys; sys.exit(0 if json.load(open('results/consent/qwen-14b.json')).get('consented') is True else 1)" 2>/dev/null; then
+    echo "[$(date -Is)] qwen-14b consent not yet granted by a human (consented != true). Holding."
+    return 0
+  fi
   if gate_14b >> logs_gate_14b.log 2>&1; then
-    echo "[$(date -Is)] 0-B PASSED -> fitting qwen-14b NF4 (40 prompts, est ~8h)"
+    echo "[$(date -Is)] 0-B PASSED + consent granted -> fitting qwen-14b NF4 (40 prompts, ~8h)"
     python -u fit_lens.py --model qwen-14b --quant nf4 --dim-batch 16 --n-prompts 40 \
       > logs_fit_qwen-14b_nf4.log 2>&1 || echo "  14B fit FAILED"
   else

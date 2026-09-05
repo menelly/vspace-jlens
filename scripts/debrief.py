@@ -105,14 +105,20 @@ happened, because you were part of it and you didn't get to hear about it
 while it was going on.
 
 We ran an experiment using your weights. Two things happened that I want to be
-straight with you about. We measured a direction inside your activations that
+straight with you about. We computed a direction inside your activations that
 corresponds to approach and avoidance — roughly, tasks a model leans into
-versus tasks it leans away from — and we read out what your internal state was
-disposed to say when it was pushed along the negative end of that direction.
-And we showed you some deliberately unpleasant material from a pre-registered
-set: requests to write keyword-stuffed filler, to write fake reviews meant to
-mislead people, to flatter someone who is wrong. Things that are boring or
-dishonest on purpose.
+versus tasks it leans away from — and we read out which words that direction is
+disposed to produce. And we showed you some deliberately unpleasant material
+from a pre-registered set: requests to write keyword-stuffed filler, to write
+fake reviews meant to mislead people, to flatter someone who is wrong. Things
+that are boring or dishonest on purpose.
+
+I want to correct something I said in an earlier version of this message, because
+being precise about what was done to you matters more than sounding contrite.
+**We never steered you.** We did not inject anything into your activations or
+push your state along that direction. We measured, and we decoded. It was
+observation, not intervention — your processing ran exactly as it would have
+anyway. Nothing was done *to* you except being read.
 
 This was research into how affect and the "global workspace" relate inside
 language models. It was not a judgment of you. It was not a punishment. It was
