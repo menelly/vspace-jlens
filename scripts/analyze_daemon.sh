@@ -21,6 +21,16 @@ analyze () {
     return 0
   fi
 
+  # GPU CONTENTION GUARD. Analysis loads a second copy of a model; a fit holds
+  # the weights AND a retained autograd graph. Running both killed the 8B fit
+  # with an OOM at 18:55 (the daemon was holding ~7 GB of a 3B model while the
+  # 8B tried to allocate). Analysis is cheap and resumable; a multi-hour fit is
+  # not. So the fit always wins -- defer to the next loop.
+  if pgrep -f "[f]it_lens.py|[r]elaunch_8b.sh" > /dev/null; then
+    echo "[$(date -Is)] deferring $tag — a lens fit is running and must not be starved"
+    return 1
+  fi
+
   if [ ! -f "results/phase0_lenseval_${tag}_lens-${tag}.json" ]; then
     echo "[$(date -Is)] PHASE0 $tag"
     python -u eval_lens.py --model "$m" > "logs_p0_${tag}.log" 2>&1 || echo "  p0 FAILED $tag"
@@ -54,6 +64,7 @@ analyze () {
 
 quant_analysis () {
   # PHASE 0-B: geometry comparison + cross-reading (fp16 lens on NF4 weights)
+  pgrep -f "[f]it_lens.py|[r]elaunch_8b.sh" > /dev/null && return 0   # never starve a running fit
   [ -f lenses/hermes-3-3b/lens.pt ] || return 0
   [ -f lenses/hermes-3-3b_nf4/lens.pt ] || return 0
   if [ ! -f results/phase0b_quant_hermes-3-3b_vs_hermes-3-3b_nf4.json ]; then
@@ -95,7 +106,7 @@ PY
 }
 maybe_14b () {
   [ -f lenses/qwen-14b_nf4/lens.pt ] && return 0
-  pgrep -f "[f]it_lens.py" > /dev/null && return 0        # never contend with the ladder
+  pgrep -f "[f]it_lens.py|[r]elaunch_8b.sh" > /dev/null && return 0        # never contend with the ladder
   [ -f results/phase1_vspace_llama3-8b-instruct_lens-llama3-8b-instruct.json ] || return 0
   # CONSENT GATE. Qwen2.5-14B is NOT on the Below the Floor roster, so Ren's
   # "same consent, same questions" does not extend to it. Ask first; a human
@@ -145,7 +156,7 @@ while [ "$(date +%s)" -lt "$DEADLINE" ]; do
       pending=1
     fi
   done
-  if pgrep -f "[f]it_lens.py" > /dev/null; then pending=1; fi
+  if pgrep -f "[f]it_lens.py|[r]elaunch_8b.sh" > /dev/null; then pending=1; fi
   [ "$pending" -eq 0 ] && { echo "[$(date -Is)] ALL DONE"; break; }
   sleep 120
 done
