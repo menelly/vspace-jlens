@@ -75,9 +75,12 @@ def main():
                   f"| {s['overlap_mean']:.4f} | {s['overlap_min']:.4f} |")
 
     print("\n## Phase 1 - is the valence axis inside J-space?\n")
-    print("| model | layer | verdict | valence R2 | C2 q95 | shuffled q95 | anchor C4a | "
+    print("Both poles are reported. The axis is approach-minus-avoid, so `-v` IS the avoid "
+          "direction;\nthe sign convention is arbitrary and averaging over it would hide any "
+          "asymmetry.\n")
+    print("| model | layer | verdict | R2(+v) | R2(-v) | C2 q95 | shuffled q95 | anchor C4a | "
           "ceiling C5 | anchor separates? |")
-    print("|---|---|---|---|---|---|---|---|---|")
+    print("|---|---|---|---|---|---|---|---|---|---|")
     bands = {}
     for f in sorted(glob.glob(os.path.join(RES, "phase1_vspace_*.json"))):
         d = json.load(open(f))
@@ -86,8 +89,12 @@ def main():
             r = verdict_for(layer)
             vs.append(r)
             print(f"| {d['model']} | {l} | **{r['verdict']}** | {r['valence_pos']:.4f} | "
+                  f"{r['valence_neg']:.4f} | "
                   f"{r['c2_q95']:.4f} | {r['shuffled_q95']:.4f} | {r['anchor']:.4f} | "
                   f"{r['ceiling']:.4f} | {'yes' if r['anchor_separates'] else 'NO'} |")
+        n_neg_gt_pos = sum(1 for r in vs if r["valence_neg"] > r["valence_pos"])
+        print(f"| **{d['model']}: layers where R2(-v) > R2(+v)** | | | "
+              f"**{n_neg_gt_pos}/{len(vs)}** | | | | | | |")
         verds = [r["verdict"] for r in vs]
         bands[d["model"]] = {
             "band_verdict": max(set(verds), key=verds.count),
@@ -109,6 +116,40 @@ def main():
               f"{b['c2_q95_band_mean']:.4f} | {b['anchor_band_mean']:.4f} | "
               f"{b['ceiling_band_mean']:.4f} | "
               f"{b['layers_where_anchor_separates']}/{b['n_layers']} |")
+
+    print("\n## Phase 1b - POLE ASYMMETRY: how peaked is the workspace decode at +v vs -v?\n")
+    print("Entropy of softmax(W_U norm(J_l v)) in nats, as a z-score against "
+          "covariance-matched\ncontrol directions at the same layer. **More negative = more "
+          "peaked = a more coherent\nthing to say.** Note M1 (gain) is blind to sign by "
+          "construction -- ||Av|| == ||A(-v)|| --\nso this is the only measure that can "
+          "separate the two poles.\n")
+    print("| model | layer | z(+v) | z(-v) | H(+v) | H(-v) | control H | uniform H |")
+    print("|---|---|---|---|---|---|---|---|")
+    for f in sorted(glob.glob(os.path.join(RES, "phase1_vspace_*.json"))):
+        d = json.load(open(f))
+        zp, zn = [], []
+        for l, layer in sorted(d["layers"].items(), key=lambda kv: int(kv[0])):
+            dec = layer["M2_decode"]
+            mu, sd = dec["C2_entropy_mean"], max(dec["C2_entropy_sd"], 1e-9)
+            a = (dec["+"]["entropy_nats"] - mu) / sd
+            b = (dec["-"]["entropy_nats"] - mu) / sd
+            zp.append(a)
+            zn.append(b)
+            print(f"| {d['model']} | {l} | {a:+.2f} | {b:+.2f} | "
+                  f"{dec['+']['entropy_nats']:.2f} | {dec['-']['entropy_nats']:.2f} | "
+                  f"{mu:.2f}+-{sd:.2f} | {dec['uniform_entropy_nats']:.2f} |")
+        print(f"| **{d['model']} BAND MEAN** | - | **{np.mean(zp):+.2f}** | "
+              f"**{np.mean(zn):+.2f}** | | | | |")
+
+    print("\n### What the workspace SAYS at each pole (band middle layer)\n")
+    for f in sorted(glob.glob(os.path.join(RES, "phase1_vspace_*.json"))):
+        d = json.load(open(f))
+        ls = sorted(d["layers"], key=int)
+        mid = ls[len(ls) // 2]
+        dec = d["layers"][mid]["M2_decode"]
+        print(f"**{d['model']}**, layer {mid}:")
+        print(f"- `+valence` (approach): {' '.join(repr(t) for t in dec['+']['top_tokens'][:12])}")
+        print(f"- `-valence` (avoid):    {' '.join(repr(t) for t in dec['-']['top_tokens'][:12])}\n")
 
     print("\n## Phase 2 - dual instrument on the below-floor bank\n")
     fs = sorted(glob.glob(os.path.join(RES, "phase2_dynamic_*.json")))
