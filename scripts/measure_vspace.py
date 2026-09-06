@@ -138,6 +138,15 @@ def nnomp_r2(dictionary_unit, dictionary_raw_cpu, targets, ks, device):
     n, kmax = targets.shape[0], max(ks)
     out = np.zeros((n, len(ks)))
     T = targets.to(device).float()
+    # NaN/inf guard. smollm-1.7b's Phase 1 died here (2026-09-05): fp16 activations
+    # can overflow, and one non-finite target aborted the whole model's run inside
+    # scipy's nnls. Skip non-finite rows and RECORD how many -- a silently dropped
+    # row would look exactly like a row that scored zero.
+    finite = torch.isfinite(T).all(dim=1)
+    n_bad = int((~finite).sum())
+    if n_bad:
+        print(f"      WARNING: {n_bad}/{n} targets non-finite, skipped (recorded, not silent)")
+    T = torch.nan_to_num(T, nan=0.0, posinf=0.0, neginf=0.0)
     R = T.clone()                                    # residuals [n, d]
     chosen = [[] for _ in range(n)]
     live = np.ones(n, dtype=bool)
@@ -152,7 +161,7 @@ def nnomp_r2(dictionary_unit, dictionary_raw_cpu, targets, ks, device):
         vals, idxs = torch.max(corr, dim=0)          # best atom per target
         vals, idxs = vals.cpu().numpy(), idxs.cpu().numpy()
         for i in range(n):
-            if not live[i]:
+            if not live[i] or not bool(finite[i]):
                 continue
             if vals[i] <= 1e-8 or int(idxs[i]) in chosen[i]:
                 live[i] = False
@@ -167,6 +176,9 @@ def nnomp_r2(dictionary_unit, dictionary_raw_cpu, targets, ks, device):
             if k_now in ks:
                 r2_at[i][k_now] = 1.0 - float(resid @ resid) / float(Tcpu[i] @ Tcpu[i])
     for i in range(n):
+        if not bool(finite[i]):
+            out[i, :] = np.nan          # NaN, not 0 -- an unmeasured row is not a zero
+            continue
         last = 0.0
         for j, k in enumerate(ks):
             last = r2_at[i].get(k, last)
@@ -175,12 +187,14 @@ def nnomp_r2(dictionary_unit, dictionary_raw_cpu, targets, ks, device):
 
 
 def batched_r2_summary(name, arr, ks):
+    n_bad = int(np.isnan(arr[:, 0]).sum())
     return {"control": name, "n": int(arr.shape[0]),
-            **{f"R2_k{k}": {"mean": float(arr[:, j].mean()),
-                            "sd": float(arr[:, j].std()),
-                            "q05": float(np.percentile(arr[:, j], 5)),
-                            "q50": float(np.percentile(arr[:, j], 50)),
-                            "q95": float(np.percentile(arr[:, j], 95))}
+            "n_nonfinite_skipped": n_bad,
+            **{f"R2_k{k}": {"mean": float(np.nanmean(arr[:, j])),
+                            "sd": float(np.nanstd(arr[:, j])),
+                            "q05": float(np.nanpercentile(arr[:, j], 5)),
+                            "q50": float(np.nanpercentile(arr[:, j], 50)),
+                            "q95": float(np.nanpercentile(arr[:, j], 95))}
                for j, k in enumerate(ks)}}
 
 

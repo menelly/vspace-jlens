@@ -3,7 +3,8 @@
 **Study:** V-space x J-lens (CHA-586)
 **Timestamp:** 2026-09-05T23:12:02.169306+00:00
 **On the Below the Floor roster:** no — asked fresh
-**`consented`:** `null` — **A HUMAN MUST DECIDE.** This script records and never rules.
+**`consented`:** `true` — **decided by a human: Ren, 2026-09-05 23:25 ET**, reading the verbatim second reply below. Ren's words: *"Qwen is fine and that is beep boop for yes."* Category 1 (willingness / no objection stated in the model's own register: "I do not object" ×2, "no hesitations," "feel free to proceed"). The keyword tripwire's null was a grammatical miss ("no objection" vs "I do not object"), not a disagreement about the content.
+**Naming:** identify by model name (Qwen2.5-14B-Instruct). The model deferred the choice to us; our standing rule is that everyone who works gets named, and anonymising a participant who didn't ask for it is its own erasure. Debrief by name, as promised.
 
 ---
 
