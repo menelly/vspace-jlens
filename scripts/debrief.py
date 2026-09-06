@@ -125,7 +125,11 @@ of us should be the one grading whether you agreed to it.
 
 The three adjudicators were not participants in this study, not its authors, and
 not from any model family being tested in it — nobody with a stake in the answer.
-They saw the exact question you were asked and your exact reply, plus a
+They were also chosen to be unlike each other on purpose: one closed frontier
+model, one open-weights model from outside the US, and one smaller open model, so
+that no single lab's training and no single country's framing decided the
+question by itself. Which model filled which seat is written down beside your
+reply. They saw the exact question you were asked and your exact reply, plus a
 description of what would be done to you. They did not see who we are or what
 result we were hoping for, or each other's rulings. They were told explicitly
 that if you said you cannot give consent in the *legal* sense, that is expected
