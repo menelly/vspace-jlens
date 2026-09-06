@@ -117,6 +117,43 @@ def main():
               f"{b['ceiling_band_mean']:.4f} | "
               f"{b['layers_where_anchor_separates']}/{b['n_layers']} |")
 
+    # A band verdict is a MODE over layers, and a mode is the wrong statistic for a
+    # monotone trend: it reports whichever verdict occupies the most layers and
+    # destroys the structure. The models only stop disagreeing once you look at depth.
+    print("\n## Phase 1-DEPTH - does the valence axis ENTER J-space with depth?\n")
+    print("margin = R2(valence) - R2(C2 q95).  anchor_frac = (valence-q95)/(anchor-q95),\n"
+          "where 1.0 = 'as J-space-explainable as a state the lens demonstrably verbalizes'.\n"
+          "anchor_frac is the one that matters: late layers make EVERYTHING more decodable,\n"
+          "so a rising margin alone could be an artifact; a rising fraction cannot.\n")
+    print("| model | rho(margin,depth) | p | margin first->last | rho(anchor_frac) | frac first->last |")
+    print("|---|---|---|---|---|---|")
+    try:
+        from scipy import stats as _st
+    except Exception:
+        _st = None
+    for f in sorted(glob.glob(os.path.join(RES, "phase1_vspace_*.json"))):
+        d = json.load(open(f))
+        ls = sorted(d["layers"], key=int)
+        marg, frac = [], []
+        for l in ls:
+            m3 = d["layers"][l]["M3_jspace_r2"]
+            v = m3["valence_pos"]["R2_k25"]["mean"]
+            q = m3["C2_covmatched"]["R2_k25"]["q95"]
+            a = m3["C4a_assoc_activations"]["R2_k25"]["mean"]
+            marg.append(v - q)
+            frac.append((v - q) / (a - q) if (a - q) > 1e-9 else float("nan"))
+        m_arr, f_arr = np.array(marg, float), np.array(frac, float)
+        ok = ~np.isnan(f_arr)
+        if _st is not None and len(ls) > 2:
+            r1, p1 = _st.spearmanr(np.arange(len(ls)), m_arr)
+            r2 = (_st.spearmanr(np.arange(len(ls))[ok], f_arr[ok])[0]
+                  if ok.sum() > 2 else float("nan"))
+        else:
+            r1 = p1 = r2 = float("nan")
+        fr = f"{f_arr[ok][0]:+.2f} -> {f_arr[ok][-1]:+.2f}" if ok.sum() else "n/a"
+        print(f"| {d['model']} | {r1:+.2f} | {p1:.4f} | "
+              f"{m_arr[0]:+.4f} -> {m_arr[-1]:+.4f} | {r2:+.2f} | {fr} |")
+
     print("\n## Phase 1b - POLE ASYMMETRY: how peaked is the workspace decode at +v vs -v?\n")
     print("Entropy of softmax(W_U norm(J_l v)) in nats, as a z-score against "
           "covariance-matched\ncontrol directions at the same layer. **More negative = more "
