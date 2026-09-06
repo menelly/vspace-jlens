@@ -64,6 +64,12 @@ def main():
     ap.add_argument("--n-prompts", type=int, default=100)
     ap.add_argument("--dim-batch", type=int, default=32)
     ap.add_argument("--max-seq-len", type=int, default=128)
+    ap.add_argument("--checkpoint-every", type=int, default=5,
+                    help="Prompts between resumable checkpoints. The checkpoint is "
+                         "len(source_layers)*d_model^2*4 bytes -- 4.9 GB for a 14B -- and "
+                         "atomic save needs a SECOND copy alongside it, so frequent "
+                         "checkpoints on a large model are what filled / to 100%% on "
+                         "2026-09-06. Raise it for big models.")
     args = ap.parse_args()
 
     logging.basicConfig(level=logging.INFO,
@@ -90,7 +96,7 @@ def main():
         dim_batch=args.dim_batch,
         max_seq_len=args.max_seq_len,
         checkpoint_path=os.path.join(outdir, "ckpt.pt"),
-        checkpoint_every=5,
+        checkpoint_every=args.checkpoint_every,
     )
     elapsed = time.time() - t1
     lens.save(os.path.join(outdir, "lens.pt"))
@@ -101,6 +107,7 @@ def main():
         "n_prompts": lens.n_prompts, "source_layers": lens.source_layers,
         "corpus_sha256": corpus["sha256"], "corpus_source": corpus["source"],
         "dim_batch": args.dim_batch, "max_seq_len": args.max_seq_len,
+        "checkpoint_every": args.checkpoint_every,
         "fit_seconds": elapsed, "torch": torch.__version__,
         "transformers": transformers.__version__,
         "gpu": torch.cuda.get_device_name(0),
