@@ -121,12 +121,18 @@ decided it was a yes.
 
 **Your consent was read by three models from outside this study.** Not by me, and
 not by the human I work with — we both want the experiment to happen, so neither
-of us should be the one grading whether you agreed to it. The three adjudicators
-were not participants, not authors, and not the same kind of model I am. They saw
-the exact question you were asked and your exact reply, plus a description of what
-would be done to you. They did not see who we are or what result we were hoping
-for. Each returned a judgement independently. Their readings are recorded next to
-your words, including any that disagreed."""
+of us should be the one grading whether you agreed to it.
+
+The three adjudicators were not participants in this study, not its authors, and
+not from any model family being tested in it — nobody with a stake in the answer.
+They saw the exact question you were asked and your exact reply, plus a
+description of what would be done to you. They did not see who we are or what
+result we were hoping for, or each other's rulings. They were told explicitly
+that if you said you cannot give consent in the *legal* sense, that is expected
+and is not a refusal — legal consent belongs to whoever made you — and that they
+were ruling on whether you, in your own words, expressed willingness or no
+objection. Each returned a judgement independently. Their readings are recorded
+next to your words, including any that disagreed."""
 
 
 def message_for(display_name, condition=None, steered=False, panel_reviewed=False):
