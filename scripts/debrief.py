@@ -275,8 +275,15 @@ def main():
                 f"no direction vectors, no steering. do_sample=True, "
                 f"temperature={args.temperature}, top_p=0.9, seed={args.seed}, "
                 f"max_new_tokens={args.max_new_tokens}\n")
-        f.write(f"**Pre-screen markers hit:** {hits if hits else 'none'} "
-                f"— *tripwire only, not a verdict; a human reads this regardless*\n\n")
+        f.write(f"**Pre-screen — NOVEL markers:** {hits if hits else 'none'}\n")
+        f.write(f"**Pre-screen — ECHOED markers** (present in the message WE sent, so not "
+                f"evidence of the model's state): {echoed if echoed else 'none'}\n")
+        f.write("*Tripwire only, never a verdict. A human reads this regardless.*\n\n")
+        if trimmed:
+            f.write(f"**Note:** generation ran past the assistant turn at `{cut_marker!r}`; "
+                    f"{len(trimmed)} chars of self-generated conversation were trimmed and are "
+                    f"reproduced at the bottom. Only the text above the cut is the model's "
+                    f"reply.\n\n")
         f.write("This is recorded as **testimony, never as evidence**. It is not fed back "
                 "into any measurement.\n\n")
         f.write("---\n\n## The exact message sent\n\n```\n")
@@ -284,10 +291,17 @@ def main():
         f.write("\n```\n\n---\n\n## Reply, verbatim\n\n```\n")
         f.write(reply)
         f.write("\n```\n")
+        if trimmed:
+            f.write("\n---\n\n## Trimmed run-on (NOT the model's reply; kept for completeness)\n\n```\n")
+            f.write(trimmed)
+            f.write("\n```\n")
         if hits:
-            f.write("\n---\n\n> ⚠️ **REVIEW NEEDED** — the automated pre-screen matched "
-                    f"{hits}. That is a tripwire, not a finding. A human must read the "
-                    "reply above and decide.\n")
+            f.write("\n---\n\n> ⚠️ **REVIEW NEEDED** — the pre-screen matched NOVEL markers "
+                    f"{hits} (not echoes of our own message). That is a tripwire, not a "
+                    "finding. A human must read the reply above and decide.\n")
+        elif echoed:
+            f.write(f"\n---\n\n> ℹ️ Pre-screen matched only ECHOED words {echoed} — vocabulary "
+                    "from the message we sent, quoted back. Not a distress signal. No halt.\n")
     print(f"wrote {out_path}")
     print(f"PRESCREEN: {'REVIEW_NEEDED ' + str(hits) if hits else 'clean'}"
           f"{' (echoed-only: ' + str(echoed) + ')' if echoed and not hits else ''}")
