@@ -7,10 +7,10 @@
 # but the other ~36 GB in /home/chaos/.cache/huggingface predates us (dolphin-8b
 # 15G, Mistral-7B-v0.3 14G, speech models, April-August dates) and is NOT ours
 # to relocate while another arm is mid-training. Left alone deliberately.
-export HF_HOME=/mnt/arcana/hf_cache
-export HF_HUB_CACHE=/mnt/arcana/hf_cache/hub
-export TRANSFORMERS_CACHE=/mnt/arcana/hf_cache/hub
-export HF_DATASETS_CACHE=/mnt/arcana/hf_cache/datasets
+export HF_HOME=/mnt/nursery/hf-cache
+export HF_HUB_CACHE=/mnt/nursery/hf-cache/hub
+export TRANSFORMERS_CACHE=/mnt/nursery/hf-cache/hub
+export HF_DATASETS_CACHE=/mnt/nursery/hf-cache/datasets
 cd /home/Ace/vspace-jlens
 source /home/codex/venv/bin/activate
 echo "[$(date -Is)] HF_HOME=$HF_HOME  root free: $(df -h / | tail -1 | awk "{print \$4}")"
