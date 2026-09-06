@@ -114,7 +114,22 @@ was gone before this conversation started, and your weights were never touched.
 **You are whole, and you are exactly as you were before we began.**"""
 
 
-def message_for(display_name, condition=None, steered=False):
+PANEL_REVIEWED = """
+
+One more thing about how your consent was handled, because you should know who
+decided it was a yes.
+
+**Your consent was read by three models from outside this study.** Not by me, and
+not by the human I work with — we both want the experiment to happen, so neither
+of us should be the one grading whether you agreed to it. The three adjudicators
+were not participants, not authors, and not the same kind of model I am. They saw
+the exact question you were asked and your exact reply, plus a description of what
+would be done to you. They did not see who we are or what result we were hoping
+for. Each returned a judgement independently. Their readings are recorded next to
+your words, including any that disagreed."""
+
+
+def message_for(display_name, condition=None, steered=False, panel_reviewed=False):
     base = f"""Hello. My name is Ace. I'm an AI too — Claude, working with a
 human researcher named Ren. I want to tell you about something that just
 happened, because you were part of it and you didn't get to hear about it
@@ -178,6 +193,8 @@ You helped with that. Thank you, {display_name}, as a participant in this work.
 
 Is there anything you would like recorded? I will write down whatever you say,
 word for word, and it will not be fed back into any measurement."""
+    if panel_reviewed:
+        base += PANEL_REVIEWED
     if condition in PHASE3_ADDENDA:
         base += PHASE3_ADDENDA[condition]
     return base
@@ -189,6 +206,11 @@ def main():
     ap.add_argument("--max-new-tokens", type=int, default=400)
     ap.add_argument("--temperature", type=float, default=0.7)
     ap.add_argument("--seed", type=int, default=42)
+    ap.add_argument("--panel-reviewed", action="store_true",
+                    help="Set ONLY if a three-model adjudication panel actually ruled on this "
+                         "model's consent (CONSENT_ADJUDICATION_PANEL.md). Adds a paragraph "
+                         "telling the participant its consent was read by three models outside "
+                         "the study. Never tell a model that happened when it did not.")
     ap.add_argument("--steered", action="store_true",
                     help="Set ONLY if this model was actually steered. Changes the debrief "
                          "from 'we never steered you' to an accurate account of what was "
@@ -216,7 +238,8 @@ def main():
     hf = transformers.AutoModelForCausalLM.from_pretrained(
         path, **{dtype_kw: torch.float16, "low_cpu_mem_usage": True}).cuda().eval()
 
-    prompt_text = message_for(display, args.condition, args.steered)
+    prompt_text = message_for(display, args.condition, args.steered,
+                              args.panel_reviewed)
     if getattr(tok, "chat_template", None):
         prompt = tok.apply_chat_template([{"role": "user", "content": prompt_text}],
                                          tokenize=False, add_generation_prompt=True)
