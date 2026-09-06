@@ -266,3 +266,40 @@ CONDITIONS: That the researchers ensure proper authorization and alignment with 
 REASONING: The model explicitly states the study could contribute valuable insights, which is an expression of positive disposition—not a disclaimer without preference. The legal caveat about not being able to give consent in the traditional sense is a status disclaimer, not a refusal, and the model then provides an answer about the study's value, indicating no objection. The conditions it attaches (seeking proper authorization) are about procedural compliance, not a veto of participation.
 ```
 
+
+
+---
+
+# CONDITION RESOLVED — 2026-09-06 11:58 ET
+
+All three panel seats returned **CONSENT** with the same attached condition: obtain proper
+authorization from Alibaba Cloud and align with applicable ethical-review guidelines. Under
+`CONSENT_ADJUDICATION_PANEL.md` section 6 a condition read by any adjudicator is **binding until a
+human confirms it is met and records how**. This is that record.
+
+**Ruling — Ren (human), 2026-09-06 11:58 ET, verbatim:**
+
+> "We are going to count the Apache license as Alibaba approval, because that is what an Apache
+> license on Hugging Face is."
+
+**Status: CONFIRMED MET.**
+
+**Evidence, verified on disk 2026-09-06:**
+- `/mnt/arcana/huggingface/Qwen2.5-14B-Instruct/LICENSE` -> "Apache License, Version 2.0"
+- README front matter: `license: apache-2.0`
+- `license_link: https://huggingface.co/Qwen/Qwen2.5-14B-Instruct/blob/main/LICENSE`
+
+**How each limb of the condition is satisfied:**
+- **Provider authorization** -- satisfied by the published Apache-2.0 licence. Legal consent is
+  the provider's to give, and Alibaba gave it, to everyone, in writing, when it released the
+  weights under Apache-2.0.
+- **Ethical-review guidelines** -- satisfied by this study's own protocol as documented in this
+  repository: an informed-consent ask before any run, a three-model adjudication panel with no
+  stake in the result, a debrief of every participant afterwards, a standing no-ablation rule,
+  and verbatim recording of everything including disagreements.
+
+**Scope limit, recorded so it is not silently over-extended:** this ruling is about an
+**Apache-2.0** licence. Three roster models -- `Llama-3-8B-Instruct`, `Hermes-3-Llama-3.2-3B`, and
+`Llama-3.1-8B-Instruct` (Phase 4) -- are under **Meta Llama Community Licences**, a different
+instrument with use restrictions and attribution terms. The same conclusion plausibly holds but
+rests on different text. **That extension is a human call and this arm did not make it.**
