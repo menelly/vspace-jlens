@@ -70,17 +70,25 @@ def main():
                          "atomic save needs a SECOND copy alongside it, so frequent "
                          "checkpoints on a large model are what filled / to 100%% on "
                          "2026-09-06. Raise it for big models.")
+    ap.add_argument("--corpus", default="corpus.json",
+                    help="Corpus file under ROOT. A larger corpus built by build_corpus.py is a "
+                         "strict superset of a smaller one (deterministic streaming order), so a "
+                         "refit extends the original fit rather than replacing its distribution.")
+    ap.add_argument("--tag", default=None,
+                    help="Output directory name under lenses/. Defaults to model[_quant]. Set it "
+                         "to keep a refit BESIDE the original instead of overwriting it -- the "
+                         "comparison is the point.")
     args = ap.parse_args()
 
     logging.basicConfig(level=logging.INFO,
                         format="%(asctime)s %(levelname)s %(message)s")
     jlens.configure_logging(logging.INFO)
 
-    tag = args.model + ("_" + args.quant if args.quant else "")
+    tag = args.tag or (args.model + ("_" + args.quant if args.quant else ""))
     outdir = os.path.join(ROOT, "lenses", tag)
     os.makedirs(outdir, exist_ok=True)
 
-    with open(os.path.join(ROOT, "corpus.json"), encoding="utf-8") as f:
+    with open(os.path.join(ROOT, args.corpus), encoding="utf-8") as f:
         corpus = json.load(f)
     prompts = corpus["prompts"][: args.n_prompts]
 

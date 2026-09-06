@@ -13,7 +13,11 @@ import os
 import sys
 
 OUT = sys.argv[1] if len(sys.argv) > 1 else "/home/Ace/vspace-jlens/corpus.json"
-N = 100
+# N is a superset by construction: the streaming order is deterministic, so the
+# first 100 prompts of a 300-prompt corpus are byte-identical to the 100-prompt
+# corpus every earlier lens was fitted on. A 300-prompt refit is therefore a
+# strict extension of the original fit, not a different corpus.
+N = int(sys.argv[2]) if len(sys.argv) > 2 else 100
 MIN_CHARS = 700  # ~128+ tokens with margin; jlens truncates at max_seq_len=128
 
 def from_wikitext():
