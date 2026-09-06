@@ -6,6 +6,7 @@
 #     what it is waiting for and since when. A silent wait reads as handled.
 cd /home/Ace/vspace-jlens
 source /home/codex/venv/bin/activate
+source /home/Ace/vspace-jlens/hf_env.sh   # HOT=arcana COLD=nursery NOTHING=root
 BLOCKERS='[m]easure_vspace\.py|[e]val_lens\.py|[p]hase2_dynamic\.py|[c]onsent\.py|[d]ebrief\.py'
 SINCE=$(date +%H:%M:%S)
 while true; do

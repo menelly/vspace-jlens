@@ -5,6 +5,7 @@
 set -u
 cd /home/Ace/vspace-jlens
 source /home/codex/venv/bin/activate
+source /home/Ace/vspace-jlens/hf_env.sh   # HOT=arcana COLD=nursery NOTHING=root
 
 MODELS="qwen-0.5b hermes-3-3b tinyllama-1b smollm-1.7b llama3-8b-instruct"
 DEADLINE=$(( $(date +%s) + 14*3600 ))   # hard stop after 14h, never runs forever

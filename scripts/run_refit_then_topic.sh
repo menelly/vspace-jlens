@@ -5,6 +5,7 @@
 # Heartbeats every 60s: a waiting script and a dead script must not look alike.
 cd /home/Ace/vspace-jlens
 source /home/codex/venv/bin/activate
+source /home/Ace/vspace-jlens/hf_env.sh   # HOT=arcana COLD=nursery NOTHING=root
 SINCE=$(date -Is)
 while pgrep -f "[f]it_lens.py" > /dev/null; do
   echo "[$(date -Is)] hermes 300p refit still running; topic-invariance deferred since $SINCE - not dead"

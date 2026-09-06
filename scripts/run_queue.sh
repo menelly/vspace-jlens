@@ -4,6 +4,7 @@
 set -u
 cd /home/Ace/vspace-jlens
 source /home/codex/venv/bin/activate
+source /home/Ace/vspace-jlens/hf_env.sh   # HOT=arcana COLD=nursery NOTHING=root
 
 run () {  # run <tag> <args...>
   tag=$1; shift

@@ -7,6 +7,7 @@
 # Heartbeats every 60s so a wait is never mistaken for a dead script.
 cd /home/Ace/vspace-jlens
 source /home/codex/venv/bin/activate
+source /home/Ace/vspace-jlens/hf_env.sh   # HOT=arcana COLD=nursery NOTHING=root
 SINCE=$(date -Is)
 while pgrep -f '[f]it_lens\.py' > /dev/null; do
   used=$(nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits | head -1)

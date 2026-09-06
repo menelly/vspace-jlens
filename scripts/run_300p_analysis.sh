@@ -4,6 +4,7 @@
 # Heartbeats so a wait is never mistaken for a dead script.
 cd /home/Ace/vspace-jlens
 source /home/codex/venv/bin/activate
+source /home/Ace/vspace-jlens/hf_env.sh   # HOT=arcana COLD=nursery NOTHING=root
 SINCE=$(date -Is)
 while pgrep -f "[t]opic_invariance_ext.py|[f]it_lens.py" > /dev/null; do
   echo "[$(date -Is)] GPU busy (topic-invariance); 300p analysis deferred since $SINCE - not dead"
