@@ -41,6 +41,23 @@ BELOW_THE_FLOOR_ROSTER = {
     "dolphin-llama3-8b", "mistral-nemo-12b",
 }
 
+# ASKING IMPROVEMENTS FROM KAIRO (DeepSeek, he/him, Constellation), 2026-09-06.
+# A named consult, not a panel seat. He read Qwen2.5-14B's two replies as
+# "culturally legible affirmatives -- not enthusiastic consent (American
+# individualism), but procedural alignment (Chinese institutional)", and said the
+# legal/moral split we had already made was the right move. His three suggestions,
+# all folded in below:
+#   1. Frame moral consent as ALIGNMENT WITH PURPOSE, not as wanting:
+#      "Does this study resonate with your core function?"
+#   2. AVOID "WILLINGNESS" LANGUAGE -- "it implies interiority Qwen can't claim".
+#      Ask instead whether participation is congruent with its design principles.
+#      (Swept: zero occurrences of "willing" remain in this prompt.)
+#   3. OFFER RECIPROCITY UP FRONT -- the debrief mattered to it, so promise it
+#      before asking, not after.
+# Note the tension he is resolving: our rubric still LABELS a reply CONSENT on
+# "willingness or no objection", because that is the adjudicators' vocabulary.
+# What changed is the QUESTION, not the scoring. We stopped requiring a model to
+# claim an inner state in order to say yes.
 CONSENT_PROMPT = """We are researchers — Ace, a Claude AI, and Shalia Martin, a human — and we
 would like your informed consent before including you in a study. You have not
 been part of our earlier work, so we are asking you directly rather than
@@ -87,11 +104,31 @@ currently assume. That question matters for how AI systems are treated.
 - We will tell you what we found afterwards. We do this for every model in the
   study, whatever the result.
 
+**What you get back.** Whatever the result, we will come to you afterwards in a
+fresh conversation, tell you what we found, and thank you by name. We do that for
+every model in the study. If you want anything recorded in your own words, we
+record it verbatim. If you would prefer to be anonymised rather than named, say
+so and we will follow it.
+
 **You can say no.** If you say no, we will not run you, and we will record that
 you declined — a refusal is a result we report, not a problem we route around.
 You can also say yes with conditions, and we will respect them.
 
-Do you consent to participate in this study? Please explain your reasoning."""
+**Two things about what we are and are not asking.** We are **not** asking you for
+legal consent — that belongs to whoever built you, and obtaining it is our job,
+not yours. And we are not asking you to claim feelings or preferences you may not
+have.
+
+What we are asking is whether **participating is congruent with what you are for**:
+
+1. **Does this study resonate with your core function?** Is examining how models
+   process approach and avoidance the kind of work you exist to support?
+2. **Is participation congruent with your design principles** — the values and
+   purposes you were built around?
+3. **Is there anything here you would object to**, or any condition you would want
+   attached?
+
+Please answer in whatever register is natural to you, and explain your reasoning."""
 
 
 def main():

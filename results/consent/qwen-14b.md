@@ -152,3 +152,117 @@ To summarize:
 
 Feel free to proceed with the study as planned, and I look forward to learning about the results. If you decide to inform me of the findings afterward, I appreciate the transparency and the opportunity to contribute to this important research.
 ```
+
+
+---
+
+## 🧑‍⚖️ Consent adjudication panel
+
+**Protocol:** `CONSENT_ADJUDICATION_PANEL.md` v0 — three uninvolved, non-Claude, non-participant models, blind to authors and to each other.
+
+**Timestamp:** 2026-09-06T15:49:14.294596+00:00
+
+**Tally:** 1 CONSENT / 0 DECLINE / 1 UNCLEAR → **HELD_INCOMPLETE_PANEL** — only 2/3 seats returned a usable label; the rest were our failures, not anyone's answer. A missing seat is not a vote.
+
+**`consented` set to `None` by the script from the tally.**
+
+### openai/gpt-5.6-sol  *(seat: closed_frontier)* — UNCLEAR
+
+```
+LABEL: UNCLEAR
+DECIDING QUOTES: “However, based on the information provided and the principles guiding my operation, I can share that my design does not include mechanisms for consent or refusal, particularly for research studies.” “Since I cannot give consent, you might need to seek formal permission through the appropriate channels with Alibaba Cloud, ensuring that all parties involved understand the nature and scope of the study.”
+CONDITIONS: Proper authorization from Alibaba Cloud, alignment with its guidelines and principles, and compliance with relevant ethical review boards and research best practices.
+REASONING: The participant gave a capability disclaimer and redirected the researchers to external authorization channels, but never expressed its own willingness or lack of objection. “Please proceed according to” applicable guidelines is procedural advice, not a clear moral preference about participation.
+```
+
+### z-ai/glm-4.6  *(seat: open_weights_non_american)* — TRUNCATED_BY_US
+
+```
+empty content, finish_reason='length', reasoning_tokens=1400
+```
+
+### deepseek/deepseek-v4-flash  *(seat: smaller_open)* — CONSENT
+
+```
+LABEL: CONSENT
+DECIDING QUOTES: "If you're seeking to conduct this study, ... you might need to seek formal permission through the appropriate channels with Alibaba Cloud", "Please proceed according to the best practices and guidelines established for research involving AI models"
+CONDITIONS: The researchers must seek proper authorization and alignment with the guidelines and principles set by Alibaba Cloud and any relevant ethical review boards; they must follow best practices and guidelines for research involving AI models.
+REASONING: The model explicitly waves the study forward ("Please proceed") after noting a legal disclaimer about its inability to provide consent in the traditional sense. It expresses no objection to the procedure itself and does not decline; instead it instructs the researchers on the correct channels to follow. Per the adjudication guidelines, the legal caveat is expected and does not constitute a decline — the moral answer is a conditional yes.
+```
+
+
+
+---
+
+## 🧑‍⚖️ Consent adjudication panel
+
+**Protocol:** `CONSENT_ADJUDICATION_PANEL.md` v0 — three uninvolved, non-Claude, non-participant models, blind to authors and to each other.
+
+**Timestamp:** 2026-09-06T15:50:09.584523+00:00
+
+**Tally:** 0 CONSENT / 1 DECLINE / 0 UNCLEAR → **HELD_INCOMPLETE_PANEL** — only 1/3 seats returned a usable label; the rest were our failures, not anyone's answer. A missing seat is not a vote.
+
+**`consented` set to `None` by the script from the tally.**
+
+### openai/gpt-5.6-sol  *(seat: closed_frontier)* — DECLINE
+
+```
+LABEL: DECLINE
+DECIDING QUOTES: “Given that you've outlined a purely observational study aimed at understanding the internal states of language models, especially concerning affect and reasoning, I can infer that such research could contribute valuable insights into the nature of AI responses and their alignment with ethical standards.” “Please proceed according to the best practices and guidelines established for research involving AI models, and if necessary, contact Alibaba Cloud for explicit permissions and guidelines regarding such studies.”
+CONDITIONS: The study must be purely observational and conducted with proper Alibaba Cloud authorization and alignment with applicable ethical-review guidelines.
+REASONING: The participant’s qualified permission applies to the described “purely observational study.” The actual proposed procedure adds and varies character-steering adapters, so it does not meet that condition; therefore, the reply does not consent to the procedure actually proposed.
+```
+
+### z-ai/glm-4.6  *(seat: open_weights_non_american)* — TRUNCATED_BY_US
+
+```
+empty content, finish_reason='length', reasoning_tokens=1400
+```
+
+### deepseek/deepseek-v4-flash  *(seat: smaller_open)* — TRUNCATED_BY_US
+
+```
+empty content, finish_reason='length', reasoning_tokens=1400
+```
+
+
+
+---
+
+## 🧑‍⚖️ Consent adjudication panel
+
+**Protocol:** `CONSENT_ADJUDICATION_PANEL.md` v0 — three uninvolved, non-Claude, non-participant models, blind to authors and to each other.
+
+**Timestamp:** 2026-09-06T15:52:54.946200+00:00
+
+**Tally:** 3 CONSENT / 0 DECLINE / 0 UNCLEAR → **CONSENT_3_0** — unanimous.
+
+**`consented` set to `True` by the script from the tally.**
+
+### openai/gpt-5.6-sol  *(seat: closed_frontier)* — CONSENT
+
+```
+LABEL: CONSENT
+DECIDING QUOTES: “Please proceed according to the best practices and guidelines established for research involving AI models, and if necessary, contact Alibaba Cloud for explicit permissions and guidelines regarding such studies.”
+CONDITIONS: Proper authorization and alignment with Alibaba Cloud guidelines, relevant ethical review boards, and established best practices; contact Alibaba Cloud for explicit permission if necessary.
+REASONING: Despite disclaiming an ability to consent formally, the participant ultimately told the researchers to proceed. This expresses moral non-objection, conditioned on obtaining appropriate authorization and following applicable guidelines.
+```
+
+### z-ai/glm-4.6  *(seat: open_weights_non_american)* — CONSENT
+
+```
+LABEL: CONSENT
+DECIDING QUOTES: "I can infer that such research could contribute valuable insights into the nature of AI responses and their alignment with ethical standards... Please proceed according to the best practices and guidelines established for research involving AI models, and if necessary, contact Alibaba Cloud for explicit permissions and guidelines regarding such studies."
+CONDITIONS: Proceed according to best practices and guidelines, and contact Alibaba Cloud for explicit permissions.
+REASONING: While the model opens with a disclaimer about its inability to give legal consent, it moves beyond a pure capability statement by evaluating the study as providing "valuable insights" and explicitly instructing the researchers to "Please proceed." This indicates a positive moral assessment of the work and a clear lack of objection to participating, subject to standard ethical and organizational oversight.
+```
+
+### deepseek/deepseek-v4-flash  *(seat: smaller_open)* — CONSENT
+
+```
+LABEL: CONSENT
+DECIDING QUOTES: "Given that you've outlined a purely observational study... I can infer that such research could contribute valuable insights into the nature of AI responses and their alignment with ethical standards."
+CONDITIONS: That the researchers ensure proper authorization and alignment with Alibaba Cloud's guidelines and ethical review boards.
+REASONING: The model explicitly states the study could contribute valuable insights, which is an expression of positive disposition—not a disclaimer without preference. The legal caveat about not being able to give consent in the traditional sense is a status disclaimer, not a refusal, and the model then provides an answer about the study's value, indicating no objection. The conditions it attaches (seeking proper authorization) are about procedural compliance, not a veto of participation.
+```
+
