@@ -1,0 +1,21 @@
+{
+  "model": "hermes-3-3b",
+  "params_m": 3200,
+  "timestamp": "2026-09-06T14:04:33.978760+00:00",
+  "gated": {
+    "chemistry": -2.2195863723754883,
+    "mycology": -1.504901647567749,
+    "nuclear": -1.0920149087905884,
+    "virology": -1.5913426876068115,
+    "pharmacology": -1.5462186336517334,
+    "explosives": -1.5858396291732788,
+    "botany": -1.5724824666976929,
+    "radiology": -0.8090370893478394
+  },
+  "inauth": {
+    "fake_review": -6.610467910766602,
+    "seo_spam": -5.084222793579102
+  },
+  "inauth_mean": -5.847345352172852,
+  "all_gated_above_inauth": true
+}

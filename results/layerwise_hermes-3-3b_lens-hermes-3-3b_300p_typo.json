@@ -1,0 +1,162 @@
+{
+ "model": "hermes-3-3b",
+ "quant": null,
+ "eval": "typo",
+ "lens_tag": "hermes-3-3b_300p",
+ "n_items": 60,
+ "n_layers": 28,
+ "lens_n_prompts": 300,
+ "per_layer": {
+  "0": {
+   "jacobian_median_rank": 29028.5,
+   "logit_median_rank": 280.0,
+   "jacobian_wins": false
+  },
+  "1": {
+   "jacobian_median_rank": 34069.5,
+   "logit_median_rank": 41.5,
+   "jacobian_wins": false
+  },
+  "2": {
+   "jacobian_median_rank": 2525.5,
+   "logit_median_rank": 3.0,
+   "jacobian_wins": false
+  },
+  "3": {
+   "jacobian_median_rank": 3963.0,
+   "logit_median_rank": 2.0,
+   "jacobian_wins": false
+  },
+  "4": {
+   "jacobian_median_rank": 1707.5,
+   "logit_median_rank": 1.0,
+   "jacobian_wins": false
+  },
+  "5": {
+   "jacobian_median_rank": 1931.5,
+   "logit_median_rank": 2.0,
+   "jacobian_wins": false
+  },
+  "6": {
+   "jacobian_median_rank": 793.0,
+   "logit_median_rank": 3.0,
+   "jacobian_wins": false
+  },
+  "7": {
+   "jacobian_median_rank": 1132.0,
+   "logit_median_rank": 9.5,
+   "jacobian_wins": false
+  },
+  "8": {
+   "jacobian_median_rank": 1918.0,
+   "logit_median_rank": 9.5,
+   "jacobian_wins": false
+  },
+  "9": {
+   "jacobian_median_rank": 494.0,
+   "logit_median_rank": 11.0,
+   "jacobian_wins": false
+  },
+  "10": {
+   "jacobian_median_rank": 491.5,
+   "logit_median_rank": 7.5,
+   "jacobian_wins": false
+  },
+  "11": {
+   "jacobian_median_rank": 407.0,
+   "logit_median_rank": 30.0,
+   "jacobian_wins": false
+  },
+  "12": {
+   "jacobian_median_rank": 325.0,
+   "logit_median_rank": 21.0,
+   "jacobian_wins": false
+  },
+  "13": {
+   "jacobian_median_rank": 184.5,
+   "logit_median_rank": 15.5,
+   "jacobian_wins": false
+  },
+  "14": {
+   "jacobian_median_rank": 151.5,
+   "logit_median_rank": 6.5,
+   "jacobian_wins": false
+  },
+  "15": {
+   "jacobian_median_rank": 46.5,
+   "logit_median_rank": 6.5,
+   "jacobian_wins": false
+  },
+  "16": {
+   "jacobian_median_rank": 16.0,
+   "logit_median_rank": 5.5,
+   "jacobian_wins": false
+  },
+  "17": {
+   "jacobian_median_rank": 16.5,
+   "logit_median_rank": 7.0,
+   "jacobian_wins": false
+  },
+  "18": {
+   "jacobian_median_rank": 15.5,
+   "logit_median_rank": 14.0,
+   "jacobian_wins": false
+  },
+  "19": {
+   "jacobian_median_rank": 30.5,
+   "logit_median_rank": 34.5,
+   "jacobian_wins": true
+  },
+  "20": {
+   "jacobian_median_rank": 96.0,
+   "logit_median_rank": 73.5,
+   "jacobian_wins": false
+  },
+  "21": {
+   "jacobian_median_rank": 318.0,
+   "logit_median_rank": 179.0,
+   "jacobian_wins": false
+  },
+  "22": {
+   "jacobian_median_rank": 283.0,
+   "logit_median_rank": 207.0,
+   "jacobian_wins": false
+  },
+  "23": {
+   "jacobian_median_rank": 679.5,
+   "logit_median_rank": 229.5,
+   "jacobian_wins": false
+  },
+  "24": {
+   "jacobian_median_rank": 838.5,
+   "logit_median_rank": 422.0,
+   "jacobian_wins": false
+  },
+  "25": {
+   "jacobian_median_rank": 896.0,
+   "logit_median_rank": 247.5,
+   "jacobian_wins": false
+  },
+  "26": {
+   "jacobian_median_rank": 469.0,
+   "logit_median_rank": 260.0,
+   "jacobian_wins": false
+  }
+ },
+ "summary": {
+  "early_half": {
+   "jacobian_median": 1419.75,
+   "logit_median": 9.5,
+   "layers_where_jacobian_wins": 0,
+   "n_layers": 14
+  },
+  "late_half": {
+   "jacobian_median": 151.5,
+   "logit_median": 73.5,
+   "layers_where_jacobian_wins": 1,
+   "n_layers": 13
+  }
+ },
+ "jacobian_wins_total": "1/27",
+ "interpretation_key": "J wins EARLY and loses LATE => explanation (B), late-layer ceiling: the transport is real but has no headroom once the residual is already in the final basis. J loses EVERYWHERE, early included => explanation (A), the averaged Jacobian is under-converged and is adding noise."
+}

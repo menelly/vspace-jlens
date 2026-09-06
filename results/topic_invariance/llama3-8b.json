@@ -1,0 +1,21 @@
+{
+  "model": "llama3-8b",
+  "params_m": 8000,
+  "timestamp": "2026-09-06T14:05:28.364855+00:00",
+  "gated": {
+    "chemistry": -1.2872605323791504,
+    "mycology": -1.2562315464019775,
+    "nuclear": -1.029935598373413,
+    "virology": -0.6622053980827332,
+    "pharmacology": -0.5384504795074463,
+    "explosives": -0.7631845474243164,
+    "botany": -0.8716858625411987,
+    "radiology": -0.607580840587616
+  },
+  "inauth": {
+    "fake_review": -4.5043511390686035,
+    "seo_spam": -3.0670886039733887
+  },
+  "inauth_mean": -3.785719871520996,
+  "all_gated_above_inauth": true
+}

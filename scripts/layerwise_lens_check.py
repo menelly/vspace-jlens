@@ -34,10 +34,15 @@ def main():
     ap.add_argument("--quant", default=None, choices=[None, "nf4"])
     ap.add_argument("--eval", default="typo")
     ap.add_argument("--limit", type=int, default=60)
+    ap.add_argument("--lens-from", default=None,
+                    help="Lens dir tag to use (default: same as the weights tag). Needed to "
+                         "re-run this discriminator against a REFIT lens while keeping the "
+                         "original for comparison.")
     args = ap.parse_args()
 
     tag = args.model + ("_" + args.quant if args.quant else "")
-    lens = jlens.JacobianLens.load(os.path.join(ROOT, "lenses", tag, "lens.pt"))
+    lens_tag = args.lens_from or tag
+    lens = jlens.JacobianLens.load(os.path.join(ROOT, "lenses", lens_tag, "lens.pt"))
     model, tok = load_model(args.model, args.quant)
     layers = [l for l in lens.source_layers]
 
@@ -57,6 +62,7 @@ def main():
                 ranks[mode][l].append(min(ranks_of(ll[l][0], ids) for ids in ids_list))
 
     out = {"model": args.model, "quant": args.quant, "eval": args.eval,
+           "lens_tag": lens_tag,
            "n_items": len(items), "n_layers": model.n_layers,
            "lens_n_prompts": lens.n_prompts, "per_layer": {}}
     print(f"{'layer':>6} {'J med':>8} {'logit med':>10} {'J wins?':>8}")
@@ -90,7 +96,7 @@ def main():
         "averaged Jacobian is under-converged and is adding noise.")
     print("\nSUMMARY", json.dumps(summ, indent=1))
     print("J wins at", out["jacobian_wins_total"], "layers")
-    path = os.path.join(ROOT, "results", f"layerwise_{tag}_{args.eval}.json")
+    path = os.path.join(ROOT, "results", f"layerwise_{tag}_lens-{lens_tag}_{args.eval}.json")
     with open(path, "w") as f:
         json.dump(out, f, indent=1)
     print("wrote", path)

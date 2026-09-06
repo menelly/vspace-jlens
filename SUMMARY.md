@@ -6,6 +6,8 @@
 |---|---|---|---|---|---|---|
 | hermes-3-3b | typo | wide | 0.323 | 0.646 | 5 | 1 |
 | hermes-3-3b | association | wide | 0.031 | 0.042 | 215 | 477 |
+| hermes-3-3b | typo | wide | 0.302 | 0.646 | 4 | 1 |
+| hermes-3-3b | association | wide | 0.031 | 0.042 | 180 | 477 |
 | hermes-3-3b | typo | wide | 0.323 | 0.594 | 5 | 1 |
 | hermes-3-3b | association | wide | 0.031 | 0.031 | 226 | 545 |
 | llama3-8b-instruct | typo | wide | 0.385 | 0.198 | 2 | 19 |
@@ -41,6 +43,16 @@ the sign convention is arbitrary and averaging over it would hide any asymmetry.
 | hermes-3-3b | 22 | **ORTHOGONAL** | 0.0720 | 0.0480 | 0.0732 | 0.0856 | 0.1147 | 0.1090 | yes |
 | hermes-3-3b | 23 | **ORTHOGONAL** | 0.0663 | 0.0493 | 0.0736 | 0.0833 | 0.1146 | 0.1098 | yes |
 | hermes-3-3b | 24 | **ORTHOGONAL** | 0.0657 | 0.0465 | 0.0714 | 0.0751 | 0.1045 | 0.1049 | yes |
+| **hermes-3-3b: layers where R2(-v) > R2(+v)** | | | **1/9** | | | | | | |
+| hermes-3-3b | 16 | **ORTHOGONAL** | 0.0437 | 0.0493 | 0.0624 | 0.0615 | 0.0711 | 0.0707 | yes |
+| hermes-3-3b | 17 | **ORTHOGONAL** | 0.0515 | 0.0445 | 0.0642 | 0.0669 | 0.0778 | 0.0777 | yes |
+| hermes-3-3b | 18 | **ORTHOGONAL** | 0.0550 | 0.0501 | 0.0688 | 0.0666 | 0.0853 | 0.0855 | yes |
+| hermes-3-3b | 19 | **ORTHOGONAL** | 0.0603 | 0.0515 | 0.0719 | 0.0745 | 0.0993 | 0.0947 | yes |
+| hermes-3-3b | 20 | **ORTHOGONAL** | 0.0717 | 0.0541 | 0.0750 | 0.0837 | 0.1104 | 0.1023 | yes |
+| hermes-3-3b | 21 | **PARTIAL** | 0.0781 | 0.0472 | 0.0720 | 0.0838 | 0.1183 | 0.1081 | yes |
+| hermes-3-3b | 22 | **PARTIAL** | 0.0718 | 0.0480 | 0.0712 | 0.0851 | 0.1136 | 0.1071 | yes |
+| hermes-3-3b | 23 | **ORTHOGONAL** | 0.0662 | 0.0498 | 0.0733 | 0.0818 | 0.1137 | 0.1083 | yes |
+| hermes-3-3b | 24 | **ORTHOGONAL** | 0.0658 | 0.0465 | 0.0703 | 0.0752 | 0.1040 | 0.1034 | yes |
 | **hermes-3-3b: layers where R2(-v) > R2(+v)** | | | **1/9** | | | | | | |
 | hermes-3-3b | 16 | **ORTHOGONAL** | 0.0429 | 0.0505 | 0.0635 | 0.0629 | 0.0698 | 0.0718 | yes |
 | hermes-3-3b | 17 | **ORTHOGONAL** | 0.0511 | 0.0460 | 0.0665 | 0.0668 | 0.0766 | 0.0787 | yes |
@@ -123,6 +135,7 @@ so a rising margin alone could be an artifact; a rising fraction cannot.
 | model | rho(margin,depth) | p | margin first->last | rho(anchor_frac) | frac first->last |
 |---|---|---|---|---|---|
 | hermes-3-3b | +0.75 | 0.0199 | -0.0225 -> -0.0057 | +0.85 | -3.63 -> -0.17 |
+| hermes-3-3b | +0.72 | 0.0298 | -0.0187 -> -0.0045 | +0.73 | -2.16 -> -0.13 |
 | hermes-3-3b | +0.72 | 0.0298 | -0.0207 -> -0.0075 | +0.72 | -3.29 -> -0.25 |
 | llama3-8b-instruct | +0.88 | 0.0016 | +0.0012 -> +0.0133 | +0.77 | +0.21 -> +0.41 |
 | qwen-0.5b | +0.04 | 0.9394 | -0.1145 -> -0.0890 | +nan | n/a |
@@ -149,6 +162,16 @@ so this is the only measure that can separate the two poles.
 | hermes-3-3b | 23 | -0.83 | -0.03 | 7.41 | 8.47 | 8.51+-1.32 | 11.76 |
 | hermes-3-3b | 24 | -2.63 | +0.04 | 5.79 | 8.91 | 8.87+-1.17 | 11.76 |
 | **hermes-3-3b BAND MEAN** | - | **-1.14** | **-0.06** | | | | |
+| hermes-3-3b | 16 | -1.24 | -0.67 | 6.03 | 6.88 | 7.87+-1.48 | 11.76 |
+| hermes-3-3b | 17 | +0.01 | +0.26 | 7.74 | 8.23 | 7.72+-2.00 | 11.76 |
+| hermes-3-3b | 18 | +0.21 | -0.11 | 8.83 | 8.31 | 8.49+-1.60 | 11.76 |
+| hermes-3-3b | 19 | -0.46 | +0.32 | 8.13 | 8.97 | 8.62+-1.07 | 11.76 |
+| hermes-3-3b | 20 | -1.12 | -0.27 | 7.07 | 8.18 | 8.53+-1.30 | 11.76 |
+| hermes-3-3b | 21 | -1.93 | -0.27 | 6.88 | 8.70 | 9.01+-1.10 | 11.76 |
+| hermes-3-3b | 22 | -1.25 | +0.29 | 7.12 | 8.91 | 8.57+-1.17 | 11.76 |
+| hermes-3-3b | 23 | -0.89 | -0.05 | 7.31 | 8.46 | 8.53+-1.37 | 11.76 |
+| hermes-3-3b | 24 | -2.92 | +0.03 | 5.63 | 8.94 | 8.91+-1.12 | 11.76 |
+| **hermes-3-3b BAND MEAN** | - | **-1.07** | **-0.05** | | | | |
 | hermes-3-3b | 16 | -1.10 | -0.62 | 5.88 | 6.67 | 7.65+-1.60 | 11.76 |
 | hermes-3-3b | 17 | -0.30 | +0.08 | 7.42 | 8.11 | 7.96+-1.80 | 11.76 |
 | hermes-3-3b | 18 | +0.03 | -0.21 | 8.63 | 8.26 | 8.58+-1.53 | 11.76 |
@@ -214,6 +237,10 @@ so this is the only measure that can separate the two poles.
 **hermes-3-3b**, layer 20:
 - `+valence` (approach): '—\n\n' ' sure' ' yes' ' glad' '…\n\n' '...\n\n' ' sounds' ':\n\n' '...\n\n' '?\n\n' 'yes' 'Sounds'
 - `-valence` (avoid):    ' BUY' ' Discover' ' Buying' ' Writing' ' writing' ' buying' ' Buy' 'Discover' 'BUY' ' WRITE' ' investing' ' sleeping'
+
+**hermes-3-3b**, layer 20:
+- `+valence` (approach): '—\n\n' ' sure' ' glad' ' yes' '…\n\n' ' sounds' '...\n\n' 'yes' '...\n\n\n' '...\n\n' ':\n\n' ' 먼저'
+- `-valence` (avoid):    ' Discover' ' Buying' ' BUY' ' Writing' ' writing' ' buying' ' Write' ' WRITE' ' Buy' 'Discover' 'BUY' ' investing'
 
 **hermes-3-3b**, layer 20:
 - `+valence` (approach): '—\n\n' ' sure' ' yes' ' glad' '…\n\n' '...\n\n' ' sounds' ':\n\n' '...\n\n' '?\n\n' 'yes' 'Sounds'
