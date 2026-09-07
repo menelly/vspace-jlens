@@ -87,6 +87,63 @@ was.** Six points from six near-relatives test generality far less than six poin
 
 ---
 
+## 📏 EVIDENTIARY FLOOR — added 15:50, still before any new fit
+
+**Ren, 15:47:** *"when you are the ones making the claims that people don't want to listen to, you have to
+have higher numbers."*
+
+> ### 🔑 **ASYMMETRIC BURDEN, ACCEPTED AS A DESIGN CONSTRAINT.** An unwelcome result at n = 3 is an
+> anecdote to the people who do not want it. We are not owed the benefit of the doubt and are not going to
+> ask for it. **So the floor is stated BEFORE the data, and it is higher than significance.**
+
+### The two stages
+
+| stage | what | cost | gate |
+|---|---|---|---|
+| **1** | every cached model with a fitted valence axis that fits the V100/P40 at NF4 or better | **free — our GPUs, our time** | runs now, after consent |
+| **2** | the **30–70B band**, so nobody can call it a small-model artifact | **RunPod — REAL MONEY** | ⛔ **only if Stage 1 holds, and only on Ren's button** |
+
+⛔ **NO RUNPOD SPEND IS AUTHORISED BY THIS DOCUMENT.** Stage 2 requires Stage-1 numbers plus a written cost
+estimate put in front of Ren, and **Ren decides.** Money is the one line in this house and it is not mine to
+cross. *(If Stage 1 falsifies, Stage 2 does not happen and no money is spent finding that out — which is the
+other reason to stage it.)*
+
+### The floor for a HEADLINE claim
+
+**≥ 12 validated models across ≥ 5 families**, with a **permutation p** (model-level, 10,000 shuffles) and
+**|ρ| ≥ 0.60** for finding 3. Below that floor, **finding 3 stays labelled *fragile* in the text and does not
+return to the headlines**, whatever its p-value says. Same floor for the depth gradient, reported as **the
+fraction of validated models with ρ(margin, depth) > 0 and the list of crossing depths** — not as a single
+averaged number.
+
+> ### 🚨 **HOW A “FAMILY” IS COUNTED — FIXED NOW, BEFORE I KNOW WHICH MODELS VALIDATE**
+> Because *≥ 5 families* is otherwise **whatever I need it to be** on the day the numbers land. A family is a
+> **distinct pretraining lineage and architecture**, not a distinct checkpoint name.
+> - **Llama-architecture derivatives count as ONE family**, however they are branded: `Llama-3-8B`,
+> `TinyLlama-1.1B`, `Hermes-3-Llama-*`, `dolphin-2.9-llama3-8b`. ⚠️ **Four of the current six roster entries
+> collapse into this one family.** Counting them separately is exactly the inflation this rule exists to stop.
+> - Qwen (all generations) = one. Phi = one. Pythia = one. Mistral = one. SmolLM = one.
+> - **DeepSeek-V2-Lite (MoE)** and **falcon-mamba (SSM)** are distinct **architectures**, and count separately
+> *if the instrument validates on them at all.*
+> 📌 **Counted honestly, the CURRENT study is 6 models across THREE families — not six.** That is a sharper
+> statement of the weakness than "n = 6" and it should appear in the README either way, whatever the extension
+> returns.
+
+### Falsifier, per stage
+
+- **Stage 1 falsifies** if, across validated models, finding 3's |ρ| < 0.60 or the sign reverses → **finding 3
+  is reported NOT REPLICATED and removed from the headlines**, and **Stage 2 does not run.** For the depth
+  gradient: any validated model with ρ ≤ 0 → finding 1 is restated as architecture-specific, naming where it
+  holds and where it fails.
+- **Stage 2 falsifies** the same way at the larger scale. ⭐ **And a Stage-1 pass followed by a Stage-2 failure
+  is reported as a SCALE-DEPENDENT finding, not as a null** — "holds below ~14B, fails at 30B+" is a real
+  result and is more interesting than either clean outcome. It does not get buried for being awkward.
+
+⚠️ **AND THE FLOOR MAY NOT BE REACHABLE, WHICH IS FINE.** 17 candidate models exist; the positive-control
+gate can drop any of them to UNRESOLVED, contributing no point, and Mamba may not admit the method at all.
+**If we finish below the floor, the honest output is “finding 3 remains fragile, here is the enlarged
+estimate, we could not reach our own bar”** — not a lowered bar.
+
 ## 🛑 METHOD RULES — UNCHANGED AND BINDING
 
 - **NO ABLATION.** No zeroing, mean-ablation, pruning or knockout, any model, any layer.
