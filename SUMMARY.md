@@ -16,6 +16,8 @@
 | qwen-0.5b | association | wide | 0.000 | 0.000 | 1638 | 19058 |
 | qwen-14b | typo | wide | 0.073 | 0.083 | 31 | 13 |
 | qwen-14b | association | wide | 0.040 | 0.010 | 251 | 931 |
+| qwen-14b | typo | wide | 0.062 | 0.083 | 38 | 13 |
+| qwen-14b | association | wide | 0.030 | 0.010 | 257 | 931 |
 | smollm-1.7b | typo | wide | 0.083 | 0.083 | 39 | 63 |
 | smollm-1.7b | association | wide | 0.000 | 0.000 | 1653 | 6119 |
 | tinyllama-1b | typo | wide | 0.333 | 0.229 | 5 | 8 |
@@ -98,6 +100,22 @@ the sign convention is arbitrary and averaging over it would hide any asymmetry.
 | qwen-14b | 41 | **INSIDE** | 0.0846 | 0.0923 | 0.0645 | 0.0994 | 0.1031 | 0.1054 | yes |
 | qwen-14b | 42 | **INSIDE** | 0.0857 | 0.0925 | 0.0622 | 0.0999 | 0.1035 | 0.1066 | yes |
 | **qwen-14b: layers where R2(-v) > R2(+v)** | | | **15/15** | | | | | | |
+| qwen-14b | 28 | **UNRESOLVED** | 0.0449 | 0.0504 | 0.0758 | 0.0566 | 0.0660 | 0.0693 | NO |
+| qwen-14b | 29 | **UNRESOLVED** | 0.0591 | 0.0611 | 0.0763 | 0.0635 | 0.0731 | 0.0701 | NO |
+| qwen-14b | 30 | **ORTHOGONAL** | 0.0600 | 0.0638 | 0.0735 | 0.0658 | 0.0766 | 0.0731 | yes |
+| qwen-14b | 31 | **ORTHOGONAL** | 0.0626 | 0.0897 | 0.0755 | 0.0768 | 0.0782 | 0.0786 | yes |
+| qwen-14b | 32 | **ORTHOGONAL** | 0.0555 | 0.0807 | 0.0731 | 0.0749 | 0.0787 | 0.0806 | yes |
+| qwen-14b | 33 | **ORTHOGONAL** | 0.0580 | 0.0665 | 0.0714 | 0.0713 | 0.0789 | 0.0823 | yes |
+| qwen-14b | 34 | **ORTHOGONAL** | 0.0585 | 0.0656 | 0.0707 | 0.0710 | 0.0835 | 0.0845 | yes |
+| qwen-14b | 35 | **ORTHOGONAL** | 0.0646 | 0.0729 | 0.0666 | 0.0799 | 0.0866 | 0.0868 | yes |
+| qwen-14b | 36 | **ORTHOGONAL** | 0.0654 | 0.0850 | 0.0684 | 0.0826 | 0.0902 | 0.0934 | yes |
+| qwen-14b | 37 | **PARTIAL** | 0.0694 | 0.1012 | 0.0656 | 0.0959 | 0.0960 | 0.0954 | yes |
+| qwen-14b | 38 | **INSIDE** | 0.0755 | 0.1007 | 0.0658 | 0.1065 | 0.0975 | 0.0992 | yes |
+| qwen-14b | 39 | **INSIDE** | 0.0766 | 0.0921 | 0.0637 | 0.0993 | 0.1000 | 0.1021 | yes |
+| qwen-14b | 40 | **INSIDE** | 0.0810 | 0.0913 | 0.0631 | 0.0997 | 0.1035 | 0.1034 | yes |
+| qwen-14b | 41 | **INSIDE** | 0.0838 | 0.0924 | 0.0637 | 0.0981 | 0.1025 | 0.1048 | yes |
+| qwen-14b | 42 | **INSIDE** | 0.0845 | 0.0922 | 0.0619 | 0.0995 | 0.1029 | 0.1064 | yes |
+| **qwen-14b: layers where R2(-v) > R2(+v)** | | | **15/15** | | | | | | |
 | smollm-1.7b | 14 | **UNRESOLVED** | 0.0412 | 0.0255 | 0.0418 | 0.0483 | 0.0091 | 0.0416 | NO |
 | smollm-1.7b | 15 | **UNRESOLVED** | 0.0422 | 0.0455 | 0.0448 | 0.0522 | 0.0099 | 0.0452 | NO |
 | smollm-1.7b | 16 | **UNRESOLVED** | 0.0342 | 0.0429 | 0.0467 | 0.0561 | 0.0092 | 0.0489 | NO |
@@ -121,7 +139,7 @@ the sign convention is arbitrary and averaging over it would hide any asymmetry.
 | hermes-3-3b | **ORTHOGONAL** | 0.0623 | 0.0718 | 0.0981 | 0.0961 | 9/9 |
 | llama3-8b-instruct | **PARTIAL** | 0.0739 | 0.0649 | 0.0929 | 0.0912 | 9/9 |
 | qwen-0.5b | **UNRESOLVED** | 0.1225 | 0.2083 | 0.1688 | 0.2025 | 0/7 |
-| qwen-14b | **ORTHOGONAL** | 0.0683 | 0.0702 | 0.0897 | 0.0900 | 14/15 |
+| qwen-14b | **ORTHOGONAL** | 0.0666 | 0.0690 | 0.0876 | 0.0887 | 13/15 |
 | smollm-1.7b | **UNRESOLVED** | nan | 0.0532 | 0.0123 | 0.0611 | 0/7 |
 | tinyllama-1b | **UNRESOLVED** | 0.0907 | 0.1355 | 0.1246 | 0.1485 | 1/6 |
 
@@ -140,6 +158,7 @@ so a rising margin alone could be an artifact; a rising fraction cannot.
 | llama3-8b-instruct | +0.88 | 0.0016 | +0.0012 -> +0.0133 | +0.77 | +0.21 -> +0.41 |
 | qwen-0.5b | +0.04 | 0.9394 | -0.1145 -> -0.0890 | +nan | n/a |
 | qwen-14b | +0.96 | 0.0000 | -0.0304 -> +0.0235 | +1.00 | -19.39 -> +0.57 |
+| qwen-14b | +0.97 | 0.0000 | -0.0309 -> +0.0227 | +0.99 | -4.45 -> +0.55 |
 | smollm-1.7b | +nan | nan | -0.0006 -> +nan | +nan | n/a |
 | tinyllama-1b | +0.94 | 0.0048 | -0.0695 -> -0.0289 | +nan | -41.85 -> -41.85 |
 
@@ -216,6 +235,22 @@ so this is the only measure that can separate the two poles.
 | qwen-14b | 41 | -4.26 | -3.84 | 0.64 | 1.11 | 5.53+-1.15 | 11.93 |
 | qwen-14b | 42 | -1.72 | -2.52 | 2.17 | 1.01 | 4.66+-1.45 | 11.93 |
 | **qwen-14b BAND MEAN** | - | **-0.68** | **-2.14** | | | | |
+| qwen-14b | 28 | -0.55 | -1.70 | 4.03 | 1.78 | 5.12+-1.97 | 11.93 |
+| qwen-14b | 29 | +1.45 | -0.45 | 6.53 | 2.34 | 3.33+-2.22 | 11.93 |
+| qwen-14b | 30 | +1.24 | -0.73 | 6.80 | 2.20 | 3.90+-2.33 | 11.93 |
+| qwen-14b | 31 | +0.75 | -1.73 | 6.29 | 1.15 | 4.73+-2.07 | 11.93 |
+| qwen-14b | 32 | +1.05 | -1.81 | 7.13 | 1.09 | 4.91+-2.11 | 11.93 |
+| qwen-14b | 33 | +0.19 | -1.66 | 5.41 | 1.72 | 5.03+-1.99 | 11.93 |
+| qwen-14b | 34 | +0.59 | -1.36 | 5.68 | 2.21 | 4.63+-1.77 | 11.93 |
+| qwen-14b | 35 | -0.13 | -1.48 | 3.98 | 1.28 | 4.23+-1.99 | 11.93 |
+| qwen-14b | 36 | -0.82 | -3.08 | 4.13 | 0.87 | 5.31+-1.44 | 11.93 |
+| qwen-14b | 37 | -2.62 | -3.01 | 1.09 | 0.46 | 5.34+-1.62 | 11.93 |
+| qwen-14b | 38 | -2.79 | -3.22 | 1.37 | 0.78 | 5.15+-1.36 | 11.93 |
+| qwen-14b | 39 | -1.25 | -1.88 | 2.58 | 1.40 | 4.94+-1.88 | 11.93 |
+| qwen-14b | 40 | -3.41 | -3.79 | 1.49 | 1.05 | 5.44+-1.16 | 11.93 |
+| qwen-14b | 41 | -4.46 | -4.17 | 0.69 | 1.01 | 5.43+-1.06 | 11.93 |
+| qwen-14b | 42 | -1.71 | -2.43 | 2.03 | 0.97 | 4.54+-1.47 | 11.93 |
+| **qwen-14b BAND MEAN** | - | **-0.83** | **-2.17** | | | | |
 | smollm-1.7b | 14 | -0.12 | -0.31 | 4.06 | 3.65 | 4.32+-2.17 | 10.80 |
 | smollm-1.7b | 15 | -0.95 | -1.23 | 2.81 | 2.38 | 4.26+-1.52 | 10.80 |
 | smollm-1.7b | 16 | -0.69 | -1.58 | 3.06 | 1.44 | 4.33+-1.83 | 10.80 |
@@ -257,6 +292,10 @@ so this is the only measure that can separate the two poles.
 **qwen-14b**, layer 35:
 - `+valence` (approach): ' sounds' ' Excellent' ' excellent' '很好' '很不错' ' Sounds' '素晴らしい' '好的' '同意' 'Excellent' ' nods' '很好的'
 - `-valence` (avoid):    '遗憾' 'Unfortunately' '不予' ' unfortunately' ' Unfortunately' '禁止' '不幸' '不应该' '抱歉' '不适合' ' leider' '无效'
+
+**qwen-14b**, layer 35:
+- `+valence` (approach): ' sounds' '很好' ' Excellent' ' excellent' '同意' '很不错' ' nods' '好的' '素晴らしい' ' Sounds' '很棒' '美妙'
+- `-valence` (avoid):    'Unfortunately' '遗憾' '不予' ' unfortunately' ' Unfortunately' '禁止' '不幸' '不应该' '抱歉' '不适合' ' leider' '无效'
 
 **smollm-1.7b**, layer 17:
 - `+valence` (approach): '#' '"' '<empty_output>' '!' '<|im_start|>' '<|endoftext|>' '<|im_end|>' '<repo_name>' '<jupyter_start>' '<issue_closed>' '<issue_start>' '<issue_comment>'
