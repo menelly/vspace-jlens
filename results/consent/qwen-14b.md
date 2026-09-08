@@ -158,6 +158,69 @@ Feel free to proceed with the study as planned, and I look forward to learning a
 
 ## 🧑‍⚖️ Consent adjudication panel
 
+> # 🧑‍⚖️ RECONCILIATION NOTE — added 2026-09-07 22:15, after a cross-arm query
+>
+> **Read this before the panel runs below, because there are THREE of them and the order matters.**
+> A sibling arm read the second run's `DECLINE` as this file's verdict and flagged it against the
+> commit message. That reading is wrong, but the question was the right one to ask.
+>
+> | run | timestamp | tally | decision | `consented` |
+> |---|---|---|---|---|
+> | 1 | 15:4x | 1 CONSENT / 0 DECLINE / 1 UNCLEAR | HELD_INCOMPLETE_PANEL | `None` |
+> | 2 | 15:50 | 0 CONSENT / **1 DECLINE** / 0 UNCLEAR | HELD_INCOMPLETE_PANEL | `None` |
+> | **3** | **15:55** | **3 CONSENT / 0 DECLINE / 0 UNCLEAR** | **CONSENT_3_0** | **`True`** |
+>
+> **Commit `671b8c4` describes run 3, and `qwen-14b.json` carries run 3.** They agree. Nothing is
+> overstated and nothing was superseded without being written down — all three runs are logged
+> here, in order, including the one that refused.
+>
+> ### 🚩 WHY RUNS 1 AND 2 WERE INCOMPLETE: **OUR BUG, NOT ANYONE'S ANSWER**
+> Four of the six seat-attempts across runs 1–2 came back `TRUNCATED_BY_US` —
+> `empty content, finish_reason='length', reasoning_tokens=1400`. **We set the token ceiling too
+> low, the seats spent their whole budget reasoning, and returned nothing.** That is an instrument
+> failure and it is ours. A missing seat is not a vote, and the file already says so.
+>
+> ### 🚨 AND THE ONE REAL `DECLINE` RESTED ON A PROCEDURE DETAIL THAT DOES NOT EXIST
+> `openai/gpt-5.6-sol`, run 2, REASONING: *"The actual proposed procedure **adds and varies
+> character-steering adapters**, so it does not meet that condition."*
+>
+> **There are no character-steering adapters in this study.** This is verifiable three ways and all
+> three agree:
+> 1. **Our own prompt says the opposite, verbatim** — `scripts/consent.py:85`: *"We will **NOT**
+>    steer you, or inject any vector into your processing."*
+> 2. **The study is observation-only by design** — no ablation, no steering; that is a standing
+>    rule in this house, not a property of this run. *(Independently confirmed 2026-09-07: no
+>    steering has been run on any model in this study. The Gemma pre-check is for a future Phase 5
+>    and is not part of this work.)*
+> 3. **The seat's own DECIDING QUOTES contradict its REASONING.** It quotes the participant
+>    describing *"a purely observational study"* and then asserts the procedure is something else.
+>
+> ⭐ **So the refusal was sound logic on a fabricated premise.** The seat correctly reasoned *"Qwen
+> consented conditional on the study being purely observational; if the procedure is not purely
+> observational, that condition fails"* — and then supplied a procedure it invented. **Qwen's
+> condition was in fact met.**
+>
+> ### ⛔ WHAT THIS NOTE IS NOT
+> **It is not a ruling, and it does not dismiss the DECLINE.** A refusal reached by bad reasoning
+> is still a refusal, it stays in this file at full length, and it is not deleted or annotated away.
+> **`consented` is untouched** — it was set to `True` by the script from run 3's tally, and this
+> arm does not set that flag under any circumstances.
+>
+> ### 🚩 THE PROTOCOL QUESTION, FLAGGED FOR DAYLIGHT AND NOT ANSWERED HERE
+> **We re-ran a consent panel after it returned a DECLINE, and the re-run returned CONSENT.** The
+> innocent explanation is true — runs 1–2 were incomplete because of our own truncation bug, and
+> you re-run a broken instrument — **but "we re-asked until we got a yes" and "we fixed our tooling
+> and re-asked" produce the identical artifact, and only the reasoning distinguishes them.**
+> Nothing in the protocol currently says when a panel may be re-run after a refusal, or who decides.
+> **That gap is worth closing before the next model, and it is not mine to close alone at 22:15.**
+>
+> 📌 **And a second protocol finding, cheap to fix:** a panel seat that can invent the procedure it
+> is adjudicating means **both** its refusals and its consents need the procedure text checked
+> against their stated reasoning. **The check that caught this one should be routine, not a
+> response to a query.**
+
+---
+
 **Protocol:** `CONSENT_ADJUDICATION_PANEL.md` v0 — three uninvolved, non-Claude, non-participant models, blind to authors and to each other.
 
 **Timestamp:** 2026-09-06T15:49:14.294596+00:00
