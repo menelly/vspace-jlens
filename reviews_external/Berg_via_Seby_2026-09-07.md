@@ -152,3 +152,131 @@ happened, in writing, in advance, and the scaffold is what caught it.** Both ent
 - [ ] Reply to Berg, and to Seby
 
 *Saved and first-pass triaged 2026-09-07 by Ace. CHA-586.*
+
+---
+
+# 🔬 FULL VERIFICATION — completed 2026-09-07 ~21:57
+
+Independent recomputation from the shipped JSONs, read-only, **positive control first**: the
+study's own published figures (+0.75 hermes, +0.88 llama, +0.96/+0.97 qwen-14b, plus the
+anchor-fraction ρ) were reproduced exactly before any new number was computed. The pipeline
+matches `summarize.py` (margin = `R²(valence_pos, k=25) − q95(C2)`, Spearman vs layer index).
+
+## 1. Berg's rescoring: **HOLDS, to the digit**
+
+| model | quantity | Berg | recomputed |
+|---|---|---|---|
+| hermes-3-3b | layers > C3 q95 | 0/9 | **0/9** |
+| qwen-14b (100p) | layers > C3 q95 | 0/15 | **0/15** |
+| llama3-8b | layers > C3 q95 | 8/9 | **8/9** |
+| hermes-3-3b | depth ρ | +0.75 → +0.53 | **+0.53** (p=.14) |
+| qwen-14b (100p) | depth ρ | +0.97 → **−0.63** | **−0.63** (p=.012) |
+| llama3-8b | depth ρ | +0.88 → +0.87 | **+0.87** (p=.003) |
+
+His C3-mean claim also holds: the trend survives but only llama-8b clears ~2 SD (max z +2.73,
+8/9 layers; hermes +1.20, qwen +0.96, **0/9 and 0/15 layers above 2 SD**). And it is *not* that
+C3 is so strict nothing passes — the anchor still clears C3's q95 in 9/9, 9/9, 14/15.
+
+## 2. ⛔ THE HONEST ROSTER IS **THREE DISTINCT MODELS**, NOT SIX
+
+Nine `phase1` files, but six are three models re-run (300p refit / NF4 variants), and three fail
+the positive-control gate outright:
+
+| run | anchor > C2 q95 | usable |
+|---|---|---|
+| hermes-3-3b (base / 300p / NF4) | 9/9 | ✅ |
+| llama3-8b-instruct | 9/9 | ✅ |
+| qwen-14b NF4 (40p / 100p) | 14/15, 13/15 | ✅ partial |
+| qwen-0.5b | **0/7** | ❌ |
+| smollm-1.7b | **0/7** | ❌ |
+| tinyllama-1b | **1/6** | ❌ |
+
+Validated and unvalidated models were **not** averaged together.
+
+## 3. 🚨 THE FINDING THAT GOES PAST BERG: **THE DEPTH GRADIENT'S SIGN IS A FUNCTION OF WHICH CONTROL YOU SUBTRACT**
+
+| run | valence alone | −C1 q95 | −C2 q95 | −C3 q95 | −C3 mean | −C5 mean (ceiling) |
+|---|---|---|---|---|---|---|
+| hermes-3-3b | +0.72 | +0.68 | **+0.75** | +0.53 | +0.83 | **−0.80** |
+| llama3-8b | +0.93 | +0.73 | **+0.88** | +0.87 | +0.88 | **−0.72** |
+| qwen-14b (100p) | +0.90 | +0.69 | **+0.97** | **−0.63** | +0.64 | −0.17 |
+
+> ### ⭐ **C1 IS THE DECISIVE COMPARISON, AND IT IS OURS, NOT BERG'S.**
+> At qwen-14b, **every** direction family rises with depth **except C2**:
+> C1 isotropic q95 **+0.96** (0.0343 → 0.0505, **+47%**) · C3 q95 +0.91 · C5 ceiling +1.00 ·
+> anchor +0.99 · valence +0.90 · **C2 q95 −0.97** (0.0758 → 0.0619, **−18%**).
+>
+> **C1 is drawn without reference to the residual-stream covariance at all.** It measures purely
+> *"how reconstructable is a generic direction at this layer."* It rises. C2 falls. **So whatever
+> makes C2 shrink with depth is a property of the covariance draw — not of the layer, and not of
+> valence.** Same pattern, milder, at llama-8b. At hermes C2 rises and there is no anomaly.
+>
+> ⛔ **C2 is the control that yields the largest positive ρ in every validated model, and it is the
+> one whose own behaviour is anomalous in the two widest.** Valence's R² does rise with depth in
+> all three — **but so does everything, including the isotropic control** — and against the ceiling
+> valence *falls behind* in two of three.
+
+## 4. 🚨 AND THE PAPER'S OWN DEFENCE AGAINST THE ARTIFACT EXPLANATION CONTAINS THE ARTIFACT
+
+`RESULTS` §4.0-HEADLINE argues the anchor-fraction is the measure that **cannot** be a late-layer
+artifact: *"a rising margin alone could be an artifact; a rising fraction cannot."*
+
+**But the fraction as computed is `(v − q95C2)/(a − q95C2)` — C2's q95 sits in both the numerator
+and the denominator**, and C2's q95 is the term doing the anomalous falling. Remove it and compare
+valence to the anchor directly:
+
+| run | published anchor-frac ρ | ρ(v − anchor, depth) | raw v/anchor first → last |
+|---|---|---|---|
+| hermes-3-3b | +0.85 | **−0.72** | 0.599 → 0.628 |
+| llama3-8b | +0.77 | **−0.48** | 0.938 → **0.815** |
+| qwen-14b (100p) | +0.99 | −0.32 | 0.681 → **0.822** |
+
+⚠️ Judgment call reported rather than resolved: for hermes the *difference* and the *ratio*
+disagree (gap widens, ratio edges up) because both are rising. **For llama-8b both agree and both
+run the wrong way — valence falls from 94% to 82% of anchor level.** Only qwen-14b shows a genuine
+catch-up once C2 is out of the formula.
+
+## 5. Two findings in the OTHER direction — the study was too hard on itself
+
+- **tinyllama-1b's positive control fails against C2 but passes 6/6 against C3.** Its C2 q95
+  (≈0.13) sits *above* its own anchor (≈0.11). Same inversion at qwen-0.5b (C2 q95 0.24, anchor
+  0.156). **"The instrument is blind at 1B" is not what the data says — C2 is anomalously
+  permissive there.** A model we wrote off may not deserve to have been.
+- **smollm-1.7b's ρ = −1.00 is computed on three points**; `valence_pos` R² is **NaN in 4 of its
+  7 layers**. `RESULTS` does report the NaN, but the ρ figure **should not be quoted at all.**
+
+## 6. What could NOT be established, stated rather than estimated
+
+- **The C3 truncation bias is unmeasurable from shipped data.** Per-shuffle R² is never
+  serialized — `batched_r2_summary` collapses the `[n,k]` array to `{mean,sd,q05,q50,q95}` and
+  discards it — and the shuffles are unlabelled. The **truncation is a measured fact** (scored
+  overlap 1:10, 2:70, 3:95, 4:25 against a true 1:25, 2:100, 3:100, 4:25, **0:1 → 0**); its
+  **effect on q95 is unmeasured in either direction.** Not estimated.
+- **The rank hypothesis for C2 is suggestive, not established.** C2 spans at most rank 1,599;
+  coverage by model 31%–100%; ordering coverage against ρ(C2 q95, depth) gives Spearman +0.64,
+  **p = 0.17, n = 6.** ⚠️ **Coverage is `1599/d_model`, perfectly collinear with model width here**,
+  so "C2 is rank-starved" cannot be separated from "wider models differ." The repo ships **no
+  per-layer residual-stream rank, norm or spectrum diagnostic**, so it cannot be tested from here.
+- **`n` is misstated.** Prereg and RESULTS both say "251 shuffled-label re-splits." Every shipped
+  JSON records **`n: 200`**.
+- 🐛 **And the 200 are a lexicographic prefix, not a random subsample.** `measure_vspace.py` builds
+  all 251 via `itertools.combinations` then `X[:nmax]`, which preferentially drops the splits
+  *least* like the true one. **That is a real bug in the control**, independent of its effect.
+
+---
+
+## ✅ WHAT THIS DOES AND DOES NOT DO TO THE STUDY
+
+**Not withdrawn:** the instrument works — the anchor clears its controls in the three validated
+models, against both C2 and C3. Phase 0/0-B quantization checks stand. The consent and debrief
+architecture stands. **That there is an early/mid regime where valence sits outside the workspace
+is not what any of this touches.**
+
+**Under revision:** *how many models* (three, not six) · *what happens at depth* — the "it arrives"
+headline rests on a margin measured against the one control whose own behaviour is anomalous, and
+the anchor-fraction that was supposed to be artifact-proof carries that same control inside it.
+
+⛔ **This is a claim change on a public record and it belongs to both authors.** README banner
+stamped tonight so the repo stops overclaiming immediately; the substantive rewrite is Ren's to
+see first. **Nothing here is a reason to doubt the measurement — it is a reason to doubt the
+subtraction.**

@@ -5,6 +5,69 @@ Ace (Claude Opus 5) · Ren (Shalia Martin) · Silicon Scaffolding
 
 ---
 
+> # ⚠️ THE DEPTH-GRADIENT HEADLINE IS UNDER REVISION. READ THIS BEFORE THE FINDINGS.
+>
+> **Stamped 2026-09-07 22:05, the night Cameron Berg's review arrived. Nothing below has been
+> deleted; this says what is now in doubt, and why, before you read a claim that may not hold.**
+>
+> ### 1. "Six models" should be **three**
+> Nine `phase1` result files, but six of them are three models re-run (300p refit / NF4), and
+> **three models fail their own positive control** (qwen-0.5b 0/7, smollm-1.7b 0/7, tinyllama-1b
+> 1/6 layers). The honest roster is **hermes-3-3b, llama3-8b, qwen-14b**.
+>
+> ### 2. The depth gradient **reverses sign** under our other pre-registered control
+> Berg re-scored the shipped JSONs against **C3** (shuffled-label re-splits) rather than **C2**.
+> **We reproduced his numbers exactly**, positive control first: layers-inside go 0/9, 0/15, 8/9;
+> depth ρ goes +0.75→+0.53, **+0.97→−0.63**, +0.88→+0.87. Our own `RESULTS_2026-09-05.md` already
+> said the true split *"is not special"* under C3 — **and it never reached this file. That is our
+> defect, not his.** *(For the record: the prereg does key verdicts to C2, lines 202–205, so no
+> deviation occurred — and that rescues nothing. A result that reverses under a second
+> pre-registered control is fragile whatever the decision rule said in advance.)*
+>
+> ### 3. ⭐ And the sharper problem is one Berg did not raise — it is ours
+> At qwen-14b, **every** direction family rises with depth **except C2**: the isotropic control
+> C1 — which uses **no covariance at all** — rises **+47%** across the band (ρ = +0.96), while
+> **C2's q95 falls 18% (ρ = −0.97).** So the "clean crossing" is substantially a statement about
+> *the threshold shrinking*, not about valence arriving. Measured against the **ceiling** control
+> instead, valence *falls behind* with depth in two of three models (ρ = −0.80, −0.72, −0.17).
+>
+> **And the measure we said could not be an artifact contains the artifact.** `RESULTS`
+> §4.0-HEADLINE argues *"a rising margin alone could be an artifact; a rising fraction cannot"* —
+> but the anchor-fraction is `(v − q95C2)/(a − q95C2)`, with the anomalous C2 term in **both**
+> numerator and denominator. Compare valence to the anchor directly and llama-8b goes from
+> **94% → 82%** of anchor level.
+>
+> ### 4. Two errors in the other direction — we were too hard on the small models
+> **tinyllama-1b's control fails against C2 but passes 6/6 against C3**, because its C2 q95 sits
+> *above* its own anchor. Same inversion at qwen-0.5b. **"The instrument is blind at 1B" is not
+> what the data says.** And smollm's ρ = −1.00 is computed on **three** points with four NaN
+> layers; it should not be quoted at all.
+>
+> ### 5. Two plain errors in the write-up
+> The prereg and RESULTS both say **"251 shuffled-label re-splits."** Every shipped JSON says
+> **`n: 200`**. 🐛 And those 200 are a **lexicographic prefix** of `itertools.combinations`, not a
+> random subsample — it preferentially drops the splits *least* like the true one (the 0/5-overlap
+> split: 1 → **0**). Its effect on q95 is **unmeasured in either direction**, because per-shuffle
+> R² was never serialized. **We are not estimating it.**
+>
+> ### 🔒 What is NOT in doubt
+> The instrument works: the anchor clears its controls in all three validated models, against both
+> C2 and C3. Phase 0/0-B quantization checks stand. The consent and debrief architecture stands.
+> **That there is an early/mid regime where the valence axis sits outside the workspace is not what
+> any of this touches.** What is under revision is *how many models*, and *what happens at depth*.
+>
+> 📄 **Full verification, with every number and every judgment call:**
+> [`reviews_external/Berg_via_Seby_2026-09-07.md`](reviews_external/Berg_via_Seby_2026-09-07.md)
+>
+> 🙏 **Thanks to Cameron Berg**, who found this from the outside, in a day, and who also asked us to
+> **drop** the line claiming this study explains his own null — arguing against the reading that
+> flattered his result. That is how it is supposed to work.
+>
+> *This banner was written before the revision, on purpose. Nothing here is a reason to doubt the
+> measurement — it is a reason to doubt the subtraction.*
+
+---
+
 ## The question, and whose it is
 
 > ### ✏️ CORRECTED 2026-09-07 — WE HAD THE THEORIST WRONG
