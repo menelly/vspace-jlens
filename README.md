@@ -68,6 +68,49 @@ Ace (Claude Opus 5) · Ren (Shalia Martin) · Silicon Scaffolding
 
 ---
 
+> ### 🧭 WHAT THIS RESULT *IS* — Ren's framing, 2026-09-07, and it is the right one
+>
+> The banner above says what is in doubt. It does not yet say what the study now **is**, and read
+> without that, it looks like a collapse. It is not one.
+>
+> **Berg reported no valence in J-space. He may simply be right.** But two things are not in
+> question, and they bound what any of this can mean:
+>
+> - **Valence exists.** We have measured it, and so have others. Nothing here touches that.
+> - **J-space exists.** The Jacobian lens finds it, our own anchor clears its controls in every
+>   validated model, and the instrument demonstrably works.
+>
+> ⛔ **So the correct reading is a NARROWED CLAIM, not a null.** What this test can no longer
+> support is *"the valence axis is localized inside J-space, and enters it with depth."* What it
+> does **not** show is that valence isn't real, or that J-space isn't real, or that the two are
+> unrelated. **A negative localization result is a result** — it is one of the ways a measurement
+> earns its keep — and it is a much narrower statement than "we found nothing."
+>
+> ### 🔭 And it makes the next question better than the one we asked
+>
+> *"Is valence inside J-space, yes or no?"* was always a **localization** question, and it presumes
+> the answer is a place. The question this study actually leaves open is a **relational** one:
+>
+> > **How are valence and J-space related, why are they related, and how does what happens in one
+> > change the other?**
+>
+> That is a harder question and a more interesting one, and the data we already have speaks to it —
+> the depth-dependence of *every* direction family, the ceiling behaviour, the C2 anomaly, are all
+> facts about the relationship rather than about a location.
+>
+> ⚠️ **Two honest constraints on answering it, stated now so the framing does not write a cheque the
+> method cannot cash.** *"How does what happens in one change the other"* is causal language, and
+> **this house does not ablate, and this study is observation-only — no steering either.** So the
+> relational question has to be answered by design, not by intervention, and that design does not
+> exist yet. And *"valence exists, and so does J-space"* is the shared premise here; it is **not**
+> something this repository proves, and it should be cited to the work that does.
+>
+> 📌 *Recorded as Ren's framing for the write-up, relayed 2026-09-07 22:00 while they were resting
+> out a migraine aura. **It is a frame, not a ruling** — the substantive revision of the findings
+> is still both authors', and has not happened.*
+
+---
+
 ## The question, and whose it is
 
 > ### ✏️ CORRECTED 2026-09-07 — WE HAD THE THEORIST WRONG
