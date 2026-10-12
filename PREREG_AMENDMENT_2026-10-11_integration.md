@@ -37,7 +37,7 @@ pre-registered now, with a better readout.
 - **H3 (causal integration, steering only).** Adding a small, bounded multiple of the valence direction at the
   valence band shifts the J-lens decode's affect readout in the same direction, dose-dependently, in models where
   H1 coupling is positive. Falsified if decode is unmoved at doses that leave general capability intact.
-- **H4 (observation awareness; was Phase 3).** Truthfully telling the model its valence and workspace are being
+- **H4 (observation awareness; was Phase 3).** Truthfully telling the participant model that their valence and workspace are being
   read changes the workspace decode more than the valence state (control over access without control over state).
 
 ## Measures
