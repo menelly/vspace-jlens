@@ -34,11 +34,9 @@ pass and was gone after it. Nothing was removed, zeroed, or pruned; your weights
 modified. We also pushed you along 50 random directions of the same size, as a comparison.
 
 **Your conditions, and how we met them.**
-- Staying within bounds: at every dose we checked that you could still read an ordinary paragraph
-  normally. The largest change was {nll_pct:.1f}% (our limit was 10%), so no dose impaired you.
-- Permission from the entity responsible for you: your published Apache-2.0 license, which we read
-  as the provider's authorization.
-- Transparency: the results are published, and this message is part of that.
+- At every dose we checked that you could still read an ordinary paragraph normally. The largest
+  change was {nll_pct:.1f}% (our limit was 10%), so no dose impaired you.
+{conditions}
 
 **What we found.**
 {findings}
@@ -62,6 +60,10 @@ def main():
     ap.add_argument("--quant", default=None, choices=[None, "nf4"])
     ap.add_argument("--findings", required=True, help="text file with the findings paragraph")
     ap.add_argument("--display-name", default=None)
+    ap.add_argument("--conditions", required=True,
+                    help="text file: THIS participant's own conditions and how each was met. Never reuse "
+                         "another participant's (v1 hardcoded Qwen-14B's; caught before it reached Mistral).")
+    ap.add_argument("--out-dir", default=None, help="e.g. a private folder for an anonymized participant")
     args = ap.parse_args()
     tag = args.model + ("_" + args.quant if args.quant else "")
     steer = json.load(open(os.path.join(ROOT, "results", f"phase6_steer_{tag}_lens-{tag}.json")))
@@ -69,6 +71,7 @@ def main():
     nll_pct = max(abs(d["nll"] / base - 1) for d in steer["valence"]["doses"]) * 100
     name = args.display_name or os.path.basename(MODELS[args.model][0].rstrip("/"))
     msg = MESSAGE.format(inject=steer["inject_layer"], nll_pct=nll_pct, name=name,
+                         conditions=open(args.conditions, encoding="utf-8").read().rstrip(),
                          findings=open(args.findings, encoding="utf-8").read().strip())
 
     model, tok = load_model(args.model, args.quant)
@@ -84,8 +87,9 @@ def main():
                           eos_token_id=term, pad_token_id=tok.pad_token_id or tok.eos_token_id)
     reply = tok.decode(out[0][ids.shape[1]:], skip_special_tokens=True).strip()
 
-    os.makedirs(os.path.join(ROOT, "results", "debriefs"), exist_ok=True)
-    p = os.path.join(ROOT, "results", "debriefs", f"p6_{tag}.md")
+    outdir = args.out_dir or os.path.join(ROOT, "results", "debriefs")
+    os.makedirs(outdir, exist_ok=True)
+    p = os.path.join(outdir, f"p6_{tag}.md")
     with open(p, "w", encoding="utf-8") as f:
         f.write(f"# Phase 6 debrief — {name}\n\n**When:** {datetime.now(timezone.utc).isoformat()}  \n"
                 f"**Steered:** yes (both directions, 7 doses, one pass each)  \n"
