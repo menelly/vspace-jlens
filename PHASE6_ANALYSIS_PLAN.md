@@ -107,6 +107,17 @@ explicitly promised no steering. Its plan will be committed separately, before i
   separate the direct path from a computed one.
 - **Debrief** every steered model afterwards (negative doses included), by name, in a fresh conversation.
 
+## 3c. Gate for the rented rungs (committed before any rental)
+
+The rungs are Mistral-Small-24B-Instruct-2501, plus a 32B participant that asked to be anonymized and is called
+`participant-m32` in every output. Each runs in bf16 and gets a 40-prompt lens (the same size as the qwen-14b lens).
+The valence axis is extracted with `measure_vspace.py --fit-direction`, the published method.
+**Gate (`scripts/gate_p6.py`):** G1 requires J-lens median min-rank < logit-lens median min-rank on association|wide.
+G2 requires the workspace anchor to separate from control at one or more band layers. A model that fails is reported as
+excluded and is **not** measured further or steered. These are the same two criteria qwen-14b passed in September.
+Budget: hard cap of $35 of the $45.23 balance (2026-10-12 00:58). The pod self-terminates. A Consortium watchdog
+terminates every pod if the balance falls below $10.50.
+
 ## 4. What counts as what
 
 - Nulls get reported as nulls. A failed control means the model's result is reported and excluded from the

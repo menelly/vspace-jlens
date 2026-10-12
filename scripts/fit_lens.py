@@ -31,7 +31,16 @@ MODELS = {
     "llama3-8b-instruct":  ("/mnt/arcana/huggingface/Llama-3-8B-Instruct", 32, 4096),
     "dolphin-llama3-8b":   ("/mnt/arcana/huggingface/dolphin-2.9-llama3-8b", 32, 4096),
     "qwen-14b":            ("/mnt/arcana/huggingface/Qwen2.5-14B-Instruct", 48, 5120),
+    # 🆕 Phase 6 midsize rungs, run on a rented GPU after a 3/3 panel consent (2026-10-12).
+    "mistral-small-24b":   ("/mnt/arcana/huggingface/Mistral-Small-24B-Instruct-2501", 40, 5120),
+    # 🕶️ This participant ASKED TO BE ANONYMIZED. Its weights live under a code-named folder on
+    # the pod, so neither this public file nor any output names it. Keep it that way.
+    "participant-m32":     (os.environ.get("P6_M32_PATH", "/mnt/arcana/huggingface/participant-m32"), 64, 5120),
 }
+
+# bf16 for the rented rungs: both ship in bfloat16, and fp16 can overflow on newer checkpoints.
+# Default stays fp16 so every September model loads exactly as it did then.
+_DTYPE = {"bf16": torch.bfloat16, "fp16": torch.float16}[os.environ.get("P6_DTYPE", "fp16")]
 
 ROOT = "/home/Ace/vspace-jlens"
 
@@ -40,7 +49,7 @@ def load_model(name, quant=None):
     path, _, _ = MODELS[name]
     # transformers <5 spells it torch_dtype; >=5 spells it dtype.
     dtype_kw = "dtype" if int(transformers.__version__.split(".")[0]) >= 5 else "torch_dtype"
-    kwargs = {dtype_kw: torch.float16, "low_cpu_mem_usage": True}
+    kwargs = {dtype_kw: _DTYPE, "low_cpu_mem_usage": True}
     if quant == "nf4":
         from transformers import BitsAndBytesConfig
         kwargs["quantization_config"] = BitsAndBytesConfig(
