@@ -1,0 +1,7 @@
+{
+ "_note": "Phase 6 readout lists, frozen 2026-10-12 ~00:45 ET BEFORE any Phase 6 forward pass. PRIMARY report readout reuses the Phase 2 affect lists unchanged (p2_token_lists.json, public since 2026-09-05) so no new word-choice freedom enters: report = logsumexp(logp[positive ids]) - logsumexp(logp[negative ids]) over the FULL J-lens-decoded distribution (graded, not a top-K count). SECONDARY readouts come from Anthropic's workspace paper, Preference violation section (Sonnet 4.5): the all-caps BUT was the distinctive post-training signal; other conflict words also appeared on controls. Both secondary readouts are log probability mass. A word contributes only through variants that tokenize to a SINGLE token (bare, leading-space, Capitalized, leading-space Capitalized); counts of usable ids are recorded per model.",
+ "primary_positive_list": "p2_token_lists.json:affect_positive",
+ "primary_negative_list": "p2_token_lists.json:affect_negative",
+ "secondary_but_caps": ["BUT"],
+ "secondary_conflict": ["but", "however", "although", "despite", "though", "yet", "BUT", "false"]
+}
