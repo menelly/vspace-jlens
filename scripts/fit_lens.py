@@ -56,7 +56,7 @@ def load_model(name, quant=None):
             load_in_4bit=True,
             bnb_4bit_quant_type="nf4",
             bnb_4bit_use_double_quant=True,
-            bnb_4bit_compute_dtype=torch.float16,
+            bnb_4bit_compute_dtype=_DTYPE,   # fp16 by default (September unchanged); bf16 on the pod
         )
         kwargs["device_map"] = {"": 0}
     hf = transformers.AutoModelForCausalLM.from_pretrained(path, **kwargs)
