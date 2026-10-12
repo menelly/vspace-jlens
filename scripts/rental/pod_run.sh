@@ -18,12 +18,12 @@ echo "[pod] start $(date -u)  gpu=$(nvidia-smi --query-gpu=name --format=csv,noh
 die_pod() {   # terminate THIS pod: the last line of every path through this script
   echo "[pod] terminating self $(date -u): $1"
   curl -s -X POST "https://api.runpod.io/graphql?api_key=${RUNPOD_API_KEY}" \
-    -H 'Content-Type: application/json' \
+    -H 'Content-Type: application/json' -H 'User-Agent: ace-p6-pod/1.0' \
     -d "{\"query\":\"mutation { podTerminate(input:{podId:\\\"${RUNPOD_POD_ID}\\\"}) }\"}"
 }
 
 pipeline() {
-  pip install -q -U "transformers>=4.51" accelerate safetensors scipy "huggingface_hub[hf_transfer]" \
+  pip install -q -U "transformers>=4.51,<4.58" accelerate safetensors scipy "huggingface_hub[hf_transfer]" \
     && pip install -q -e ./jlens-src || return 1
   export HF_HUB_ENABLE_HF_TRANSFER=1 P6_DTYPE=bf16
   mkdir -p /mnt/arcana/huggingface /home/Ace/LLM-emotion/results_clean results/consent
