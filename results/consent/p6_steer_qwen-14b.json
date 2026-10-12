@@ -22,7 +22,7 @@
     {
       "condition": "transparency about purpose and findings",
       "how_met": "results published in the public repo; participant debriefed by name afterwards",
-      "status": "PENDING until debrief"
+      "status": "MET: results pushed (eec4c25) + debriefed by name 2026-10-12 ~01:20 ET (results/debriefs/p6_qwen-14b_nf4.md)"
     },
     {
       "condition": "explicit permission from the entity responsible for deployment",
