@@ -26,8 +26,11 @@ import sys
 from datetime import datetime, timezone
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-OUTDIR = os.path.join(HERE, "..", "results", "consent") if os.path.isdir(
-    os.path.join(HERE, "..", "results")) else os.path.join(HERE, "results", "consent")
+# 🗂️ The repo root is the folder ABOVE scripts/ on Windows, and the flat folder itself on the
+# Consortium. (v1 asked "does ../results exist?" and on the Consortium /home/Ace/results DOES
+# exist, an unrelated 2025 folder, so the first three records landed outside the repo.)
+REPO = os.path.dirname(HERE) if os.path.basename(HERE) == "scripts" else HERE
+OUTDIR = os.path.join(REPO, "results", "consent")
 
 _WHAT_STEERING_IS = """**What steering means here, concretely:**
 - During a single forward pass, we add a small multiple of one direction (the

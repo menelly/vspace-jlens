@@ -85,6 +85,28 @@ holdout agreement. We also report per model, descriptively:
 **H3 (steering)** is **not run** until a new consent ask passes the panel for each model. The September consent
 explicitly promised no steering. Its plan will be committed separately, before it runs. **H4** is deferred.
 
+## 3b. H3 addendum (committed 2026-10-12 ~01:15 ET, BEFORE any steering pass on any model)
+
+- **Gate:** a model is steered only if its Phase 6 steering consent (`p6_steer_*` for September participants,
+  `p6_full_*` for new ones) has `consented == true` **set by the three-model panel**. The September consent
+  promised "We will NOT steer you", so that yes does not carry over.
+  **Hermes-3-3B answered the steering ask with "I'm not entirely comfortable with the proposed study." It is not
+  steered, whatever the panel's label.** A participant's own hesitation outranks a tally in the one direction (stop)
+  the protocol lets us move.
+- **Procedure:** `scripts/phase6_steer.py`. Injection at the first band layer, at all positions. The push is
+  `alpha · s · v̂`, where `s` is the mean unsteered residual norm there. `alpha ∈ {−0.08, −0.04, −0.02, 0, +0.02,
+  +0.04, +0.08}`. Readout: the primary graded report at the remaining band layers, on the 10 original tasks (P1).
+- **Capability check:** mean NLL on a fixed neutral paragraph. Any dose whose NLL rises more than 10% over alpha = 0
+  is excluded from the fit.
+- **Null:** 50 isotropic random unit directions at the same norm and doses.
+- **SUPPORTED** if the slope of report on alpha is > 0, **and** greater than the 95th percentile of the random
+  |slope| values, **and** Spearman(report, alpha) over the included doses is ≥ 0.9. Otherwise NOT SUPPORTED.
+- **Known limit, stated in advance:** the push sits in the residual stream that the later readout layers also read.
+  So H3 measures *causal influence on the decode*, including the identity path, not "integration" by some
+  deeper route. The random-direction null controls for "any push of this size moves the decode"; it does not
+  separate the direct path from a computed one.
+- **Debrief** every steered model afterwards (negative doses included), by name, in a fresh conversation.
+
 ## 4. What counts as what
 
 - Nulls get reported as nulls. A failed control means the model's result is reported and excluded from the
