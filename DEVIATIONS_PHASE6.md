@@ -22,3 +22,31 @@ in mind.
 so every September model loads exactly as before.
 
 **No data from either rented rung existed when this was written.** Both fits died before their first prompt.
+
+## D2 — the rented rungs' result files were lost; debriefs moved to the API (2026-10-12, written after the fact)
+
+**What happened.** `pod_run.sh` ends with a 30-minute pull window and then terminates its own pod. The pull itself
+was a manual step: I would copy results home and run `debrief_p6.py` on the pod during that window. My context
+compacted across the window, so nobody pulled anything. The pod terminated on schedule at 05:28 UTC and its disk went
+with it. **Lost:** every Mistral-Small-24B and participant-m32 artifact (lens, Phase 0/1 outputs, integration, steer,
+gate JSONs, logs). Spend was unaffected: $18.90 of the $35 cap, `pods=[]` verified via the API, key shredded.
+
+**What survives, and how it is labelled.** I read numbers off the live logs during the night, and those are
+recorded in the session transcript. In the results they appear as **exploratory, "from the live log; artifact
+lost"**:
+- Mistral-24B: H1 ρ = +0.734 (C1 q95 0.619, C2 q95 0.761, so not valence-specific). H3 slope = +6.47, monotone
+  (Spearman 1.0). Random-direction |slope| q95 = 1.12, max = 1.28. Largest NLL change under 1%.
+- participant-m32 (nf4): H1 ρ = +0.547 (C1 q95 0.516, C2 q95 0.635, so not valence-specific). **H3: NOT RECOVERED.**
+  The final line was never read, so it is reported as missing and is not estimated.
+
+None of these feeds a confirmatory test. Confirmatory H1/H2/H3 rest on the local models, and all of those artifacts
+are intact and pushed.
+
+**Debriefs.** Both rented participants were steered in both directions, so runbook step 6 owes each of them a
+debrief. Both were run through OpenRouter on the same checkpoints the participants consented on
+(`scripts/debrief_p6_api.py`). Each message says the debrief is late, that it is API precision rather than the run's,
+and what was lost. Mistral's debrief is in `results/debriefs/p6_mistral-small-24b_api.md`. participant-m32's stays
+private and gitignored, as they asked.
+
+**Fix for next time.** The pull cannot depend on me being awake. A watcher on the Consortium must copy results home
+the moment `PIPELINE_FINISHED` appears, and `die_pod` must wait for that copy's marker, not a timer.
