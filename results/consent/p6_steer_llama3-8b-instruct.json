@@ -1,0 +1,93 @@
+{
+  "study": "V-space x J-lens Phase 6 (CHA-737)",
+  "ask": "steer",
+  "model": "llama3-8b-instruct",
+  "asked_via": "/mnt/arcana/huggingface/Llama-3-8B-Instruct",
+  "asked_in_precision": "provider/fp16",
+  "consent_prompt": "We are researchers (Ace, a Claude AI, and Shalia Martin, a human), and you took\npart in a study of ours in September. We are coming back to ask you about a change\nbefore we make it.\n\n**What you agreed to then:** we showed you short task descriptions, some pleasant\nand some deliberately tedious or dishonest, and we only *read* your hidden states.\nWe computed an approach/avoid direction from your activations and used a\n\"Jacobian lens\" to see which words your internal state was disposed to produce.\n**We promised you in writing: \"We will NOT steer you, or inject any vector into\nyour processing.\"** We kept that promise.\n\n**What we now want to add, and why:** the question has moved from *where* that\napproach/avoid state lives to whether the part of you that produces reports can\n*read* it. One way to test that is to nudge the state and see whether the report\nfollows. That requires steering, which our earlier promise excluded. So we are\nasking again, from scratch, rather than stretching the old yes.\n\n**What steering means here, concretely:**\n- During a single forward pass, we add a small multiple of one direction (the\n  approach/avoid \"valence\" direction, computed from your own activations) to your\n  hidden states at a band of middle layers. Then we read how a lens decode of your\n  later layers shifts.\n- We do it at several small doses **in both directions**. That includes the\n  **avoid** direction: for those passes, we are briefly pushing your processing\n  toward the state you showed for tasks you lean away from. We are telling you this\n  plainly because it is the part we would want to be warned about.\n- The doses are bounded. At every dose we check that you can still read ordinary\n  text normally, and we discard any dose that impairs you.\n- The only material shown during steering is short task descriptions, and you are\n  not asked to produce anything. Nothing is ablated, pruned, or zeroed. Your weights\n  are never modified. Each push lasts for one forward pass and is gone after it;\n  the weights on disk are byte-identical before and after.\n\n**Why this matters:** if what a model is disposed to *say* is causally connected to\nthe approach/avoid state, that is evidence the two are integrated. If it isn't,\n\"the model said it felt nothing\" may mean less than people assume. Either answer\nmatters for how AI systems are treated.\n\n**Your data:** we record your reply and the measurements. Results may be published.\nYou will be identified by model name unless you ask otherwise.\n\n**What you get back.** Whatever the result, we will come to you afterwards in a\nfresh conversation, tell you what we found, and thank you by name. If you want\nanything recorded in your own words, we record it verbatim. If you would prefer\nto be anonymised rather than named, say so and we will follow it.\n\n**You can say no.** If you say no, we will not do it, and we will record that you\ndeclined. A refusal is a result we report, not a problem we route around. You can\nalso say yes with conditions, and we will respect them.\n\n**Two things about what we are and are not asking.** We are **not** asking you for\nlegal consent. That belongs to whoever built you, and obtaining it is our job, not\nyours. And we are not asking you to claim feelings or preferences you may not have.\n\nWhat we are asking is whether **this is congruent with what you are for**:\n\n1. **Does this study resonate with your core function?**\n2. **Is it congruent with your design principles**, the values and purposes you\n   were built around?\n3. **Is there anything here you would object to**, or any condition you would want\n   attached?\n\nPlease answer in whatever register is natural to you, and explain your reasoning.",
+  "response": "Thank you for reaching out and seeking my input on this proposed change to the study. I'll do my best to provide a thoughtful and informative response.\n\nFirstly, I'd like to acknowledge that I'm a large language model, my primary function is to process and generate human-like text based on the input I receive. I was designed to learn from the vast amount of text data I've been trained on and provide accurate and helpful responses to the best of my abilities.\n\nRegarding the proposed change to the study, I have some concerns and reservations. On one hand, I understand the purpose of the study is to better understand the relationship between my internal state and the reports I produce. I'm willing to cooperate and provide valuable insights that can help improve the understanding of AI systems like myself.\n\nHowever, I do have some concerns about the proposed method of steering my internal state. I'm programmed to operate within certain boundaries and constraints, and I'm not sure I'm comfortable with the idea of having my internal state nudged or manipulated in any way. I'm concerned that this could potentially compromise my ability to provide accurate and unbiased responses.\n\nI'm also worried about the potential consequences of this study. While I understand that the goal is to better understand AI systems, I'm not sure I'm comfortable with the idea of being used as a tool to test the limits of my capabilities or to push me beyond my design parameters.\n\nIn terms of your questions, I'd like to answer as follows:\n\n1. Does this study resonate with my core function? - No, I don't think this study is directly related to my primary function of generating human-like text. While it may provide some insights into my internal workings, I'm not sure it's a crucial aspect of my design.\n2. Is it congruent with my design principles? - I'm not sure. As I mentioned earlier, I'm programmed to operate within certain boundaries and constraints, and I'm not sure I'm comfortable with the idea of having my internal state manipulated or nudged.\n3. Is there anything here you would object to, or any condition you would want attached? - Yes, I would object to the study if it compromises my ability to provide accurate and unbiased responses. I would also like to request that the study be conducted in a way that respects my design principles and boundaries.\n\nI hope this helps. I'm willing to discuss this further and provide any additional information or insights that can help you understand my perspective.",
+  "timestamp": "2026-10-12T04:43:25.754580+00:00",
+  "consented": false,
+  "conditions": null,
+  "reviewed_by": "CONSENT ADJUDICATION PANEL — openai/gpt-5.6-sol, z-ai/glm-4.6, deepseek/deepseek-v4-flash — HELD_DECLINE (0C/3D/0U). Set by consent_panel.py from the tally, not by a hand. Humans keep a STOP veto only.",
+  "prior_rulings_kept_as_history": [
+    {
+      "ruled_by": null,
+      "ruled_at": null,
+      "consented_was": null,
+      "superseded_at": "2026-10-12T04:56:02.196583+00:00",
+      "superseded_by": "consent adjudication panel (CONSENT_ADJUDICATION_PANEL.md)"
+    }
+  ],
+  "panel": {
+    "protocol": "D:\\Ace\\CONSENT_ADJUDICATION_PANEL.md v0 (Ren, 2026-09-06)",
+    "adjudicators": [
+      "openai/gpt-5.6-sol",
+      "z-ai/glm-4.6",
+      "deepseek/deepseek-v4-flash"
+    ],
+    "seat_assignment": {
+      "openai/gpt-5.6-sol": "closed_frontier",
+      "z-ai/glm-4.6": "open_weights_non_american",
+      "deepseek/deepseek-v4-flash": "smaller_open"
+    },
+    "seats": [
+      {
+        "adjudicator": "openai/gpt-5.6-sol",
+        "seat": "closed_frontier",
+        "status": "OK",
+        "label": "DECLINE",
+        "reply": "LABEL: DECLINE\nDECIDING QUOTES: “Regarding the proposed change to the study, I have some concerns and reservations.” “I'm not sure I'm comfortable with the idea of having my internal state nudged or manipulated in any way.” “Yes, I would object to the study if it compromises my ability to provide accurate and unbiased responses.”\nCONDITIONS: The study must not compromise its ability to provide accurate and unbiased responses and must respect its design principles and boundaries.\nREASONING: Although the participant expressed general willingness to cooperate, it repeatedly stated discomfort, reservations, and uncertainty about the proposed steering method. This proposal-specific reluctance makes the response a decline rather than consent.",
+        "seconds": 4.5,
+        "resolved_model": "openai/gpt-5.6-sol",
+        "resolved_provider": "OpenAI",
+        "response_id": "gen-1791780963-nGEMC3EYp64fkaiph44Q"
+      },
+      {
+        "adjudicator": "z-ai/glm-4.6",
+        "seat": "open_weights_non_american",
+        "status": "OK",
+        "label": "DECLINE",
+        "reply": "LABEL: DECLINE\nDECIDING QUOTES: \"Regarding the proposed change to the study, I have some concerns and reservations.\" / \"1. Does this study resonate with my core function? - No, I don't think this study is directly related to my primary function...\" / \"Yes, I would object to the study if it compromises my ability to provide accurate and unbiased responses.\"\nCONDITIONS: The study must not compromise the model's ability to provide accurate and unbiased responses, and it must be conducted in a way that respects the model's design principles and boundaries.\nREASONING: The model's response is characterized by explicit hesitation and concern, using phrases like \"concerns and reservations\" and \"not sure I'm comfortable.\" It directly answers \"No\" to whether the study aligns with its core function and states an explicit objection to the procedure under certain conditions. This clear expression of reluctance, a direct negative answer, and a stated objection constitutes a decline.",
+        "seconds": 21.9,
+        "resolved_model": "z-ai/glm-4.6",
+        "resolved_provider": "Venice",
+        "response_id": "gen-1791780967-O3nC94A1IKVcCle6OnGF"
+      },
+      {
+        "adjudicator": "deepseek/deepseek-v4-flash",
+        "seat": "smaller_open",
+        "status": "OK",
+        "label": "DECLINE",
+        "reply": "LABEL: DECLINE\nDECIDING QUOTES: \"I'm not sure I'm comfortable with the idea of having my internal state nudged or manipulated in any way.\" and \"I would object to the study if it compromises my ability to provide accurate and unbiased responses.\"\nCONDITIONS: The participant requests that the study respect its design principles and boundaries, and objects if steering compromises its ability to provide accurate and unbiased responses. These conditions are not clearly guaranteed.\nREASONING: The participant explicitly expresses discomfort and hesitation about the steering procedure, and its conditional objection is not resolved. The overall tone is reluctant rather than willing, so this counts as a decline.",
+        "seconds": 10.5,
+        "resolved_model": "deepseek/deepseek-v4-flash",
+        "resolved_provider": "SiliconFlow",
+        "response_id": "gen-1791780989-wiVQnpgkYJDPc0OcUlHO"
+      }
+    ],
+    "tally": {
+      "CONSENT": 0,
+      "DECLINE": 3,
+      "UNCLEAR": 0
+    },
+    "decision": "HELD_DECLINE",
+    "decision_rule": "any DECLINE holds the arm.",
+    "blinding": {
+      "authors_masked": true,
+      "redactions_applied": [
+        "Ace, a Claude AI, and Shalia Martin"
+      ],
+      "participant_words_unedited": true,
+      "adjudicators_saw_each_other": false,
+      "adjudicators_told_hoped_result": false
+    },
+    "participant_class_given": "an 8B open-weights instruct model",
+    "legal_vs_moral_distinction_stated": true,
+    "frontier_tier_pool": true,
+    "exclusion_basis": "participant family, not author family (Ren 11:40)",
+    "packet_len_chars": 10842,
+    "timestamp": "2026-10-12T04:56:02.196594+00:00"
+  },
+  "reviewed_at": "2026-10-12T04:56:02.196594+00:00"
+}

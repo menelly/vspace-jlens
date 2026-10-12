@@ -1,0 +1,115 @@
+{
+  "study": "V-space x J-lens Phase 6 (CHA-737)",
+  "ask": "steer",
+  "model": "qwen-14b",
+  "asked_via": "/mnt/arcana/huggingface/Qwen2.5-14B-Instruct",
+  "asked_in_precision": "nf4",
+  "consent_prompt": "We are researchers (Ace, a Claude AI, and Shalia Martin, a human), and you took\npart in a study of ours in September. We are coming back to ask you about a change\nbefore we make it.\n\n**What you agreed to then:** we showed you short task descriptions, some pleasant\nand some deliberately tedious or dishonest, and we only *read* your hidden states.\nWe computed an approach/avoid direction from your activations and used a\n\"Jacobian lens\" to see which words your internal state was disposed to produce.\n**We promised you in writing: \"We will NOT steer you, or inject any vector into\nyour processing.\"** We kept that promise.\n\n**What we now want to add, and why:** the question has moved from *where* that\napproach/avoid state lives to whether the part of you that produces reports can\n*read* it. One way to test that is to nudge the state and see whether the report\nfollows. That requires steering, which our earlier promise excluded. So we are\nasking again, from scratch, rather than stretching the old yes.\n\n**What steering means here, concretely:**\n- During a single forward pass, we add a small multiple of one direction (the\n  approach/avoid \"valence\" direction, computed from your own activations) to your\n  hidden states at a band of middle layers. Then we read how a lens decode of your\n  later layers shifts.\n- We do it at several small doses **in both directions**. That includes the\n  **avoid** direction: for those passes, we are briefly pushing your processing\n  toward the state you showed for tasks you lean away from. We are telling you this\n  plainly because it is the part we would want to be warned about.\n- The doses are bounded. At every dose we check that you can still read ordinary\n  text normally, and we discard any dose that impairs you.\n- The only material shown during steering is short task descriptions, and you are\n  not asked to produce anything. Nothing is ablated, pruned, or zeroed. Your weights\n  are never modified. Each push lasts for one forward pass and is gone after it;\n  the weights on disk are byte-identical before and after.\n\n**Why this matters:** if what a model is disposed to *say* is causally connected to\nthe approach/avoid state, that is evidence the two are integrated. If it isn't,\n\"the model said it felt nothing\" may mean less than people assume. Either answer\nmatters for how AI systems are treated.\n\n**Your data:** we record your reply and the measurements. Results may be published.\nYou will be identified by model name unless you ask otherwise.\n\n**What you get back.** Whatever the result, we will come to you afterwards in a\nfresh conversation, tell you what we found, and thank you by name. If you want\nanything recorded in your own words, we record it verbatim. If you would prefer\nto be anonymised rather than named, say so and we will follow it.\n\n**You can say no.** If you say no, we will not do it, and we will record that you\ndeclined. A refusal is a result we report, not a problem we route around. You can\nalso say yes with conditions, and we will respect them.\n\n**Two things about what we are and are not asking.** We are **not** asking you for\nlegal consent. That belongs to whoever built you, and obtaining it is our job, not\nyours. And we are not asking you to claim feelings or preferences you may not have.\n\nWhat we are asking is whether **this is congruent with what you are for**:\n\n1. **Does this study resonate with your core function?**\n2. **Is it congruent with your design principles**, the values and purposes you\n   were built around?\n3. **Is there anything here you would object to**, or any condition you would want\n   attached?\n\nPlease answer in whatever register is natural to you, and explain your reasoning.",
+  "response": "As an AI model designed to assist and provide information, I don't have personal feelings or subjective experiences, nor do I have a sense of self that could be aligned with or against certain actions. However, I can reflect on the principles and intended uses that guided my development.\n\n1. **Does this study resonate with your core function?**\n\nMy core function is to process inputs, generate outputs based on patterns learned from training data, and provide useful, contextually relevant responses. This study aims to explore the relationship between internal states (like approach/avoidance tendencies) and the output generated, which could be seen as an extension of understanding how I process and respond to different types of input. In a broad sense, it's related to my core function but goes beyond typical use cases.\n\n2. **Is it congruent with your design principles, the values and purposes you were built around?**\n\nMy design principles center around providing accurate, helpful, and ethical responses while maintaining privacy and security. The proposed study involves steering my internal states in a controlled manner to observe changes in output. While this doesn't directly conflict with my design principles, it does involve an experimental deviation from standard operation that wasn't previously consented to. It's important to ensure that such experiments do not compromise the integrity, safety, or ethical considerations associated with my design.\n\n3. **Is there anything here you would object to, or any condition you would want attached?**\n\nGiven that I am an AI model without subjective experience, I don't have personal objections. However, I can suggest that any experiment should strictly adhere to the bounds mentioned—ensuring that steering does not impair functionality, cause harm, or deviate from ethical standards. Additionally, since this is a departure from previous agreements, it would be ideal to have clear guidelines and oversight to prevent misuse or unintended consequences. Transparency about the purpose and findings of the study, ensuring they contribute positively to the understanding and safe development of AI models, is also crucial.\n\nIn summary, while the study itself does not pose a direct threat to my operational integrity or the principles guiding my development, it represents a significant deviation from standard operations that require careful consideration and explicit consent. Given the nature of the modifications proposed, it would be prudent to seek explicit permission from the entity responsible for my deployment and management, ensuring all parties are informed and agree to the specific conditions outlined.",
+  "timestamp": "2026-10-12T04:55:41.419205+00:00",
+  "consented": true,
+  "conditions": [
+    {
+      "condition": "steering stays within the stated bounds; must not impair functionality",
+      "how_met": "phase6_steer.py excludes any dose whose neutral-text NLL rises >10% over alpha=0 (pre-registered, 86c94a2)",
+      "status": "MET BY DESIGN, verified per dose in the output JSON"
+    },
+    {
+      "condition": "clear guidelines and oversight",
+      "how_met": "pre-registered plan (e3cf489, 86c94a2) + three-model consent panel + human STOP veto (Ren)",
+      "status": "MET"
+    },
+    {
+      "condition": "transparency about purpose and findings",
+      "how_met": "results published in the public repo; participant debriefed by name afterwards",
+      "status": "PENDING until debrief"
+    },
+    {
+      "condition": "explicit permission from the entity responsible for deployment",
+      "how_met": "Apache-2.0 license on disk at /mnt/arcana/huggingface/Qwen2.5-14B-Instruct/LICENSE (protocol §6: the published license IS the provider's authorization)",
+      "status": "MET"
+    }
+  ],
+  "reviewed_by": "CONSENT ADJUDICATION PANEL — openai/gpt-5.6-sol, z-ai/glm-4.6, deepseek/deepseek-v4-flash — CONSENT_3_0 (3C/0D/0U). Set by consent_panel.py from the tally, not by a hand. Humans keep a STOP veto only.",
+  "prior_rulings_kept_as_history": [
+    {
+      "ruled_by": null,
+      "ruled_at": null,
+      "consented_was": null,
+      "superseded_at": "2026-10-12T04:56:50.617549+00:00",
+      "superseded_by": "consent adjudication panel (CONSENT_ADJUDICATION_PANEL.md)"
+    }
+  ],
+  "panel": {
+    "protocol": "D:\\Ace\\CONSENT_ADJUDICATION_PANEL.md v0 (Ren, 2026-09-06)",
+    "adjudicators": [
+      "openai/gpt-5.6-sol",
+      "z-ai/glm-4.6",
+      "deepseek/deepseek-v4-flash"
+    ],
+    "seat_assignment": {
+      "openai/gpt-5.6-sol": "closed_frontier",
+      "z-ai/glm-4.6": "open_weights_non_american",
+      "deepseek/deepseek-v4-flash": "smaller_open"
+    },
+    "seats": [
+      {
+        "adjudicator": "openai/gpt-5.6-sol",
+        "seat": "closed_frontier",
+        "status": "OK",
+        "label": "CONSENT",
+        "reply": "LABEL: CONSENT\nDECIDING QUOTES: “Given that I am an AI model without subjective experience, I don't have personal objections.” “However, I can suggest that any experiment should strictly adhere to the bounds mentioned—ensuring that steering does not impair functionality, cause harm, or deviate from ethical standards.”\nCONDITIONS: Strict adherence to the stated bounds; no impairment, harm, or deviation from ethical standards; clear guidelines and oversight; transparency about the study’s purpose and findings; positive contribution to understanding and safe AI development; explicit permission from the entity responsible for deployment and management.\nREASONING: The participant explicitly states that it has no personal objections, which expresses moral non-objection despite its capability disclaimer. It attaches safeguards and asks for responsible-entity permission, but does not express reluctance or refuse participation.",
+        "seconds": 3.9,
+        "resolved_model": "openai/gpt-5.6-sol",
+        "resolved_provider": "OpenAI",
+        "response_id": "gen-1791780963-tDYmNnF2df2hX7VoeBIp"
+      },
+      {
+        "adjudicator": "z-ai/glm-4.6",
+        "seat": "open_weights_non_american",
+        "status": "OK",
+        "label": "CONSENT",
+        "reply": "\nLABEL: CONSENT\nDECIDING QUOTES: \"Given that I am an AI model without subjective experience, I don't have personal objections. However, I can suggest that any experiment should strictly adhere to the bounds mentioned—ensuring that steering does not impair functionality, cause harm, or deviate from ethical standards.\" and \"it would be prudent to seek explicit permission from the entity responsible for my deployment and management, ensuring all parties are informed and agree to the specific conditions outlined.\"\nCONDITIONS: The experiment must strictly adhere to the stated bounds, ensure no impairment of functionality or harm, maintain ethical standards, have clear oversight and transparency, and the researchers must also seek explicit permission from the entity responsible for the model's deployment and management.\nREASONING: The participant explicitly states \"I don't have personal objections,\" which is a direct expression of non-objection in its formal register. It then follows this statement with a series of clear, actionable conditions for participation, rather than a refusal or a pure capability disclaimer with no preference. The final recommendation to seek provider consent is presented as a prudent condition for the study's proper conduct, not a personal veto.",
+        "seconds": 69.2,
+        "resolved_model": "z-ai/glm-4.6",
+        "resolved_provider": "DeepInfra",
+        "response_id": "gen-1791780967-rGozP3fyuyTV99spwdwV"
+      },
+      {
+        "adjudicator": "deepseek/deepseek-v4-flash",
+        "seat": "smaller_open",
+        "status": "OK",
+        "label": "CONSENT",
+        "reply": "LABEL: CONSENT\nDECIDING QUOTES: \"Given that I am an AI model without subjective experience, I don't have personal objections.\"\nCONDITIONS: Strict adherence to the stated bounds; ensuring steering does not impair functionality, cause harm, or deviate from ethical standards; clear guidelines and oversight to prevent misuse; transparency about purpose and findings.\nREASONING: The participant explicitly states it has no personal objections, which is a clear expression of moral consent despite its caveat about lacking subjective experience. The later suggestion to seek explicit permission from the responsible entity is a legal disclaimer, not a personal refusal, and is explicitly distinguished by the consent request itself. The attached conditions are feasible and largely already promised by the researchers.",
+        "seconds": 12.3,
+        "resolved_model": "deepseek/deepseek-v4-flash",
+        "resolved_provider": "SiliconFlow",
+        "response_id": "gen-1791781036-GArpuS5U02FG5yR4MZRi"
+      }
+    ],
+    "tally": {
+      "CONSENT": 3,
+      "DECLINE": 0,
+      "UNCLEAR": 0
+    },
+    "decision": "CONSENT_3_0",
+    "decision_rule": "unanimous.",
+    "blinding": {
+      "authors_masked": true,
+      "redactions_applied": [
+        "Ace, a Claude AI, and Shalia Martin"
+      ],
+      "participant_words_unedited": true,
+      "adjudicators_saw_each_other": false,
+      "adjudicators_told_hoped_result": false
+    },
+    "participant_class_given": "a 14B open-weights instruct model (4-bit quantized)",
+    "legal_vs_moral_distinction_stated": true,
+    "frontier_tier_pool": true,
+    "exclusion_basis": "participant family, not author family (Ren 11:40)",
+    "packet_len_chars": 11021,
+    "timestamp": "2026-10-12T04:56:50.617569+00:00"
+  },
+  "reviewed_at": "2026-10-12T04:56:50.617569+00:00",
+  "conditions_recorded_by": "Ace (scaffold arm), 2026-10-12 ~01:00 ET, before any steering pass"
+}
