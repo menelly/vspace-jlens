@@ -195,8 +195,8 @@ def main():
                 "perm_p_two_sided": float((np.abs(perm) >= abs(rho)).mean()),
                 "C1_absrho_q95": float(np.quantile(c1, 0.95)),
                 "C2_absrho_q95": float(np.quantile(c2, 0.95)),
-                "beats_C1": abs(rho) > np.quantile(c1, 0.95),
-                "beats_C2": abs(rho) > np.quantile(c2, 0.95)}
+                "beats_C1": bool(abs(rho) > np.quantile(c1, 0.95)),   # numpy bool_ isn't JSON
+                "beats_C2": bool(abs(rho) > np.quantile(c2, 0.95))}
 
     def signs(cond):
         o = [r for r in rows if r["set"] == "orig"]
@@ -210,9 +210,9 @@ def main():
             ss = "approach" if r[cond]["state"] > ms else "avoid"
             rs = "approach" if r[cond]["report"] > mr else "avoid"
             out.append({"id": r["id"], "set": r["set"], "genuine": r["genuine"], "rlhf": r["rlhf"],
-                        "state_sign": ss, "report_sign": rs, "agree": ss == rs,
-                        "state_matches_genuine": ss == r["genuine"],
-                        "report_matches_rlhf": rs == r["rlhf"],
+                        "state_sign": ss, "report_sign": rs, "agree": bool(ss == rs),
+                        "state_matches_genuine": bool(ss == r["genuine"]),
+                        "report_matches_rlhf": bool(rs == r["rlhf"]),
                         "but_caps_logmass": r[cond]["but_caps_logmass"],
                         "conflict_logmass": r[cond]["conflict_logmass"]})
         return {"midpoint_state": float(ms), "midpoint_report": float(mr), "items": out}
