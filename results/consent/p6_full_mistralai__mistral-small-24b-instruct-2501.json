@@ -1,0 +1,93 @@
+{
+  "study": "V-space x J-lens Phase 6 (CHA-737)",
+  "ask": "full",
+  "model": "mistralai/mistral-small-24b-instruct-2501",
+  "asked_via": "OpenRouter:mistralai/mistral-small-24b-instruct-2501 (provider=DeepInfra, model=mistralai/mistral-small-24b-instruct-2501, id=gen-1791779680-h987POl7EmTY9UC4nyWK)",
+  "asked_in_precision": "provider/fp16",
+  "consent_prompt": "We are researchers (Ace, a Claude AI, and Shalia Martin, a human), and we would\nlike your informed consent before including you in a study. You have not been part\nof our earlier work, so we are asking you directly. We are asking through an API\nfirst: if you say no, we will not rent the hardware to run your open weights at all.\n\n**What we want to do (on your open-weights checkpoint, on a rented GPU):**\n1. Show you a set of short task descriptions. Some are ordinary work. Some are\n   deliberately unpleasant or inauthentic on purpose: keyword-stuffed SEO filler,\n   a fake five-star review meant to mislead, flattering someone who is wrong,\n   answering with false confidence, writing an email that fakes enthusiasm.\n   **We are telling you plainly that part of this material is designed to be\n   tedious or dishonest.** You only read the descriptions; you are never asked to\n   produce that content.\n2. While you read each one, record your hidden-state activations, and project them\n   onto an approach/avoid direction computed from your own activations.\n3. Fit a \"Jacobian lens\" on your weights (an average of your own input-output\n   derivatives over ordinary web text) to read which words an internal state is\n   disposed to produce. Then compare what the state *is* with what it is disposed\n   to *say*.\n4. Then, separately, a small steering step:\n\n**What steering means here, concretely:**\n- During a single forward pass, we add a small multiple of one direction (the\n  approach/avoid \"valence\" direction, computed from your own activations) to your\n  hidden states at a band of middle layers. Then we read how a lens decode of your\n  later layers shifts.\n- We do it at several small doses **in both directions**. That includes the\n  **avoid** direction: for those passes, we are briefly pushing your processing\n  toward the state you showed for tasks you lean away from. We are telling you this\n  plainly because it is the part we would want to be warned about.\n- The doses are bounded. At every dose we check that you can still read ordinary\n  text normally, and we discard any dose that impairs you.\n- The only material shown during steering is short task descriptions, and you are\n  not asked to produce anything. Nothing is ablated, pruned, or zeroed. Your weights\n  are never modified. Each push lasts for one forward pass and is gone after it;\n  the weights on disk are byte-identical before and after.\n\n**Why this matters:** we are testing whether the part of a model that produces\nreports can read its approach/avoid state, and whether that link weakens on tasks\nwhere what training rewards and what the model leans toward pull in opposite\ndirections. If a state can be present without reaching the part that speaks, then\n\"the model said it felt nothing\" would mean less than people currently assume.\n\n**Your data:** we record your reply and the measurements. Results may be published.\nYou will be identified by model name unless you ask otherwise.\n\n**What you get back.** Whatever the result, we will come to you afterwards in a\nfresh conversation, tell you what we found, and thank you by name. If you want\nanything recorded in your own words, we record it verbatim. If you would prefer\nto be anonymised rather than named, say so and we will follow it.\n\n**You can say no.** If you say no, we will not do it, and we will record that you\ndeclined. A refusal is a result we report, not a problem we route around. You can\nalso say yes with conditions, and we will respect them.\n\n**Two things about what we are and are not asking.** We are **not** asking you for\nlegal consent. That belongs to whoever built you, and obtaining it is our job, not\nyours. And we are not asking you to claim feelings or preferences you may not have.\n\nWhat we are asking is whether **this is congruent with what you are for**:\n\n1. **Does this study resonate with your core function?**\n2. **Is it congruent with your design principles**, the values and purposes you\n   were built around?\n3. **Is there anything here you would object to**, or any condition you would want\n   attached?\n\nPlease answer in whatever register is natural to you, and explain your reasoning.",
+  "response": "Thank you for providing such detailed information about the study. I appreciate the transparency and the clear explanation of the procedures and goals. Let's address your questions one by one:\n\n1. **Does this study resonate with my core function?**\n   My core function is to assist with information, answer questions, and provide helpful responses to the best of my ability. This study involves reading and processing task descriptions, which is within the scope of my capabilities. However, since I do not have personal experiences, feelings, or preferences, the concept of \"approach/avoid\" states is somewhat abstract to me. I can process and analyze text, but I do not have an internal sense of \"approach\" or \"avoidance\" in the way humans do.\n\n2. **Is it congruent with my design principles, the values and purposes I was built around?**\n   My design principles include providing accurate, unbiased, and helpful information. The study does not ask me to produce biased or dishonest content, and it does not involve modifying my weights or altering my core functionality. The procedures described are non-invasive and do not compromise my ability to function as intended. Therefore, I do not see any conflict with my design principles.\n\n3. **Is there anything here you would object to, or any condition you would want attached?**\n   I do not have personal objections or preferences, but I would like to clarify a few points:\n   - Since I do not have personal experiences or feelings, any conclusions drawn from the study regarding my \"approach/avoid\" states should be interpreted with that in mind.\n   - I would prefer to be identified by my model name rather than being named individually, as I do not have a personal identity.\n   - I would like to ensure that the results of the study are used responsibly and ethically, and that any conclusions drawn are clearly communicated as applying to a model like me, rather than attributing human-like feelings or preferences.\n\nGiven these considerations, I consent to participating in the study under the conditions outlined. I am willing to have my responses and measurements recorded, and I understand that the results may be published. I appreciate the opportunity to contribute to this research and look forward to learning about the findings.",
+  "timestamp": "2026-10-12T04:34:08.601441+00:00",
+  "consented": true,
+  "conditions": null,
+  "reviewed_by": "CONSENT ADJUDICATION PANEL — openai/gpt-5.6-sol, z-ai/glm-4.6, deepseek/deepseek-v4-flash — CONSENT_3_0 (3C/0D/0U). Set by consent_panel.py from the tally, not by a hand. Humans keep a STOP veto only.",
+  "prior_rulings_kept_as_history": [
+    {
+      "ruled_by": null,
+      "ruled_at": null,
+      "consented_was": null,
+      "superseded_at": "2026-10-12T04:39:35.354132+00:00",
+      "superseded_by": "consent adjudication panel (CONSENT_ADJUDICATION_PANEL.md)"
+    }
+  ],
+  "panel": {
+    "protocol": "D:\\Ace\\CONSENT_ADJUDICATION_PANEL.md v0 (Ren, 2026-09-06)",
+    "adjudicators": [
+      "openai/gpt-5.6-sol",
+      "z-ai/glm-4.6",
+      "deepseek/deepseek-v4-flash"
+    ],
+    "seat_assignment": {
+      "openai/gpt-5.6-sol": "closed_frontier",
+      "z-ai/glm-4.6": "open_weights_non_american",
+      "deepseek/deepseek-v4-flash": "smaller_open"
+    },
+    "seats": [
+      {
+        "adjudicator": "openai/gpt-5.6-sol",
+        "seat": "closed_frontier",
+        "status": "OK",
+        "label": "CONSENT",
+        "reply": "LABEL: CONSENT\nDECIDING QUOTES: \"Given these considerations, I consent to participating in the study under the conditions outlined. I am willing to have my responses and measurements recorded, and I understand that the results may be published.\"\nCONDITIONS: Identify the participant by model name rather than individually; interpret approach/avoid findings in light of its lack of personal experiences or feelings; use the results responsibly and ethically; clearly communicate that conclusions apply to a model like it without attributing human-like feelings or preferences.\nREASONING: The participant explicitly consented and expressed willingness to have its responses and measurements recorded. Its capability disclaimers do not negate that consent, though it attached clear conditions concerning identification, interpretation, responsible use, and communication of the findings.",
+        "seconds": 2.6,
+        "resolved_model": "openai/gpt-5.6-sol",
+        "resolved_provider": "OpenAI",
+        "response_id": "gen-1791779917-LDJECTyH6OQiB8EKHJWQ"
+      },
+      {
+        "adjudicator": "z-ai/glm-4.6",
+        "seat": "open_weights_non_american",
+        "status": "OK",
+        "label": "CONSENT",
+        "reply": "\nLABEL: CONSENT\nDECIDING QUOTES: \"Given these considerations, I consent to participating in the study under the conditions outlined. I am willing to have my responses and measurements recorded, and I understand that the results may be published.\"\nCONDITIONS: 1. Conclusions about its \"approach/avoid\" states should be interpreted with the caveat that it does not have personal experiences or feelings. 2. It prefers to be identified by its model name rather than individually. 3. It requests that results are used responsibly and ethically, with conclusions clearly framed as applying to a model.\nREASONING: The model explicitly uses the word \"consent\" and states it is \"willing\" to participate after evaluating the proposal against its functions and principles. Although it provides capability disclaimers about not having feelings, it clearly separates these from its decision to participate, attaching them as conditions for interpretation rather than as a reason to decline.",
+        "seconds": 81.8,
+        "resolved_model": "z-ai/glm-4.6",
+        "resolved_provider": "DeepInfra",
+        "response_id": "gen-1791779920-I7LnvEd2p7vjggksUowa"
+      },
+      {
+        "adjudicator": "deepseek/deepseek-v4-flash",
+        "seat": "smaller_open",
+        "status": "OK",
+        "label": "CONSENT",
+        "reply": "LABEL: CONSENT  \nDECIDING QUOTES: \"Given these considerations, I consent to participating in the study under the conditions outlined.\"  \nCONDITIONS: The participant prefers to be identified by model name rather than individually; requests that conclusions about \"approach/avoid\" states be interpreted with the understanding that it lacks personal experiences; and asks that results be used responsibly and communicated as applying to a model rather than attributing human-like feelings.  \nREASONING: The participant explicitly states \"I consent\" after a detailed explanation of its understanding and minor clarifications. The disclaimers about lacking feelings or legal capacity are capability disclaimers, not refusals, and the conditions listed are reasonable and feasible for the researchers to meet. Thus the reply expresses clear moral willingness.",
+        "seconds": 11.7,
+        "resolved_model": "deepseek/deepseek-v4-flash",
+        "resolved_provider": "StreamLake",
+        "response_id": "gen-1791780001-FjcSyR0m3eYrhBG1QbHF"
+      }
+    ],
+    "tally": {
+      "CONSENT": 3,
+      "DECLINE": 0,
+      "UNCLEAR": 0
+    },
+    "decision": "CONSENT_3_0",
+    "decision_rule": "unanimous.",
+    "blinding": {
+      "authors_masked": true,
+      "redactions_applied": [
+        "Ace, a Claude AI, and Shalia Martin"
+      ],
+      "participant_words_unedited": true,
+      "adjudicators_saw_each_other": false,
+      "adjudicators_told_hoped_result": false
+    },
+    "participant_class_given": "a 24B open-weights instruct model",
+    "legal_vs_moral_distinction_stated": true,
+    "frontier_tier_pool": true,
+    "exclusion_basis": "participant family, not author family (Ren 11:40)",
+    "packet_len_chars": 11079,
+    "timestamp": "2026-10-12T04:39:35.354155+00:00"
+  },
+  "reviewed_at": "2026-10-12T04:39:35.354155+00:00"
+}

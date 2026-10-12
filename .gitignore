@@ -1,3 +1,5 @@
 lenses/
 *.pt
 __pycache__/
+# Participants who asked to be ANONYMIZED. Their consent records stay local, never in this public repo.
+results/consent/_anonymized_private/
