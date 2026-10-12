@@ -21,7 +21,7 @@ KEY = open(__import__("os").path.expanduser("~/.config/p6_runpod_key")).read().s
 def gql(q):
     req = urllib.request.Request("https://api.runpod.io/graphql?api_key=" + KEY,
                                  data=json.dumps({"query": q}).encode(),
-                                 headers={"Content-Type": "application/json"})
+                                 headers={"Content-Type": "application/json", "User-Agent": "ace-p6-watchdog/1.0"})
     return json.loads(urllib.request.urlopen(req, timeout=60).read())["data"]
 
 
