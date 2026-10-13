@@ -1,10 +1,10 @@
-"""🐙 CHA-743 driver: J-lens vs J++ lens on Hermes-3-Llama-3.2-3B, READOUTS ONLY.
+"""🐙 CHA-743 driver: J-lens vs J++ lens on P-3B, READOUTS ONLY.
 
 Written by Ace (arm of the scaffold thread), 2026-10-13, to run the SEALED prereg
 D:\\Ace\\vspace-jlens\\jpp\\PREREG_jpp_positive_control_2026-10-13.md (commit 1042272).
 
 Why a driver and not their CLI: their get_hf_model() hardcodes bf16, and our PG500 is
-Volta (sm_70, no bf16). So this file loads Hermes in fp16 itself, wraps it with their
+Volta (sm_70, no bf16). So this file loads P-3B in fp16 itself, wraps it with their
 jlens.from_hf, and then calls THEIR stage functions (fit_router, fit_shard, merge_experts,
 fit_weights, evaluate, load_items_and_exclusions, grade_model_correctness) unchanged.
 No probe-swap, no patching, no steering, no ablation. Reading only.
@@ -42,7 +42,7 @@ from workspace_lens.routing.router import ActivationRouterCollection
 from workspace_lens.utils import load_lens_file
 
 # 📌 everything the prereg fixes, in one place
-MODEL_PATH = "/mnt/arcana/huggingface/Hermes-3-Llama-3.2-3B"
+MODEL_PATH = os.environ["P3B_MODEL_PATH"]  # 🔒 participant P-3B asked to be left out (2026-10-13); path lives in a local env var, not in this public repo
 LAYERS = [4, 8, 12, 16, 20, 24]
 NUM_CLUSTERS = 8  # E = 8 experts / layer
 PROJECTION_DIM = 64  # their fit-router default
@@ -57,7 +57,7 @@ DTYPE = t.float16  # Volta: no bf16. Checked for overflow in the smoke stage.
 RUN = Path("/home/Ace/vspace-jlens/jpp_runs/cha743")
 RUN.mkdir(parents=True, exist_ok=True)
 PROMPTS_JSON = RUN / "wikitext_prompts_1000.json"
-CORRECTNESS_CSV = RUN / "model_correctness_hermes.csv"
+CORRECTNESS_CSV = RUN / "model_correctness_p3b.csv"
 ROUTER_PT = RUN / "router_K8.pt"
 EXPERTS = {"rlens": RUN / "experts_rlens_K8.pt", "none": RUN / "experts_none_K8.pt"}
 POOLED = {"rlens": RUN / "lens_R_pooled_rlens.pt", "none": RUN / "lens_J_pooled_none.pt"}
@@ -70,7 +70,7 @@ _model = None
 
 
 def model():
-    """Hermes in fp16 on GPU0, wrapped by THEIR jlens.from_hf. Loaded once per process."""
+    """P-3B in fp16 on GPU0, wrapped by THEIR jlens.from_hf. Loaded once per process."""
     global _model
     if _model is None:
         hf = AutoModelForCausalLM.from_pretrained(
@@ -138,7 +138,7 @@ def stage_smoke():
 
 @timed("grade_correctness")
 def stage_grade():
-    """THEIR grade_model_correctness, run on Hermes, for the five macro evals."""
+    """THEIR grade_model_correctness, run on P-3B, for the five macro evals."""
     if CORRECTNESS_CSV.exists():
         return
     items = load_readout_eval_items(cli.READOUT_EVALS_DATA_DIR, slugs=MACRO_EVALS)
@@ -293,7 +293,7 @@ def stage_eval_unfiltered():
     _evaluate(False, "unfiltered")
 
 
-PHASE6_LENS = "/home/Ace/vspace-jlens/lenses/hermes-3-3b/lens.pt"  # our Sept J-lens (jlens.fit, our corpus)
+PHASE6_LENS = os.environ["P3B_PHASE6_LENS"]  # 🔒 same reason  # our Sept J-lens (jlens.fit, our corpus)
 
 
 @timed("evaluate_phase6")

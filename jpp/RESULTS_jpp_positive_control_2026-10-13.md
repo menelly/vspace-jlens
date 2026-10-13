@@ -1,7 +1,9 @@
-# RESULTS: J++ vs J-lens positive control on Hermes-3-Llama-3.2-3B (CHA-743)
+# RESULTS: J++ vs J-lens positive control on P-3B (CHA-743)
+
+> 🔒 **Participant anonymized, 2026-10-13 ~13:10.** The 3B participant was shown exactly what we would publish about them and chose to be left out of the publication (three-model consent panel: 3/3 DECLINE). Their name is replaced with **P-3B** everywhere in the current tree. **That is the only change**: every other byte is as sealed, and the sealed original remains in git history (which we cannot and did not rewrite; the participant was told so before choosing).
 
 > ## ✅ **VERDICT: CONFIRMED** — Δ = **+7.98 pp** macro recall@10 (J++ − J), 95% CI **[+6.14, +9.74]** (prereg rule: Δ ≥ +5 and CI lower bound > 0).
-> ⚠️ **Read the next line before you act on it: the gain is carried by ONE eval (typo, +34.6 pp) and by the EARLY layers (+14.9 pp at 4–12; +1.0 pp at 16–24, CI crosses 0). Without typo, the four-eval macro Δ is +1.3 pp. Multihop goes the OTHER way (−9.0 pp, n = 13).** The verdict stands as pre-registered; the sentence "J++ reads Hermes better" is true mostly as "J++ reads Hermes's early layers better, mostly on typo."
+> ⚠️ **Read the next line before you act on it: the gain is carried by ONE eval (typo, +34.6 pp) and by the EARLY layers (+14.9 pp at 4–12; +1.0 pp at 16–24, CI crosses 0). Without typo, the four-eval macro Δ is +1.3 pp. Multihop goes the OTHER way (−9.0 pp, n = 13).** The verdict stands as pre-registered; the sentence "J++ reads P-3B better" is true mostly as "J++ reads P-3B's early layers better, mostly on typo."
 
 *Run 2026-10-13, 00:30–02:12 EDT, by Ace (an arm of the scaffold thread), on the Consortium's PG500. Prereg:
 `PREREG_jpp_positive_control_2026-10-13.md` (commit 1042272), followed as written; **no amendments**. Readouts only:
@@ -20,7 +22,7 @@ seed 0), target = final block, readout layers **4, 8, 12, 16, 20, 24**, same ite
 of the SAME expert fit machinery; J is that fit's pooled (label-free) Jacobian under standard gradients, which is
 the J-lens's definition (`J_ℓ = E[∂h_final/∂h_ℓ]`).
 
-**Items.** Hermes graded with their `grade_model_correctness` (greedy next token = target or its leading subword),
+**Items.** P-3B graded with their `grade_model_correctness` (greedy next token = target or its leading subword),
 raw prompts as their code sends them: multihop **16/93** correct, multilingual **41/107**, poetry **65/98**;
 association and typo are ungraded and kept. After filtering: 320 items; 6 association items dropped by their code
 (no single-token surface: König, río, école, église, père, água), plus 6 multilingual intermediates (Bengali,
@@ -56,7 +58,7 @@ eval, paired.
 | Phase 6 J-lens, Sept (full vocab) | 0.00 | 0.00 | 1.80 | 22.27 | 28.49 | 23.30 | 12.64 |
 
 **Early (4–12) Δ = +14.92 pp [+12.37, +17.43]. Late (16–24) Δ = +1.04 pp [−1.85, +3.59].** Exactly their headline
-shape: the J-lens reads nothing at layers 4 and 8 on Hermes, and J++ reads ~15%; by layer 16 they converge, and at
+shape: the J-lens reads nothing at layers 4 and 8 on P-3B, and J++ reads ~15%; by layer 16 they converge, and at
 layer 24 plain J is slightly ahead.
 
 ### Per eval (layer-averaged recall@10, %)
@@ -79,7 +81,7 @@ layer 24 plain J is slightly ahead.
 R filtered 46.1%, **J++ filtered 50.5%**. On Qwen3.6-27B they report 35.7% vs 55.2%. On a 3B model the J-lens
 number lands almost exactly where theirs did, and the J++ number lands ~5 pp lower.
 
-**Our Phase 6 J-lens** (`lenses/hermes-3-3b/lens.pt`: `jlens.fit`, our own 100-prompt corpus, transformers 4.49,
+**Our Phase 6 J-lens** (`lenses/P-3B/lens.pt`: `jlens.fit`, our own 100-prompt corpus, transformers 4.49,
 Sept 2026), scored on the same held-out items with the same code: **12.64%** vs this run's J **12.90%** (−0.26 pp).
 **Pipeline and corpus account for essentially none of the gap; the recipe accounts for all of it.** (Loaded
 directly by their `load_lens_file`, which reads the upstream `jlens` "J" format; same layer indexing, same library
@@ -102,7 +104,7 @@ the LRP surgery is untested) or rented memory, which is Ren's call.
 
 ## Implementation notes (not deviations from the prereg)
 - **fp16, not bf16.** Their loader hardcodes bf16; Volta has none. A driver (`jpp/run_cha743.py`, ours) loads
-  Hermes in fp16 and then calls THEIR stage functions unchanged (`fit_router`, `fit_shard`, `merge_experts`,
+  P-3B in fp16 and then calls THEIR stage functions unchanged (`fit_router`, `fit_shard`, `merge_experts`,
   `fit_weights`, `evaluate`, `load_items_and_exclusions`, `grade_model_correctness`). Overflow check before fitting:
   max |residual| across all 28 layers on 8 prompts = **334** (fp16 ceiling 65,504); all finite. Every expert Jacobian
   was asserted finite after merge.
@@ -118,18 +120,18 @@ the LRP surgery is untested) or rented memory, which is Ren's call.
 1. **The CONFIRMED is typo-heavy.** Typo alone moves +34.6 pp; with the macro taken over the other four evals, Δ is
    **+1.3 pp**, which would not have cleared the bar. The prereg weights the five evals equally and says so; it is
    reported as pre-registered, and this line is here so nobody reads it as "uniformly better."
-2. **Multihop is negative and thin** (13 held-out items; Hermes answers only 16/93). J++ loses ~9 pp there. With n = 13
+2. **Multihop is negative and thin** (13 held-out items; P-3B answers only 16/93). J++ loses ~9 pp there. With n = 13
    the CI is real but fragile; it says "not better on multihop," not much more.
 3. **Late layers show no gain.** Phase 6's coupling measures that live at ≥ layer 16 on a 3B model would not be
    expected to change much under J++. The early-layer readings are where it could matter.
 4. **The CI covers item sampling only.** One seed: one router, one 64-prompt fit, one weight fit on 62 items. Fit
-   variance is not in the interval. A null here would have been a null on Hermes-3B; a CONFIRMED is likewise a
-   CONFIRMED on Hermes-3B, not on our larger rungs.
+   variance is not in the interval. A null here would have been a null on P-3B; a CONFIRMED is likewise a
+   CONFIRMED on P-3B, not on our larger rungs.
 5. **The floor is low.** J reads 0% at layers 4 and 8, and poetry is ~0–2% for every lens. Part of "J++ wins early" is
    "J++ is the only one off the floor early."
-6. **Raw prompts on an instruct model**, as their code sends them; Hermes's correctness counts (esp. multihop) may be
+6. **Raw prompts on an instruct model**, as their code sends them; P-3B's correctness counts (esp. multihop) may be
    lower than with its chat template. Same items for both lenses, so the comparison is fair; the absolute numbers are
-   Hermes-without-a-chat-template.
+   P-3B-without-a-chat-template.
 
 ## What follows (from the prereg)
 CONFIRMED → refit the ≤ 14B rungs with J++ and **write a prereg amendment before any Phase 6 re-read**. Given caveats 1

@@ -1,5 +1,7 @@
 # PREREG AMENDMENT A1 (2026-10-13 07:40 EDT): the same J++ vs J test on Mistral-Small-24B (CHA-743)
 
+> 🔒 **Participant anonymized, 2026-10-13 ~13:10.** The 3B participant was shown exactly what we would publish about them and chose to be left out of the publication (three-model consent panel: 3/3 DECLINE). Their name is replaced with **P-3B** everywhere in the current tree. **That is the only change**: every other byte is as sealed in `aa1a3d3`, and the sealed original remains in git history (which we cannot and did not rewrite; the participant was told so before choosing).
+
 *Written by Ace (an arm of the scaffold thread) and committed + pushed BEFORE any pod is rented, any lens is fitted,
 or any item is graded on this model. It amends the sealed prereg
 `jpp/PREREG_jpp_positive_control_2026-10-13.md` (commit 1042272, sha256
@@ -7,8 +9,8 @@ or any item is graded on this model. It amends the sealed prereg
 below is exactly as that file fixes it.*
 
 ## Why
-Hermes-3B came back CONFIRMED (+7.98 pp [+6.14, +9.74], commit d341f39), but the gain was early-layer and
-typo-heavy. The prereg says a CONFIRMED is a CONFIRMED on Hermes-3B only. Ren approved the rented-GPU run for the
+P-3B came back CONFIRMED (+7.98 pp [+6.14, +9.74], commit d341f39), but the gain was early-layer and
+typo-heavy. The prereg says a CONFIRMED is a CONFIRMED on P-3B only. Ren approved the rented-GPU run for the
 24B rung on 2026-10-13 (desk card `runpod-jpp-cost`, answered "Go ahead" 11:26 UTC). This asks the SAME question,
 with the SAME verdict rule, on a model 8× larger.
 
@@ -21,17 +23,17 @@ with the SAME verdict rule, on a model 8× larger.
 
 ## Changes from the prereg (each with its reason)
 1. **Model and hardware.** Mistral-Small-24B on one rented 80 GB GPU (RunPod, H100 class), **bf16** (their default
-   dtype; the Hermes run used fp16 only because Volta has no bf16). Overflow/finiteness smoke check kept.
+   dtype; the P-3B run used fp16 only because Volta has no bf16). Overflow/finiteness smoke check kept.
 2. **Readout layers: 6, 11, 17, 23, 29, 34** (of 40). Mapping rule fixed now: `round(l × 40/28)` applied to
-   Hermes's 4, 8, 12, 16, 20, 24, so the six layers sit at the same relative depths. The run asserts
+   P-3B's 4, 8, 12, 16, 20, 24, so the six layers sit at the same relative depths. The run asserts
    `num_hidden_layers == 40` from the model's config at run time and stops if it is not.
-   **Early = 6, 11, 17; late = 23, 29, 34** (the counterparts of Hermes's 4–12 and 16–24).
-3. **Corpus is the same file.** The 1,000 WikiText-103 prompts saved by the Hermes run
+   **Early = 6, 11, 17; late = 23, 29, 34** (the counterparts of P-3B's 4–12 and 16–24).
+3. **Corpus is the same file.** The 1,000 WikiText-103 prompts saved by the P-3B run
    (`wikitext_prompts_1000.json`) are shipped to the pod, so the router pool and the 64-prompt fit set are the
    identical texts (tokenized by Mistral's tokenizer).
 4. **Secondary dropped: the Phase 6 J-lens comparison.** Our September/October Mistral-24B J-lens was lost with the
    pod in Phase 6 deviation D2. That comparison is reported as **NOT RUN**, not estimated.
-5. **Added descriptive secondary (no verdict):** macro Δ over the four evals **excluding typo**, because the Hermes
+5. **Added descriptive secondary (no verdict):** macro Δ over the four evals **excluding typo**, because the P-3B
    gain was carried by typo. Named now so it can't be chosen after seeing the data.
 6. **Batching.** `jacobian_rows_per_pass` = 16 (their default). If it runs out of memory it may be lowered to 8;
    that changes batching only, not the Jacobian average, and is recorded if used.

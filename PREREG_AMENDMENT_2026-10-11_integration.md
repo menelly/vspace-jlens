@@ -1,11 +1,13 @@
 # Pre-registration amendment, 2026-10-11: from LOCALIZATION to INTEGRATION (and masking)
 
+> 🔒 **Participant anonymized, 2026-10-13 ~13:10.** The 3B participant was shown exactly what we would publish about them and chose to be left out of the publication (three-model consent panel: 3/3 DECLINE). In this frozen file their name is replaced with **P-3B** and one quote is withheld. **Those are the only changes**; the frozen original is in git history.
+
 *Committed BEFORE any new data is collected for these hypotheses. Ideas: Ren (Shalia Martin). Write-up: Ace.*
 
 ## Why the question changes
 
 September asked *"is the valence axis inside J-space?"* (localization). The honest answer was a narrowed claim:
-in the three lens-validated models (hermes-3-3b, llama3-8b-instruct, qwen-14b), the valence axis sits **outside**
+in the three lens-validated models (P-3B, llama3-8b-instruct, qwen-14b), the valence axis sits **outside**
 the workspace at early and mid layers, and the depth trend is unresolved (C2 vs C3 disagree).
 
 Ren's framing (2026-10-11 20:41), stated as the working model, not as a claim this study can prove:
@@ -21,7 +23,7 @@ Under that model, valence being OUTSIDE the workspace is expected, not a failure
 
 Phase 2 (2026-09) read both instruments on the same forward pass over the below-floor bank. The correlation
 between the valence-axis projection (state) and the J-lens decode's affect readout (report disposition):
-hermes-3-3b r = -0.10; llama3-8b-instruct r = +0.56; qwen-14b r = +0.47. The decode-affect readout was a sparse
+P-3B r = -0.10; llama3-8b-instruct r = +0.56; qwen-14b r = +0.47. The decode-affect readout was a sparse
 lexicon (mostly zeros) and coupling was not a pre-registered outcome. This is why the hypotheses below are
 pre-registered now, with a better readout.
 
@@ -53,7 +55,7 @@ pre-registered now, with a better readout.
 
 ## Models
 
-The three lens-validated models first (hermes-3-3b, llama3-8b-instruct, qwen-14b). Larger models only if a local
+The three lens-validated models first (P-3B, llama3-8b-instruct, qwen-14b). Larger models only if a local
 rung passes Phase 0-A; any rental is a separate, evidence-backed ask.
 
 ## Standing rules that apply unchanged

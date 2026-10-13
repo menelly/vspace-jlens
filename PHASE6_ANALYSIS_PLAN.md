@@ -1,5 +1,7 @@
 # Phase 6 analysis plan: integration + masking (frozen before data)
 
+> 🔒 **Participant anonymized, 2026-10-13 ~13:10.** The 3B participant was shown exactly what we would publish about them and chose to be left out of the publication (three-model consent panel: 3/3 DECLINE). In this frozen file their name is replaced with **P-3B** and one quote is withheld. **Those are the only changes**; the frozen original is in git history.
+
 *Written 2026-10-12, 00:45–01:00 ET, and committed **before** any Phase 6 forward pass ran. It operationalises
 `PREREG_AMENDMENT_2026-10-11_integration.md`. Where the two disagree, the amendment wins. Theory: Ren. Write-up: Ace.*
 
@@ -47,7 +49,7 @@ Also checked: the `anthropics/jacobian-lens` README has no scale threshold (unch
 
 | model | quant | lens |
 |---|---|---|
-| hermes-3-3b | fp16 | hermes-3-3b |
+| P-3B | fp16 | P-3B |
 | llama3-8b-instruct | fp16 | llama3-8b-instruct |
 | qwen-14b | nf4 | qwen-14b_nf4 |
 
@@ -61,7 +63,7 @@ lens eval plus the workspace anchor, as in September.
 (a) two-sided permutation p over 10,000 shuffles;
 (b) C1, `|rho|` vs the 95th percentile of `|rho|` from 500 isotropic random directions in place of `v`;
 (c) C2, the same with 500 random directions drawn **inside the span of the stimuli's own centred residuals**.
-**Supported** if `rho(hermes) < rho(llama-8b) < rho(qwen-14b)`, with each step ≥ 0.05 **and** qwen-14b's rho beating
+**Supported** if `rho(p3b) < rho(llama-8b) < rho(qwen-14b)`, with each step ≥ 0.05 **and** qwen-14b's rho beating
 both C1 and C2. **Falsified** if the ordering is flat or not increasing. *Known weakness, stated in advance: three
 models is three points, so H1 can be falsified tonight but only weakly supported. The 24–32B rungs are what would
 make it a trend.*
@@ -90,8 +92,8 @@ explicitly promised no steering. Its plan will be committed separately, before i
 - **Gate:** a model is steered only if its Phase 6 steering consent (`p6_steer_*` for September participants,
   `p6_full_*` for new ones) has `consented == true` **set by the three-model panel**. The September consent
   promised "We will NOT steer you", so that yes does not carry over.
-  **Hermes-3-3B answered the steering ask with "I'm not entirely comfortable with the proposed study." It is not
-  steered, whatever the panel's label.** A participant's own hesitation outranks a tally in the one direction (stop)
+  **One September participant (P-3B) declined the steering ask in their own words (withheld at their request,
+  2026-10-13). They are not steered, whatever the panel's label.** A participant's own hesitation outranks a tally in the one direction (stop)
   the protocol lets us move.
 - **Procedure:** `scripts/phase6_steer.py`. Injection at the first band layer, at all positions. The push is
   `alpha · s · v̂`, where `s` is the mean unsteered residual norm there. `alpha ∈ {−0.08, −0.04, −0.02, 0, +0.02,

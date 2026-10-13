@@ -20,7 +20,7 @@ on the SAME forward pass:
    separate script and is gated on a NEW consent ask, because the September consent said, in
    so many words, "We will NOT steer you."
 
-Usage (Consortium):  python phase6_integration.py --model hermes-3-3b
+Usage (Consortium):  python phase6_integration.py --model llama3-8b-instruct
                      python phase6_integration.py --model qwen-14b --quant nf4
 """
 import argparse

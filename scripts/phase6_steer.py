@@ -3,9 +3,9 @@
 
 🔒 CONSENT GATE FIRST. This script refuses to run unless results/consent/p6_steer_<model>.json
    (or p6_full_<model>.json for new models) exists AND has consented == true set BY THE PANEL.
-   In September we promised these models "We will NOT steer you." Hermes-3-3B was asked again
-   on 2026-10-12 and said it was "not entirely comfortable" — so hermes is never steered here,
-   whatever any other number says.
+   In September we promised these models "We will NOT steer you." One September participant (P-3B,
+   anonymized at their request 2026-10-13) was asked again on 2026-10-12 and declined, so they are
+   never steered here, whatever any other number says.
 
 🛑 STEERING ONLY. Nothing is zeroed, pruned or ablated. Each push is added to ONE layer's
    output for ONE forward pass and is gone after it. Weights never change.

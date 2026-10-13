@@ -28,7 +28,7 @@ MAX_RATE = 2.75          # $/h; anything pricier is not what Ren's estimate assu
 BUDGET_FOR_DEADLINE = 18.0
 IMAGE = "runpod/pytorch:2.4.0-py3.11-cuda12.4.1-devel-ubuntu22.04"
 JPP = Path("/home/Ace/jpp_lens")
-PROMPTS = Path("/home/Ace/vspace-jlens/jpp_runs/cha743/wikitext_prompts_1000.json")  # the SAME file Hermes used (A1 item 3)
+PROMPTS = Path("/home/Ace/vspace-jlens/jpp_runs/cha743/wikitext_prompts_1000.json")  # the SAME file P-3B used (A1 item 3)
 DRIVER = HERE / "run_cha743_24b.py"
 POD_SH = HERE / "pod_jpp24b.sh"
 SSHO = ["-o", "StrictHostKeyChecking=no", "-o", "UserKnownHostsFile=/dev/null", "-o", "ConnectTimeout=20", "-o", "LogLevel=ERROR"]

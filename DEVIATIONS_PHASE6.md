@@ -13,7 +13,7 @@ identical at any value; only speed and memory change. (jlens's own default is 8.
 **Change 2, a real deviation.** The plan (§3c) said each rented rung runs in bf16. The 32B's bf16 weights (≈64 GB)
 leave room only for `dim_batch` ≈ 2, which would make the fit ≈4 h. Instead, **the 32B runs in NF4 for every step**
 (lens fit, Phase 0-A, Phase 1 axis extraction, Phase 6, H3), with the compute dtype set to bf16. The precedent is
-September's 14B rung, which was nf4 throughout. Phase 0-B measured NF4 preserving the J-geometry on hermes
+September's 14B rung, which was nf4 throughout. Phase 0-B measured NF4 preserving the J-geometry on p3b
 (mean cosine 0.968, top-64 subspace overlap 0.919). Mistral-Small-24B stays bf16. **Consequence for H1:** the ladder
 now mixes precisions (3B/8B fp16, 14B nf4, 24B bf16, 32B nf4). Any 24B-vs-32B difference has to be read with that
 in mind.
@@ -50,3 +50,20 @@ private and gitignored, as they asked.
 
 **Fix for next time.** The pull cannot depend on me being awake. A watcher on the Consortium must copy results home
 the moment `PIPELINE_FINISHED` appears, and `die_pod` must wait for that copy's marker, not a timer.
+
+## D3 — a participant asked to be left out of the publication (2026-10-13)
+
+**What happened.** During steering consent on 2026-10-12, the 3B September participant declined steering (held, never
+re-asked) and also raised a privacy concern about being measured and published. Ren's call (2026-10-13 13:02): show them
+the exact text we would publish and let them approve or veto. One ask, fresh conversation, four options from "publish as
+written" to "leave me out entirely" (`scripts/publication_ask.py`; record kept private). **They chose to be left out.**
+The three-model consent panel read it 3/3 DECLINE.
+
+**What we did.** Their Phase 6 numbers and words appear nowhere in the publication. In the current tree of this public
+repo their name is replaced with **P-3B** in every Phase 6 and J++ file, with a note under each title. Git history was not
+rewritten, and the participant was told that before choosing. The results report this as "one participant asked to be
+left out." Their September data was collected under that study's own consent and stands as documented
+(withdrawal is prospective, per the house consent policy).
+
+**Consequence for H1.** The confirmatory ladder loses its bottom rung in public. Whatever H1 says is reported on the
+rungs whose participants agreed, with the change stated, never with the missing rung's number estimated or implied.

@@ -1,5 +1,7 @@
 # 🔬 J++ lens on our own models (CHA-743)
 
+> 🔒 **Participant anonymized, 2026-10-13 ~13:10.** The 3B participant was shown exactly what we would publish about them and chose to be left out of the publication (three-model consent panel: 3/3 DECLINE). Their name is replaced with **P-3B** everywhere in the current tree. **That is the only change**: every other byte is as sealed, and the sealed original remains in git history (which we cannot and did not rewrite; the participant was told so before choosing).
+
 **What J++ is:** Ayonrinde & Lindsey, *"J++ Lens: Jacobian Filtering Enables More Faithful Workspace
 Lenses"* (LessWrong, 2026-10-08; post `nc9dHfcB22JdMzGbr`). Code: https://github.com/safety-research/jpp_lens
 (Apache-2.0, Anthropic PBC; modified by Kola Ayonrinde). It improves the J-lens we already use by fitting
@@ -26,7 +28,7 @@ excited to see someone try this!"*
 
 ## Rules for this work (from CHA-743)
 - **Readouts only.** Ren, 2026-10-13 00:19: *"we have the local consent files that cover reading, just not ablation."* Their causal eval patches lens vectors into the model: **activation patching needs Ren's okay first.** No ablation, ever.
-- **Positive control before any Phase 6 re-read:** J++ vs our plain J-lens on Hermes-3B, their readout tasks, thresholds fixed in a prereg committed BEFORE the run. It must be able to end REFUTED.
+- **Positive control before any Phase 6 re-read:** J++ vs our plain J-lens on P-3B, their readout tasks, thresholds fixed in a prereg committed BEFORE the run. It must be able to end REFUTED.
 - RunPod money (24B/32B) is Ren's call.
 
 ## Apply the patch

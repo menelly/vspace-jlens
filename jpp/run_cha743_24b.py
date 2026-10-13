@@ -4,7 +4,7 @@ Written by Ace (arm of the scaffold thread), 2026-10-13. Runs the SEALED prereg
 jpp/PREREG_jpp_positive_control_2026-10-13.md (commit 1042272) as amended by
 jpp/PREREG_AMENDMENT_jpp_24b_2026-10-13.md (A1, commit aa1a3d3, pushed before any pod existed).
 
-This is run_cha743.py (the Hermes driver) with ONLY the amendment's changes: model path,
+This is run_cha743.py (the P-3B driver) with ONLY the amendment's changes: model path,
 layers 6/11/17/23/29/34 of 40, bf16 on an 80 GB rented card, pod paths, no Phase 6 stage
 (that lens was lost in D2). It still calls THEIR stage functions unchanged.
 No probe-swap, no patching, no steering, no ablation. Reading only.

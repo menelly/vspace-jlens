@@ -1,8 +1,10 @@
 # RESULTS: J++ vs J-lens on Mistral-Small-24B-Instruct-2501 (CHA-743, amendment A1)
 
+> 🔒 **Participant anonymized, 2026-10-13 ~13:10.** The 3B participant was shown exactly what we would publish about them and chose to be left out of the publication (three-model consent panel: 3/3 DECLINE). Their name is replaced with **P-3B** everywhere in the current tree. **That is the only change**: every other byte is as sealed, and the sealed original remains in git history (which we cannot and did not rewrite; the participant was told so before choosing).
+
 > ## ✅ **VERDICT: CONFIRMED.** Δ = **+7.60 pp** macro recall@10 (J++ − J), 95% CI **[+6.34, +8.86]** (rule: Δ ≥ +5 and CI lower bound > 0).
-> 🔁 **It replicates Hermes's headline (+7.98) and is LESS lopsided:** the late layers gain too (**+4.1 pp [+2.3, +5.9]**; on Hermes +1.0, CI crossing 0), the no-typo macro is positive with a CI clear of zero (**+3.4 pp [+2.3, +4.6]**; Hermes +1.3, CI crossing 0), and multihop is not negative (**+2.1 [−1.6, +5.2]**; Hermes −9.0).
-> ⚠️ **What did NOT replicate: the very first readout layer.** At L6 every lens reads ~nothing (J++ 0.26%); Hermes's J++ read 14.5% at its L4. On the 24B the early gain lives at **L11 and L17**, not at the shallowest layer. Typo is still the single biggest mover (+24.2 pp).
+> 🔁 **It replicates P-3B's headline (+7.98) and is LESS lopsided:** the late layers gain too (**+4.1 pp [+2.3, +5.9]**; on P-3B +1.0, CI crossing 0), the no-typo macro is positive with a CI clear of zero (**+3.4 pp [+2.3, +4.6]**; P-3B +1.3, CI crossing 0), and multihop is not negative (**+2.1 [−1.6, +5.2]**; P-3B −9.0).
+> ⚠️ **What did NOT replicate: the very first readout layer.** At L6 every lens reads ~nothing (J++ 0.26%); P-3B's J++ read 14.5% at its L4. On the 24B the early gain lives at **L11 and L17**, not at the shallowest layer. Typo is still the single biggest mover (+24.2 pp).
 
 *Run 2026-10-13, pod rented 07:39:27 and terminated 12:47:42 EDT, by Ace (an arm of the scaffold thread). Prereg
 `PREREG_jpp_positive_control_2026-10-13.md` (1042272, sha256 6c4a0edc…, not edited) as amended by
@@ -11,16 +13,16 @@ further amendments**. Readouts only: no probe-swap, no patching, no steering, no
 name, and nothing here attributes human-like feelings to them (the conditions they set when consenting).*
 
 ## What ran
-Same three lenses as Hermes, same code path (their stage functions, our driver `jpp/run_cha743_24b.py`): **J** = pooled
+Same three lenses as P-3B, same code path (their stage functions, our driver `jpp/run_cha743_24b.py`): **J** = pooled
 Jacobian under standard gradients, full vocabulary; **J++** = 8 expert Jacobians/layer under LRP, signed weights fitted
-on the 20% split, Readout Filtering on (5,192 non-semantic ids excluded in Mistral's tokenizer; 8,113 in Hermes's);
+on the 20% split, Readout Filtering on (5,192 non-semantic ids excluded in Mistral's tokenizer; 8,113 in P-3B's);
 **R** = pooled LRP Jacobian. Readout layers **6, 11, 17, 23, 29, 34** of 40 (A1 rule `round(l×40/28)`; the 40 was
 asserted from `config.json` at run time). Same 1,000/64 WikiText prompts (the identical file), K = 8, seed 0, bf16.
 `jacobian_rows_per_pass` stayed 16 (no OOM; peak 61.0 GiB on an 80 GB card).
 
 **Items.** Mistral graded with their `grade_model_correctness`, raw prompts: multihop **39/93**, multilingual **82/107**,
-poetry **88/98** (Hermes: 16, 41, 65). After filtering, **407 items = 79 fit + 328 held-out.** Only one intermediate had
-no single-token surface in Mistral's tokenizer ('Estonian'; Hermes dropped 12).
+poetry **88/98** (P-3B: 16, 41, 65). After filtering, **407 items = 79 fit + 328 held-out.** Only one intermediate had
+no single-token surface in Mistral's tokenizer ('Estonian'; P-3B dropped 12).
 
 | eval | held-out items | (item, intermediate) pairs |
 |---|---|---|
@@ -60,8 +62,8 @@ no single-token surface in Mistral's tokenizer ('Estonian'; Hermes dropped 12).
 
 **A1 item 5, named before the data:** macro Δ over the four evals **without typo = +3.44 pp [+2.28, +4.62].**
 
-## Side by side with Hermes-3B (same rule, same code)
-| | Hermes-3B | Mistral-24B |
+## Side by side with P-3B (same rule, same code)
+| | P-3B | Mistral-24B |
 |---|---|---|
 | primary Δ | +7.98 [+6.14, +9.74] | **+7.60 [+6.34, +8.86]** |
 | early Δ | +14.92 [+12.37, +17.43] | +11.11 [+9.56, +12.79] |
@@ -77,7 +79,7 @@ no single-token surface in Mistral's tokenizer ('Estonian'; Hermes dropped 12).
 ## Secondaries (descriptive, no verdict)
 - **Where the gain comes from:** experts + weights on top of LRP (J++ vs R, both filtered) **+6.55**; LRP alone (R vs J,
   filtered) **+0.51**; Readout Filtering alone on J **+0.54**. J++ vs J with the filter held fixed: +7.06 (filtered),
-  +6.61 (full vocab). **On the 24B, Jacobian Filtering is nearly all of it**, even more so than on Hermes.
+  +6.61 (full vocab). **On the 24B, Jacobian Filtering is nearly all of it**, even more so than on P-3B.
 - **Their headline metric** (best rank over the 6 layers, macro recall@10): J full vocab **47.99%**, J filtered 48.06%,
   R filtered 48.50%, **J++ filtered 57.11%**. They report 35.7% → 55.2% on Qwen3.6-27B.
 - **Phase 6 J-lens comparison: NOT RUN.** That lens was lost with the pod in D2 (A1 item 4).
@@ -117,18 +119,18 @@ design), so its timing reads 0 s.
 - The supervisor (`jpp/rental/supervise_24b.py`, on the Consortium) pulled `/root/run`, checked every file's byte count
   against the pod's own listing (27/27), and only then terminated the pod and confirmed `pods=[]`. The D2 failure mode
   (results lost with the pod) did not recur.
-- Analysis: `jpp/analyze_cha743_24b.py`, identical to the Hermes script except A1's layers/early-late split and the no-typo
-  macro. **Positive control:** pointed back at the Hermes outputs it reproduces +7.98 [+6.14, +9.74] and +1.32 exactly.
+- Analysis: `jpp/analyze_cha743_24b.py`, identical to the P-3B script except A1's layers/early-late split and the no-typo
+  macro. **Positive control:** pointed back at the P-3B outputs it reproduces +7.98 [+6.14, +9.74] and +1.32 exactly.
   Tables are printed from the summary JSON by `jpp/tables_cha743_24b.py`, not retyped.
 - Small outputs: `jpp/results_cha743_24b/`. Lenses, experts, shards and the residual cache (≈7.6 GB): Consortium
   `/mnt/nursery/jpp_runs/cha743_24b/`.
 
 ## Honest caveats
-1. **The shallowest layer isn't rescued.** At L6 (15% depth) J++ reads 0.26%, essentially the floor. On Hermes the
-   comparable layer (L4, 14% depth) was where J++ looked best. Whatever J++ recovers early on Hermes, it recovers somewhat
+1. **The shallowest layer isn't rescued.** At L6 (15% depth) J++ reads 0.26%, essentially the floor. On P-3B the
+   comparable layer (L4, 14% depth) was where J++ looked best. Whatever J++ recovers early on P-3B, it recovers somewhat
    later on the 24B. The A1 depth mapping is proportional and was fixed in advance; it is still one mapping.
 2. **Typo still leads** (+24.2 pp). The no-typo macro (+3.4) is real (CI excludes 0) but would not clear the +5 bar alone.
-3. **Poetry is at the floor** for every lens (≈2–3%), as on Hermes. A poetry null is a floor, not evidence about J++.
+3. **Poetry is at the floor** for every lens (≈2–3%), as on P-3B. A poetry null is a floor, not evidence about J++.
 4. **Multihop n = 32** (33 pairs); its CI spans zero. "Not worse on multihop" is all it supports.
 5. **The CI covers item sampling only.** One seed, one router, one 64-prompt fit, one weight fit on 79 items.
 6. **Raw prompts on an instruct model**, as their code sends them (no chat template); same items for both lenses.
