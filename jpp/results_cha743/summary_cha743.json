@@ -1,0 +1,229 @@
+{
+  "primary": {
+    "delta_pp": 7.98,
+    "ci95_pp": [
+      6.14,
+      9.74
+    ],
+    "verdict": "CONFIRMED",
+    "J_macro_recall10_pct": 12.9,
+    "Jpp_macro_recall10_pct": 20.88
+  },
+  "delta_early_4_8_12": {
+    "delta_pp": 14.92,
+    "ci95_pp": [
+      12.37,
+      17.43
+    ]
+  },
+  "delta_late_16_20_24": {
+    "delta_pp": 1.04,
+    "ci95_pp": [
+      -1.85,
+      3.59
+    ]
+  },
+  "per_eval_delta_pp": {
+    "multihop": {
+      "n_heldout_items": 13,
+      "J_pct": 35.9,
+      "Jpp_pct": 26.92,
+      "delta_pp": -8.97,
+      "ci95_pp": [
+        -15.38,
+        -3.85
+      ]
+    },
+    "multilingual": {
+      "n_heldout_items": 33,
+      "J_pct": 12.16,
+      "Jpp_pct": 19.28,
+      "delta_pp": 7.11,
+      "ci95_pp": [
+        4.92,
+        9.39
+      ]
+    },
+    "typo": {
+      "n_heldout_items": 77,
+      "J_pct": 12.77,
+      "Jpp_pct": 47.4,
+      "delta_pp": 34.63,
+      "ci95_pp": [
+        29.0,
+        40.04
+      ]
+    },
+    "association": {
+      "n_heldout_items": 77,
+      "J_pct": 3.03,
+      "Jpp_pct": 8.87,
+      "delta_pp": 5.84,
+      "ci95_pp": [
+        2.81,
+        9.09
+      ]
+    },
+    "poetry": {
+      "n_heldout_items": 52,
+      "J_pct": 0.64,
+      "Jpp_pct": 1.92,
+      "delta_pp": 1.28,
+      "ci95_pp": [
+        0.0,
+        2.88
+      ]
+    }
+  },
+  "per_layer_macro_recall10_pct": {
+    "J (plain, full vocab) [PRIMARY]": {
+      "4": 0.0,
+      "8": 0.0,
+      "12": 3.08,
+      "16": 22.01,
+      "20": 28.6,
+      "24": 23.71
+    },
+    "J++ (filtered) [PRIMARY]": {
+      "4": 14.54,
+      "8": 17.34,
+      "12": 15.96,
+      "16": 24.78,
+      "20": 31.02,
+      "24": 21.63
+    },
+    "J (filtered)": {
+      "4": 0.0,
+      "8": 1.11,
+      "12": 5.47,
+      "16": 23.65,
+      "20": 29.01,
+      "24": 24.28
+    },
+    "J++ (full vocab)": {
+      "4": 14.02,
+      "8": 16.26,
+      "12": 14.88,
+      "16": 24.22,
+      "20": 29.06,
+      "24": 21.22
+    },
+    "R-lens / pooled LRP (filtered)": {
+      "4": 5.09,
+      "8": 2.14,
+      "12": 8.97,
+      "16": 25.11,
+      "20": 29.33,
+      "24": 24.54
+    },
+    "R-lens / pooled LRP (full vocab)": {
+      "4": 3.64,
+      "8": 0.41,
+      "12": 8.67,
+      "16": 24.96,
+      "20": 29.33,
+      "24": 23.97
+    },
+    "Phase6 J (full vocab)": {
+      "4": 0.0,
+      "8": 0.0,
+      "12": 1.8,
+      "16": 22.27,
+      "20": 28.49,
+      "24": 23.3
+    },
+    "Phase6 J (filtered)": {
+      "4": 0.0,
+      "8": 1.11,
+      "12": 4.82,
+      "16": 24.69,
+      "20": 29.17,
+      "24": 23.71
+    }
+  },
+  "layer_avg_macro_recall10_pct": {
+    "J (plain, full vocab) [PRIMARY]": 12.9,
+    "J++ (filtered) [PRIMARY]": 20.88,
+    "J (filtered)": 13.92,
+    "J++ (full vocab)": 19.94,
+    "R-lens / pooled LRP (filtered)": 15.86,
+    "R-lens / pooled LRP (full vocab)": 15.16,
+    "Phase6 J (full vocab)": 12.64,
+    "Phase6 J (filtered)": 13.92
+  },
+  "per_eval_layer_avg_recall10_pct": {
+    "J (plain, full vocab) [PRIMARY]": {
+      "multihop": 35.9,
+      "multilingual": 12.16,
+      "typo": 12.77,
+      "association": 3.03,
+      "poetry": 0.64
+    },
+    "J++ (filtered) [PRIMARY]": {
+      "multihop": 26.92,
+      "multilingual": 19.28,
+      "typo": 47.4,
+      "association": 8.87,
+      "poetry": 1.92
+    },
+    "J (filtered)": {
+      "multihop": 35.9,
+      "multilingual": 15.32,
+      "typo": 13.64,
+      "association": 4.11,
+      "poetry": 0.64
+    },
+    "J++ (full vocab)": {
+      "multihop": 26.92,
+      "multilingual": 18.27,
+      "typo": 45.02,
+      "association": 8.23,
+      "poetry": 1.28
+    },
+    "R-lens / pooled LRP (filtered)": {
+      "multihop": 29.49,
+      "multilingual": 14.77,
+      "typo": 29.0,
+      "association": 4.76,
+      "poetry": 1.28
+    },
+    "R-lens / pooled LRP (full vocab)": {
+      "multihop": 29.49,
+      "multilingual": 12.79,
+      "typo": 27.49,
+      "association": 4.76,
+      "poetry": 1.28
+    },
+    "Phase6 J (full vocab)": {
+      "multihop": 34.62,
+      "multilingual": 12.16,
+      "typo": 13.2,
+      "association": 2.6,
+      "poetry": 0.64
+    },
+    "Phase6 J (filtered)": {
+      "multihop": 34.62,
+      "multilingual": 15.07,
+      "typo": 15.58,
+      "association": 3.68,
+      "poetry": 0.64
+    }
+  },
+  "their_metric_best_over_layers_macro_recall10_pct": {
+    "J full vocab": 38.06,
+    "J filtered": 41.52,
+    "Jpp filtered": 50.52,
+    "Jpp full vocab": 49.12,
+    "R filtered": 46.14,
+    "R full vocab": 44.77
+  },
+  "decomposition_pp": {
+    "Jpp_vs_J_both_filtered": 6.96,
+    "Jpp_vs_J_both_full_vocab": 7.04,
+    "filter_alone_on_J": 1.02,
+    "R_filtered_vs_J_filtered (LRP alone)": 1.94,
+    "Jpp_vs_R_both_filtered (experts alone)": 5.02
+  },
+  "phase6_vs_new_J_full_vocab_pp": -0.26,
+  "Jpp_vs_phase6_J_primary_style_pp": 8.24
+}

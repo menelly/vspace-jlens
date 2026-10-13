@@ -1,0 +1,50 @@
+{
+  "smoke_fp16": {
+    "wall_clock_s": 75.8,
+    "peak_gpu_mem_GiB": 6.05,
+    "peak_gpu_reserved_GiB": 6.11,
+    "dtype": "torch.float16"
+  },
+  "fit_router": {
+    "wall_clock_s": 72.1,
+    "peak_gpu_mem_GiB": 6.02,
+    "peak_gpu_reserved_GiB": 6.07,
+    "dtype": "torch.float16"
+  },
+  "fit_shard_merge_rlens": {
+    "wall_clock_s": 2724.6,
+    "peak_gpu_mem_GiB": 10.66,
+    "peak_gpu_reserved_GiB": 15.0,
+    "dtype": "torch.float16"
+  },
+  "fit_shard_merge_none": {
+    "wall_clock_s": 2981.1,
+    "peak_gpu_mem_GiB": 11.77,
+    "peak_gpu_reserved_GiB": 15.48,
+    "dtype": "torch.float16"
+  },
+  "fit_weights": {
+    "wall_clock_s": 27.9,
+    "peak_gpu_mem_GiB": 6.6,
+    "peak_gpu_reserved_GiB": 15.48,
+    "dtype": "torch.float16"
+  },
+  "evaluate_filtered": {
+    "wall_clock_s": 16.2,
+    "peak_gpu_mem_GiB": 6.64,
+    "peak_gpu_reserved_GiB": 15.48,
+    "dtype": "torch.float16"
+  },
+  "evaluate_unfiltered": {
+    "wall_clock_s": 15.5,
+    "peak_gpu_mem_GiB": 6.64,
+    "peak_gpu_reserved_GiB": 15.48,
+    "dtype": "torch.float16"
+  },
+  "evaluate_phase6": {
+    "wall_clock_s": 34.1,
+    "peak_gpu_mem_GiB": 6.95,
+    "peak_gpu_reserved_GiB": 7.0,
+    "dtype": "torch.float16"
+  }
+}
