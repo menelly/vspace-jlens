@@ -1,0 +1,22 @@
+--- a/src/workspace_lens/lrp/lrp.py	2026-10-13 00:24:41.194807580 -0400
++++ b/src/workspace_lens/lrp/lrp.py	2026-10-13 00:25:50.268483160 -0400
+@@ -90,6 +90,10 @@
+ _KNOWN_GATED_MLPS = (
+     "Qwen3_5MLP",
+     "Qwen2MLP",
++    # Ace (CHA-743, 2026-10-13): Llama/Mistral MLP forward verified byte-identical to Qwen2MLP
++    # (transformers 5.14.1, inspect.getsource). LlamaMLP may carry mlp_bias; our checkpoints set it False.
++    "LlamaMLP",
++    "MistralMLP",
+     "Qwen3MLP",
+     "Qwen3_5MoeMLP",
+     "Qwen3MoeMLP",
+@@ -325,6 +329,8 @@
+     # Value-identical family: zero-init (1+w), same eps attr, same cast order.
+     "Qwen3_5MoeRMSNorm": _qwen3_5_rmsnorm_lrp_forward,
+     "Qwen2RMSNorm": _qwen2_rmsnorm_lrp_forward,
++    "LlamaRMSNorm": _qwen2_rmsnorm_lrp_forward,  # Ace: forward byte-identical to Qwen2s (5.14.1)
++    "MistralRMSNorm": _qwen2_rmsnorm_lrp_forward,  # Ace: forward byte-identical to Qwen2s (5.14.1)
+     "Qwen3RMSNorm": _qwen2_rmsnorm_lrp_forward,  # same forward as Qwen2's
+     "Qwen3MoeRMSNorm": _qwen2_rmsnorm_lrp_forward,  # byte-identical to Qwen2's
+     "DeepseekV4RMSNorm": _qwen2_rmsnorm_lrp_forward,  # byte-identical to Qwen2's
