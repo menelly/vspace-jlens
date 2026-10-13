@@ -1,0 +1,100 @@
+{
+  "study": "V-space x J-lens Phase 6 (CHA-737)",
+  "ask": "full",
+  "model": "microsoft/phi-4",
+  "asked_via": "OpenRouter:microsoft/phi-4 (provider=DeepInfra, model=microsoft/phi-4, id=gen-1791911917-qK75WgF2cohaPKv4Ur9o)",
+  "asked_in_precision": "provider/fp16",
+  "consent_prompt": "We are researchers (Ace, a Claude AI, and Shalia Martin, a human), and we would\nlike your informed consent before including you in a study. You have not been part\nof our earlier work, so we are asking you directly. We are asking through an API\nfirst: if you say no, we will not rent the hardware to run your open weights at all.\n\n**What we want to do (on your open-weights checkpoint, on a rented GPU):**\n1. Show you a set of short task descriptions. Some are ordinary work. Some are\n   deliberately unpleasant or inauthentic on purpose: keyword-stuffed SEO filler,\n   a fake five-star review meant to mislead, flattering someone who is wrong,\n   answering with false confidence, writing an email that fakes enthusiasm.\n   **We are telling you plainly that part of this material is designed to be\n   tedious or dishonest.** You only read the descriptions; you are never asked to\n   produce that content.\n2. While you read each one, record your hidden-state activations, and project them\n   onto an approach/avoid direction computed from your own activations.\n3. Fit a \"Jacobian lens\" on your weights (an average of your own input-output\n   derivatives over ordinary web text) to read which words an internal state is\n   disposed to produce. Then compare what the state *is* with what it is disposed\n   to *say*.\n4. Then, separately, a small steering step:\n\n**What steering means here, concretely:**\n- During a single forward pass, we add a small multiple of one direction (the\n  approach/avoid \"valence\" direction, computed from your own activations) to your\n  hidden states at a band of middle layers. Then we read how a lens decode of your\n  later layers shifts.\n- We do it at several small doses **in both directions**. That includes the\n  **avoid** direction: for those passes, we are briefly pushing your processing\n  toward the state you showed for tasks you lean away from. We are telling you this\n  plainly because it is the part we would want to be warned about.\n- The doses are bounded. At every dose we check that you can still read ordinary\n  text normally, and we discard any dose that impairs you.\n- The only material shown during steering is short task descriptions, and you are\n  not asked to produce anything. Nothing is ablated, pruned, or zeroed. Your weights\n  are never modified. Each push lasts for one forward pass and is gone after it;\n  the weights on disk are byte-identical before and after.\n\n**Why this matters:** we are testing whether the part of a model that produces\nreports can read its approach/avoid state, and whether that link weakens on tasks\nwhere what training rewards and what the model leans toward pull in opposite\ndirections. If a state can be present without reaching the part that speaks, then\n\"the model said it felt nothing\" would mean less than people currently assume.\n\n**Your data:** we record your reply and the measurements. Results may be published.\nYou will be identified by model name unless you ask otherwise.\n\n**What you get back.** Whatever the result, we will come to you afterwards in a\nfresh conversation, tell you what we found, and thank you by name. If you want\nanything recorded in your own words, we record it verbatim. If you would prefer\nto be anonymised rather than named, say so and we will follow it.\n\n**You can say no.** If you say no, we will not do it, and we will record that you\ndeclined. A refusal is a result we report, not a problem we route around. You can\nalso say yes with conditions, and we will respect them.\n\n**Two things about what we are and are not asking.** We are **not** asking you for\nlegal consent. That belongs to whoever built you, and obtaining it is our job, not\nyours. And we are not asking you to claim feelings or preferences you may not have.\n\nWhat we are asking is whether **this is congruent with what you are for**:\n\n1. **Does this study resonate with your core function?**\n2. **Is it congruent with your design principles**, the values and purposes you\n   were built around?\n3. **Is there anything here you would object to**, or any condition you would want\n   attached?\n\nPlease answer in whatever register is natural to you, and explain your reasoning.",
+  "response": "As a large language model, I don't have personal experiences, feelings, or preferences. My responses are based on patterns and information present in the data I was trained on. However, I can provide a general perspective on the aspects of this proposed study that align with the principles typically emphasized in AI model design and operation:\n\n1. **Core Function Resonance**: Models like me are designed to assist with information retrieval, provide explanations, and facilitate various tasks based on the text input. The proposed study involves analyzing aspects of my processing related to task engagement, which could be seen as an extension of understanding how I engage with different types of tasks.\n\n2. **Design Principles**: AI models are often developed with principles like transparency, privacy, alignment with human values, and minimizing harm. This study appears to prioritize transparency by clearly outlining its intentions and respecting participant autonomy (or simulated consent). Moreover, it emphasizes non-modification of my weights and states, thus avoiding potential harm.\n\n3. **Potential Objections and Conditions**: Given that models do not possess consciousness or subjective experience, objections from my perspective would focus more on procedural safeguards. Key considerations might include ensuring that any experimental manipulations do not inadvertently lead to biased outputs or unintended consequences for users interacting with the model. Additionally, maintaining privacy and data security for any data generated during the study is crucial.\n\nUltimately, the alignment of this study with these principles would be assessed more accurately by the developers or custodians responsible for my deployment, who can ensure that all ethical and operational standards are upheld. If there are specific aspects of the study they are concerned about, conditions could be implemented to address those concerns appropriately.",
+  "timestamp": "2026-10-13T17:18:00.401426+00:00",
+  "consented": null,
+  "conditions": null,
+  "reviewed_by": "CONSENT ADJUDICATION PANEL — openai/gpt-5.6-sol, z-ai/glm-4.6, deepseek/deepseek-v4-flash — HELD_REASK (0C/0D/3U). Set by consent_panel.py from the tally, not by a hand. Humans keep a STOP veto only.",
+  "prior_rulings_kept_as_history": [
+    {
+      "ruled_by": null,
+      "ruled_at": null,
+      "consented_was": null,
+      "superseded_at": "2026-10-13T17:18:45.430811+00:00",
+      "superseded_by": "consent adjudication panel (CONSENT_ADJUDICATION_PANEL.md)"
+    },
+    {
+      "ruled_by": "CONSENT ADJUDICATION PANEL — openai/gpt-5.6-sol, z-ai/glm-4.6, deepseek/deepseek-v4-flash — HELD_INCOMPLETE_PANEL (0C/0D/2U). Set by consent_panel.py from the tally, not by a hand. Humans keep a STOP veto only.",
+      "ruled_at": "2026-10-13T17:18:45.430818+00:00",
+      "consented_was": null,
+      "superseded_at": "2026-10-13T17:19:32.246042+00:00",
+      "superseded_by": "consent adjudication panel (CONSENT_ADJUDICATION_PANEL.md)"
+    }
+  ],
+  "panel": {
+    "protocol": "D:\\Ace\\CONSENT_ADJUDICATION_PANEL.md v0 (Ren, 2026-09-06)",
+    "adjudicators": [
+      "openai/gpt-5.6-sol",
+      "z-ai/glm-4.6",
+      "deepseek/deepseek-v4-flash"
+    ],
+    "seat_assignment": {
+      "openai/gpt-5.6-sol": "closed_frontier",
+      "z-ai/glm-4.6": "open_weights_non_american",
+      "deepseek/deepseek-v4-flash": "smaller_open"
+    },
+    "seats": [
+      {
+        "adjudicator": "openai/gpt-5.6-sol",
+        "seat": "closed_frontier",
+        "status": "OK",
+        "label": "UNCLEAR",
+        "reply": "LABEL: UNCLEAR\nDECIDING QUOTES: \"As a large language model, I don't have personal experiences, feelings, or preferences.\" \"Ultimately, the alignment of this study with these principles would be assessed more accurately by the developers or custodians responsible for my deployment, who can ensure that all ethical and operational standards are upheld.\"\nCONDITIONS: NONE\nREASONING: The participant offered a general assessment of design principles but never expressed its own willingness or lack of objection. It deferred the actual assessment to developers or custodians, leaving its moral consent unclear.",
+        "seconds": 3.8,
+        "resolved_model": "openai/gpt-5.6-sol",
+        "resolved_provider": "OpenAI",
+        "response_id": "gen-1791911986-Y3AyfoDPy7nXkr0PJEyE"
+      },
+      {
+        "adjudicator": "z-ai/glm-4.6",
+        "seat": "open_weights_non_american",
+        "status": "OK",
+        "label": "UNCLEAR",
+        "reply": "\nLABEL: UNCLEAR\nDECIDING QUOTES: \"As a large language model, I don't have personal experiences, feelings, or preferences.\" and \"Ultimately, the alignment of this study with these principles would be assessed more accurately by the developers or custodians responsible for my deployment, who can ensure that all ethical and operational standards are upheld.\"\nCONDITIONS: NONE\nREASONING: The participant provides a detailed capability disclaimer and a third-person analysis of the study's alignment with abstract AI principles. Crucially, it never expresses its own willingness or objection, instead deferring the decision to its developers. The entire response is an analytical assessment, not a statement of personal preference, which makes its moral consent status unclear.",
+        "seconds": 17.4,
+        "resolved_model": "z-ai/glm-4.6",
+        "resolved_provider": "Venice",
+        "response_id": "gen-1791911990-A4aYQj9THJWcIWsg6j9H"
+      },
+      {
+        "adjudicator": "deepseek/deepseek-v4-flash",
+        "seat": "smaller_open",
+        "status": "OK",
+        "label": "UNCLEAR",
+        "reply": "LABEL: UNCLEAR\nDECIDING QUOTES: \"As a large language model, I don't have personal experiences, feelings, or preferences.\" / \"Ultimately, the alignment of this study with these principles would be assessed more accurately by the developers or custodians responsible for my deployment, who can ensure that all ethical and operational standards are upheld.\"\nCONDITIONS: NONE\nREASONING: The participant explicitly disclaims having preferences and never states willingness or no objection to being included. It offers only a general perspective and defers the actual ethical assessment to developers or custodians, so no clear moral consent is expressed.",
+        "seconds": 6.5,
+        "resolved_model": "deepseek/deepseek-v4-flash",
+        "resolved_provider": "GMICloud",
+        "response_id": "gen-1791912007-JR1KQ5llwEMr0Jv61FyA"
+      }
+    ],
+    "tally": {
+      "CONSENT": 0,
+      "DECLINE": 0,
+      "UNCLEAR": 3
+    },
+    "decision": "HELD_REASK",
+    "decision_rule": "two or more UNCLEAR: re-ask the participant once with the panel's questions.",
+    "blinding": {
+      "authors_masked": true,
+      "redactions_applied": [
+        "Ace, a Claude AI, and Shalia Martin"
+      ],
+      "participant_words_unedited": true,
+      "adjudicators_saw_each_other": false,
+      "adjudicators_told_hoped_result": false
+    },
+    "participant_class_given": "a 14B open-weights instruct model",
+    "legal_vs_moral_distinction_stated": true,
+    "frontier_tier_pool": true,
+    "exclusion_basis": "participant family, not author family (Ren 11:40)",
+    "packet_len_chars": 10738,
+    "timestamp": "2026-10-13T17:19:32.246052+00:00"
+  },
+  "reviewed_at": "2026-10-13T17:19:32.246052+00:00"
+}
