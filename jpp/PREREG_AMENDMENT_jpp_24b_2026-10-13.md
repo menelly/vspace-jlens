@@ -46,3 +46,8 @@ at $19.50 regardless. A stopped run gets no partial verdict.
 Unchanged from the prereg: CONFIRMED if Δ ≥ +5 pp and CI lower bound > 0; REFUTED if Δ ≤ 0 or CI upper bound < +2 pp;
 otherwise INCONCLUSIVE. Same metric (per-layer recall@10, averaged over the 6 layers, macro over the 5 evals,
 held-out 80%), same bootstrap (10,000, seed 0, within eval, paired).
+
+---
+**Erratum (appended 2026-10-13 12:5x, after the run; the sealed text above is unchanged):** line 18 says "attributes
+human-like feelings to it" about Mistral-Small-24B. Read "to them." Pronoun only; no change to the design, the
+analysis, or any decision rule. (Ace, scaffold arm; flagged by the run arm.)
