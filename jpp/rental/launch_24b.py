@@ -19,7 +19,11 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 from rp import KEY, gql  # noqa: E402
 
-CHOICES = ["NVIDIA H100 80GB HBM3", "NVIDIA H100 PCIe", "NVIDIA A100-SXM4-80GB", "NVIDIA A100 80GB PCIe"]
+CHOICES = [("COMMUNITY", "NVIDIA H100 80GB HBM3"), ("COMMUNITY", "NVIDIA H100 PCIe"),
+           ("COMMUNITY", "NVIDIA A100-SXM4-80GB"), ("COMMUNITY", "NVIDIA A100 80GB PCIe"),
+           ("COMMUNITY", "NVIDIA RTX PRO 6000 Blackwell Server Edition"),
+           ("SECURE", "NVIDIA A100-SXM4-80GB"), ("SECURE", "NVIDIA A100 80GB PCIe")]
+# (07:38 first try: all four community 80 GB types SUPPLY_CONSTRAINT under tighter filters; nothing rented)
 MAX_RATE = 2.75          # $/h; anything pricier is not what Ren's estimate assumed
 BUDGET_FOR_DEADLINE = 18.0
 IMAGE = "runpod/pytorch:2.4.0-py3.11-cuda12.4.1-devel-ubuntu22.04"
@@ -34,13 +38,12 @@ def say(*a):
     print(time.strftime("%H:%M:%S"), *a, flush=True)
 
 
-def deploy(gpu):
+def deploy(cloud, gpu):
     pub = Path("~/.ssh/id_ed25519.pub").expanduser().read_text().strip()
-    inp = {"cloudType": "COMMUNITY", "gpuCount": 1, "volumeInGb": 0, "containerDiskInGb": 200,
-           "minVcpuCount": 8, "minMemoryInGb": 60, "gpuTypeId": gpu, "name": "ace-jpp-24b-cha743",
+    inp = {"cloudType": cloud, "gpuCount": 1, "volumeInGb": 0, "containerDiskInGb": 200,
+           "minVcpuCount": 4, "minMemoryInGb": 32, "gpuTypeId": gpu, "name": "ace-jpp-24b-cha743",
            "imageName": IMAGE, "dockerArgs": "", "ports": "22/tcp", "volumeMountPath": "/workspace",
            "startSsh": True, "supportPublicIp": True,
-           "allowedCudaVersions": ["12.4", "12.5", "12.6", "12.7", "12.8", "12.9"],
            "env": [{"key": "PUBLIC_KEY", "value": pub}]}
     d = gql("mutation($input: PodFindAndDeployOnDemandInput) { podFindAndDeployOnDemand(input: $input) "
             "{ id costPerHr machine { gpuDisplayName } } }", {"input": inp})
@@ -54,9 +57,9 @@ def main():
     start_bal = start_bal["clientBalance"]
     say(f"balance ${start_bal:.2f}")
     pod = None
-    for gpu in CHOICES:
-        say("trying", gpu)
-        pod = deploy(gpu)
+    for cloud, gpu in CHOICES:
+        say("trying", cloud, gpu)
+        pod = deploy(cloud, gpu)
         if pod:
             break
     if not pod:

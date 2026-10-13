@@ -36,7 +36,9 @@ LOCAL.mkdir(parents=True, exist_ok=True)
 STATUS = Path(__file__).parent / "status.json"
 SSH = ["ssh", "-o", "StrictHostKeyChecking=no", "-o", "UserKnownHostsFile=/dev/null", "-o", "ConnectTimeout=20",
        "-o", "LogLevel=ERROR", "-p", PORT, f"root@{IP}"]
-t_launch = time.time()
+# the clock starts when the POD was rented (launcher's pod.json), not when this process started
+_pj = Path(__file__).parent / "pod.json"
+t_launch = json.loads(_pj.read_text())["launched"] if _pj.exists() else time.time()
 
 
 def say(*a):

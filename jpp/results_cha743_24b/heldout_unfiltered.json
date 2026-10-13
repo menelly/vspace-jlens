@@ -1,0 +1,12 @@
+{
+  "n_items_after_correctness_filter": 407,
+  "n_heldout": 328,
+  "heldout_by_eval": {
+    "association": 82,
+    "typo": 77,
+    "poetry": 71,
+    "multilingual": 66,
+    "multihop": 32
+  },
+  "n_excluded_token_ids": 0
+}

@@ -30,10 +30,14 @@ pipeline() {
   cd /root
   echo "[pod] === setup $(date -u)"
   pip install -q uv || return 11
-  uv venv -q --python 3.12 /root/venv || return 12
+  # idempotent: a relaunch must not die on the venv the first launch built (12:06 UTC lesson)
+  [ -x /root/venv/bin/python ] || uv venv -q --python 3.12 /root/venv || return 12
   source /root/venv/bin/activate
   # same pins as jpp/jpp_setup.sh on the Consortium (cu126 wheels cover sm_80/sm_90 too)
-  uv pip install -q "torch==2.11.0" --index-url https://download.pytorch.org/whl/cu126 || return 13
+  CC=$(nvidia-smi --query-gpu=compute_cap --format=csv,noheader | head -1 | tr -d .)
+  IDX=cu126; [ "${CC:-0}" -ge 100 ] && IDX=cu128   # Blackwell (sm_100/120) needs the cu128 wheels
+  echo "[pod] compute_cap $CC -> torch index $IDX"
+  uv pip install -q "torch==2.11.0" --index-url https://download.pytorch.org/whl/$IDX || return 13
   uv pip install -q "transformers==5.14.1" "huggingface_hub==1.26.0" "numpy==2.5.1" "pandas==3.0.5" \
     "datasets==5.0.1" "pyarrow==25.0.0" "accelerate==1.12.0" "pytest==9.1.1" || return 14
   uv pip install -q -e /root/jpp_lens --no-deps || return 15
@@ -54,6 +58,12 @@ EOF
 
   cp /root/bundle/wikitext_prompts_1000.json /root/run/
   export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+  # 🧵 nproc says 128 but the container's CFS quota is ~15 CPUs: torch spawned 210 threads and the CPU-side
+  #    router (PCA + k-means) throttled for 25+ min (2026-10-13 ~12:05 UTC). Cap threads at the QUOTA.
+  #    Thread count changes scheduling only, not the math.
+  Q=$(awk '{ if ($1 != "max") printf "%d", $1/$2 }' /sys/fs/cgroup/cpu.max 2>/dev/null)
+  export OMP_NUM_THREADS=${Q:-8} MKL_NUM_THREADS=${Q:-8}
+  echo "[pod] cgroup CPU quota -> OMP_NUM_THREADS=$OMP_NUM_THREADS"
   cd /root/bundle
   echo "[pod] === stages prompts/smoke/grade/router $(date -u)"
   python run_cha743_24b.py prompts smoke grade router || return 21
