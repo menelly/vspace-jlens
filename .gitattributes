@@ -1,0 +1,2 @@
+# 🐧 Shell scripts run on Linux pods: a CRLF checkout on Windows (core.autocrlf=true) would kill them at the first \r. (CHA-798)
+*.sh text eol=lf
