@@ -16,10 +16,21 @@ exec > >(tee -a "$LOG") 2>&1
 echo "[pod] start $(date -u)  gpu=$(nvidia-smi --query-gpu=name --format=csv,noheader)"
 
 die_pod() {   # terminate THIS pod: the last line of every path through this script
+  # 🔪 REST v2 (CHA-798, 2026-11-14): Runpod retires GraphQL "early 2027" with a 410. Same contract as
+  # tfg-r22w/runpod_terminate.sh: DELETE /v2/pods/{id}, success is HTTP 204 with an EMPTY body, so judge by
+  # the status code, never the body. A 429 on a kill gets exponential backoff, never a give-up.
+  # We can't verify GET->404 from in here (a 204 kills us mid-check); watchdog.py outside is the check.
   echo "[pod] terminating self $(date -u): $1"
-  curl -s -X POST "https://api.runpod.io/graphql?api_key=${RUNPOD_API_KEY}" \
-    -H 'Content-Type: application/json' -H 'User-Agent: ace-p6-pod/1.0' \
-    -d "{\"query\":\"mutation { podTerminate(input:{podId:\\\"${RUNPOD_POD_ID}\\\"}) }\"}"
+  local code attempt
+  for attempt in 1 2 3 4; do
+    code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 60 -X DELETE \
+      -H "Authorization: Bearer ${RUNPOD_API_KEY}" -H 'User-Agent: ace-p6-pod/2.0' \
+      "https://api.runpod.io/v2/pods/${RUNPOD_POD_ID}")
+    [ "$code" = "429" ] || break
+    echo "[pod] terminate rate-limited (429), attempt $attempt/4"; sleep $(( 20 * (1 << (attempt - 1)) ))
+  done
+  if [ "$code" = "204" ]; then echo "[pod] terminate accepted (HTTP 204)"
+  else echo "[pod] FATAL: terminate HTTP $code. POD MAY STILL BE BILLING: kill it at https://console.runpod.io/pods"; fi
 }
 
 pipeline() {
