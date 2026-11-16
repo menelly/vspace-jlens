@@ -5,8 +5,9 @@ usage: rp.py me | gpus | pod <id> | terminate <id> | q '<graphql>'
 CHA-798 (2026-11-14): `me`, `pod` and `terminate` now go through REST v2 via scripts/rental/runpod_v2.py
 (GraphQL returns 410 in "early 2027"). Two things are STILL GraphQL, on purpose and labelled:
   • the balance inside `me` (no v2 equivalent; Runpod's migration guide says keep using GraphQL for it)
-  • `gpus` and `q`. 🧩 `gpus` has a v2 home (catalog: List GPU types) but I haven't read that response
-    shape, so it isn't ported on a guess. Port it before the next rental; after early 2027 it will 410.
+  • `q`, the raw-GraphQL escape hatch. It will 410 after early 2027, and that's fine: it's an escape hatch.
+  (`gpus` was GraphQL too until 2026-11-15; it's now GET /v2/catalog/gpus with POD availability, after I
+  read the response shape from the docs instead of guessing it.)
 """
 import json, os, sys, urllib.error, urllib.request
 
@@ -16,7 +17,7 @@ import runpod_v2 as rp                                    # noqa: E402
 KEY = open(os.path.expanduser("~/.config/jpp_runpod_key")).read().strip()
 
 
-def gql(q, variables=None):   # ⏳ GraphQL: only `gpus` and `q` still use this (see the docstring)
+def gql(q, variables=None):   # ⏳ GraphQL: only `q` still uses this (see the docstring)
     req = urllib.request.Request(
         "https://api.runpod.io/graphql?api_key=" + KEY,
         data=json.dumps({"query": q, "variables": variables or {}}).encode(),
@@ -44,10 +45,11 @@ if __name__ == "__main__":
                           "spend_per_hr (sum of live pods' cost)": round(sum(float(p.get("cost") or 0) for p in rp.live(pods)), 4),
                           "pods": [brief(p) for p in pods]}, indent=1))
     elif cmd == "gpus":
-        d = gql("query { gpuTypes { id displayName memoryInGb secureCloud communityCloud securePrice communityPrice lowestPrice(input:{gpuCount:1}) { minimumBidPrice uninterruptablePrice stockStatus } } }")
-        for g in d["gpuTypes"]:
-            if (g.get("memoryInGb") or 0) >= 80:
-                print(g["id"], "|", g["memoryInGb"], "GB | secure", g["securePrice"], "| community", g["communityPrice"], "|", g["lowestPrice"])
+        for g in rp.list_gpu_types(KEY, product="POD"):     # same >=80 GB filter as the GraphQL version
+            if (g.get("memory") or 0) >= 80:
+                price = g.get("price") or {}
+                print(g["id"], "|", g.get("memory"), "GB | secure", price.get("secure"), "| community",
+                      price.get("community"), "| pod availability", g.get("availability"))
     elif cmd == "pod":
         code, pod = rp.get_pod(KEY, sys.argv[2])
         print(f"HTTP {code}") if code != 200 else print(json.dumps(brief(pod), indent=1))

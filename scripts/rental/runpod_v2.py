@@ -109,6 +109,18 @@ def terminate(key, pod_id, say=print):
     return False
 
 
+def list_gpu_types(key, product="POD"):
+    """GET /v2/catalog/gpus?include=AVAILABILITY&product=POD (one list, not paginated; read 2026-11-15).
+    `product` is REQUIRED with availability and has no default on purpose: a GPU can be scarce for pods and
+    plentiful for serverless. We rent pods, so POD. Fields: id, name, memory (GB), secure/community (bool),
+    price.{secure,community} ($/h), maxCount, availability (HIGH/MEDIUM/LOW/NONE, uppercase in v2).
+    Raises on non-200 so a failed read is never mistaken for 'no GPUs'."""
+    code, body = call("GET", "/v2/catalog/gpus?include=AVAILABILITY&product=" + urllib.parse.quote(product), key)
+    if code != 200 or not isinstance(body, dict) or "gpus" not in body:
+        raise RuntimeError(f"list GPU types failed: HTTP {code} {str(body)[:200]}")
+    return body["gpus"] or []
+
+
 def balance(key):
     """Account balance in USD, or None. GraphQL ON PURPOSE (no v2 equivalent; see the docstring above).
     Never raises: when GraphQL is retired this just starts returning None."""

@@ -49,6 +49,12 @@ def make_handler(fake):
             fake.calls.append(("GET", self.path))
             if not self._authed():
                 return self._send(401, {"error": "unauthorized"})
+            if self.path.startswith("/v2/catalog/gpus"):   # docs: include=AVAILABILITY REQUIRES product, else 400
+                if "include=AVAILABILITY" in self.path and "product=" not in self.path:
+                    return self._send(400, {"title": "product required with include=AVAILABILITY"})
+                return self._send(200, {"gpus": [
+                    {"id": "NVIDIA H100 80GB HBM3", "memory": 80, "price": {"secure": 2.99, "community": 2.39}, "availability": "LOW"},
+                    {"id": "NVIDIA GeForce RTX 4090", "memory": 24, "price": {"secure": 0.44, "community": 0.31}, "availability": "HIGH"}]})
             if self.path.startswith("/v2/pods/"):
                 pid = self.path.rsplit("/", 1)[1]
                 return self._send(200, fake.pods[pid]) if pid in fake.pods else self._send(404, {"error": "not found"})
@@ -151,6 +157,17 @@ f.ghost = False
 check("balance() reads the GraphQL balance", rp.balance("TESTKEY") == 40.0)
 f.graphql_status = 410
 check("balance() returns None on 410 (doesn't raise)", rp.balance("TESTKEY") is None)
+
+# 9b. GPU catalog (rp.py gpus): sends product=POD, reads the documented shape, raises on a refused read
+g = rp.list_gpu_types("TESTKEY")
+check("list_gpu_types reads the documented 'gpus' array (2 types)", len(g) == 2 and g[0]["price"]["secure"] == 2.99)
+check("list_gpu_types sent product=POD with include=AVAILABILITY", any("/v2/catalog/gpus" in p and "product=POD" in p for m, p in f.calls))
+try:
+    rp.list_gpu_types("WRONGKEY"); raised = False
+except RuntimeError:
+    raised = True
+check("list_gpu_types raises on 401 instead of returning []", raised)
+check("the >=80 GB filter rp.py uses keeps the H100 and drops the 4090", [x["id"] for x in g if (x.get("memory") or 0) >= 80] == ["NVIDIA H100 80GB HBM3"])
 srv.shutdown()
 
 
